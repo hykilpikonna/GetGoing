@@ -238,7 +238,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" image="checkmark" catalog="system"/>
                             </button>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="qSt-1V-2DQ">
+                            <datePicker multipleTouchEnabled="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="qSt-1V-2DQ">
                                 <rect key="frame" x="0.0" y="75" width="414" height="220"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="220" id="VCm-rY-H4H"/>
