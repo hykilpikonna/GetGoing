@@ -352,6 +352,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alarm Ringtone" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O5c-Ga-0xh">
                                                 <rect key="frame" x="0.0" y="228" width="374" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" systemColor="secondaryLabelColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="bCI-jj-foN">
@@ -370,9 +371,10 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wakeup Verification Method" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E4B-9M-iJd">
                                                 <rect key="frame" x="0.0" y="338.5" width="374" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" systemColor="secondaryLabelColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oae-b2-SoF">
+                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oae-b2-SoF" customClass="WVMDataSource" customModule="ProjectClock" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="367" width="374" height="150"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="150" id="C0G-jE-CPx"/>
@@ -381,36 +383,37 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Others" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eZX-HE-BKB">
                                                 <rect key="frame" x="0.0" y="525" width="374" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" systemColor="secondaryLabelColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="e8v-cM-bxf">
-                                                <rect key="frame" x="0.0" y="553.5" width="374" height="72"/>
+                                                <rect key="frame" x="20" y="553.5" width="334" height="72"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="iAX-G9-qxh">
-                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="31"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="334" height="31"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Repeat on Weekdays" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="voA-xY-em1">
-                                                                <rect key="frame" x="0.0" y="0.0" width="305" height="31"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="265" height="31"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5oN-BL-Xtu">
-                                                                <rect key="frame" x="325" y="0.0" width="51" height="31"/>
+                                                                <rect key="frame" x="285" y="0.0" width="51" height="31"/>
                                                             </switch>
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="A0Y-z2-p4h">
-                                                        <rect key="frame" x="0.0" y="41" width="374" height="31"/>
+                                                        <rect key="frame" x="0.0" y="41" width="334" height="31"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Repeat on Weekends" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gcr-Xt-GY4">
-                                                                <rect key="frame" x="0.0" y="0.0" width="305" height="31"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="265" height="31"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WPM-Fh-sRB">
-                                                                <rect key="frame" x="325" y="0.0" width="51" height="31"/>
+                                                                <rect key="frame" x="285" y="0.0" width="51" height="31"/>
                                                             </switch>
                                                         </subviews>
                                                     </stackView>
@@ -425,7 +428,7 @@
                                             <constraint firstItem="bCI-jj-foN" firstAttribute="leading" secondItem="O5c-Ga-0xh" secondAttribute="leading" id="43V-1B-vky"/>
                                             <constraint firstItem="qSt-1V-2DQ" firstAttribute="top" secondItem="N7f-vi-SFU" secondAttribute="top" id="73E-1E-JcJ"/>
                                             <constraint firstItem="e8v-cM-bxf" firstAttribute="top" secondItem="eZX-HE-BKB" secondAttribute="bottom" constant="8" symbolic="YES" id="7a1-Z3-Et3"/>
-                                            <constraint firstAttribute="trailing" secondItem="e8v-cM-bxf" secondAttribute="trailing" id="Ign-Qn-62c"/>
+                                            <constraint firstAttribute="trailing" secondItem="e8v-cM-bxf" secondAttribute="trailing" constant="20" id="Ign-Qn-62c"/>
                                             <constraint firstAttribute="trailing" secondItem="eZX-HE-BKB" secondAttribute="trailing" id="N8p-Y4-j0g"/>
                                             <constraint firstItem="E4B-9M-iJd" firstAttribute="top" secondItem="bCI-jj-foN" secondAttribute="bottom" constant="20" id="QFX-LQ-Nfv"/>
                                             <constraint firstItem="O5c-Ga-0xh" firstAttribute="leading" secondItem="qSt-1V-2DQ" secondAttribute="leading" id="SUz-bu-pRK"/>
@@ -435,7 +438,7 @@
                                             <constraint firstAttribute="trailing" secondItem="E4B-9M-iJd" secondAttribute="trailing" id="dVC-Jj-Xtg"/>
                                             <constraint firstItem="O5c-Ga-0xh" firstAttribute="trailing" secondItem="bCI-jj-foN" secondAttribute="trailing" id="dhR-mZ-i9v"/>
                                             <constraint firstItem="O5c-Ga-0xh" firstAttribute="top" secondItem="qSt-1V-2DQ" secondAttribute="bottom" constant="8" symbolic="YES" id="f5R-6J-Cxq"/>
-                                            <constraint firstItem="e8v-cM-bxf" firstAttribute="leading" secondItem="N7f-vi-SFU" secondAttribute="leading" id="hCw-vh-G6m"/>
+                                            <constraint firstItem="e8v-cM-bxf" firstAttribute="leading" secondItem="N7f-vi-SFU" secondAttribute="leading" constant="20" id="hCw-vh-G6m"/>
                                             <constraint firstItem="oae-b2-SoF" firstAttribute="leading" secondItem="N7f-vi-SFU" secondAttribute="leading" id="kG1-Vr-2YU"/>
                                             <constraint firstItem="eZX-HE-BKB" firstAttribute="leading" secondItem="N7f-vi-SFU" secondAttribute="leading" id="l5g-VX-CUi"/>
                                             <constraint firstItem="E4B-9M-iJd" firstAttribute="leading" secondItem="N7f-vi-SFU" secondAttribute="leading" id="uav-jK-KIx"/>
