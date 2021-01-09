@@ -31,6 +31,18 @@ fun randSalt(len: Int = 16): ByteArray
     return salt
 }
 
+/**
+ * Hash a password
+ *
+ * @return <Hash, Salt>
+ */
+fun String.passwordHash(salt: String = randSalt().base64): Pair<String, String>
+{
+    val spec: KeySpec = PBEKeySpec(toCharArray(), salt.base64, 32767, 512)
+    val factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1")
+    return Pair(factory.generateSecret(spec).encoded.base64, salt)
+}
+
 val ByteArray.base64: String
     get() = Base64.getEncoder().encodeToString(this)
 
