@@ -48,3 +48,13 @@ val ByteArray.base64: String
 
 val String.base64: ByteArray
     get() = Base64.getDecoder().decode(this)
+
+
+fun main(args: Array<String>)
+{
+    val (hash, salt) = "password".passwordHash()
+    println(hash)
+    val (hash2, salt2) = "password".passwordHash(salt)
+    assert(hash == hash2 && salt == salt2)
+    println("Hash matches")
+}
