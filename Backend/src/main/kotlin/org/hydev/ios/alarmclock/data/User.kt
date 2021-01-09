@@ -32,3 +32,29 @@ data class User(
     @NotNull @Column(length = 128)
     var passHash: String,
 )
+
+interface UserRepo: JpaRepository<User, Long>
+
+@RestController
+@RequestMapping("/api/user")
+class UserApi(val repo: UserRepo)
+{
+    @GetMapping("/register")
+    fun register(@RequestParam("name") name: String, @RequestParam("pass") pass: String): Any
+    {
+        // Check username length
+        if (name.length !in 3..32) return bad("Username length not in range 3 to 32")
+
+        // Check if username exists
+        val em = ExampleMatcher.matching().withIgnorePaths("id", "passHash").withMatcher("name", ignoreCase())
+        val user = User(0, name, pass)
+        if (repo.exists(Example.of(user, em))) return bad("Username has already been used")
+
+        // Check password strength
+        if (pass.length < 8) return bad("Password must be longer than 8 chars")
+
+        // Register
+        repo.save(user)
+        return user
+    }
+}
