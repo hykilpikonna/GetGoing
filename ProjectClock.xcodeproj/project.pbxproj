@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4F8A607125A9160400D88DC3 /* AddAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8A607025A9160400D88DC3 /* AddAlarmViewController.swift */; };
 		4F8A607525A919E600D88DC3 /* Logic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8A607425A919E600D88DC3 /* Logic.swift */; };
+		4F98955225A9260400F51321 /* Net.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F98955125A9260400F51321 /* Net.swift */; };
 		4FF0683F25A5F18700304E6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF0683E25A5F18700304E6B /* AppDelegate.swift */; };
 		4FF0684125A5F18700304E6B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF0684025A5F18700304E6B /* SceneDelegate.swift */; };
 		4FF0684325A5F18700304E6B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF0684225A5F18700304E6B /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		4F8A607025A9160400D88DC3 /* AddAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAlarmViewController.swift; sourceTree = "<group>"; };
 		4F8A607425A919E600D88DC3 /* Logic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logic.swift; sourceTree = "<group>"; };
+		4F98955125A9260400F51321 /* Net.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Net.swift; sourceTree = "<group>"; };
 		4FF0683B25A5F18700304E6B /* ProjectClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FF0683E25A5F18700304E6B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4FF0684025A5F18700304E6B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				4FF0684925A5F18800304E6B /* LaunchScreen.storyboard */,
 				4FF0684C25A5F18800304E6B /* Info.plist */,
 				4F8A607425A919E600D88DC3 /* Logic.swift */,
+				4F98955125A9260400F51321 /* Net.swift */,
 			);
 			path = ProjectClock;
 			sourceTree = "<group>";
@@ -144,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F8A607125A9160400D88DC3 /* AddAlarmViewController.swift in Sources */,
+				4F98955225A9260400F51321 /* Net.swift in Sources */,
 				4F8A607525A919E600D88DC3 /* Logic.swift in Sources */,
 				4FF0684325A5F18700304E6B /* ViewController.swift in Sources */,
 				4FF0683F25A5F18700304E6B /* AppDelegate.swift in Sources */,
