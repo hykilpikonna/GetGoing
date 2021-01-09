@@ -30,3 +30,9 @@ fun randSalt(len: Int = 16): ByteArray
     random.nextBytes(salt)
     return salt
 }
+
+val ByteArray.base64: String
+    get() = Base64.getEncoder().encodeToString(this)
+
+val String.base64: ByteArray
+    get() = Base64.getDecoder().decode(this)
