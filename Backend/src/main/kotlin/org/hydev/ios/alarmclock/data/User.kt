@@ -73,4 +73,16 @@ class UserApi(val repo: UserRepo)
         repo.save(user)
         return user
     }
+
+    @GetMapping("/delete")
+    fun delete(@RequestParam email: String, @RequestParam pass: String): Any
+    {
+        // Check if username exists
+        val user = User("", email, pass)
+        if (!repo.exists(Example.of(user, em))) return bad("User doesn't exist")
+
+        // Delete
+        repo.delete(user)
+        return user
+    }
 }
