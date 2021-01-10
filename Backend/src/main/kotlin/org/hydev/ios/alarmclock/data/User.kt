@@ -30,14 +30,17 @@ data class User(
     @NotNull @Column(length = 32)
     var name: String,
 
+    @NotNull @Column(length = 256)
+    var email: String,
+
     @NotNull @Column(length = 100)
-    var passHash: String,
+    var passHash: String = "",
 
     @NotNull @Column(length = 32)
-    var passSalt: String
+    var passSalt: String = ""
 )
 {
-    constructor(name: String, pass: String) : this(name=name, passHash="", passSalt="")
+    constructor(name: String, email: String, pass: String) : this(name = name, email = email)
     {
         val (h, s) = pass.passwordHash()
         passHash = h
@@ -54,13 +57,13 @@ class UserApi(val repo: UserRepo)
     val em = ExampleMatcher.matching().withIgnorePaths("id", "passHash", "passSalt").withMatcher("name", ignoreCase())
 
     @GetMapping("/register")
-    fun register(@RequestParam name: String, @RequestParam pass: String): Any
+    fun register(@RequestParam name: String, @RequestParam pass: String, @RequestParam @Email email: String): Any
     {
         // Check username length
         if (name.length !in 3..32) return bad("Username length not in range 3 to 32")
 
         // Check if username exists
-        val user = User(name, pass)
+        val user = User(name, email, pass)
         if (repo.exists(Example.of(user, em))) return bad("Username has already been used")
 
         // Check password strength
