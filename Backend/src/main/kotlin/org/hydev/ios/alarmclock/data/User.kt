@@ -1,16 +1,17 @@
 package org.hydev.ios.alarmclock.data
 
 import org.hydev.ios.alarmclock.bad
+import org.hydev.ios.alarmclock.passwordHash
 import org.springframework.data.domain.Example
 import org.springframework.data.domain.ExampleMatcher
 import org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers.ignoreCase
 import org.springframework.data.jpa.repository.JpaRepository
-import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 import javax.persistence.*
+import javax.validation.constraints.Email
 import javax.validation.constraints.NotNull
 
 /**
@@ -29,9 +30,20 @@ data class User(
     @NotNull @Column(length = 32)
     var name: String,
 
-    @NotNull @Column(length = 128)
+    @NotNull @Column(length = 100)
     var passHash: String,
+
+    @NotNull @Column(length = 32)
+    var passSalt: String
 )
+{
+    constructor(name: String, pass: String) : this(name=name, passHash="", passSalt="")
+    {
+        val (h, s) = pass.passwordHash()
+        passHash = h
+        passSalt = s
+    }
+}
 
 interface UserRepo: JpaRepository<User, Long>
 
@@ -39,15 +51,16 @@ interface UserRepo: JpaRepository<User, Long>
 @RequestMapping("/api/user")
 class UserApi(val repo: UserRepo)
 {
+    val em = ExampleMatcher.matching().withIgnorePaths("id", "passHash", "passSalt").withMatcher("name", ignoreCase())
+
     @GetMapping("/register")
-    fun register(@RequestParam("name") name: String, @RequestParam("pass") pass: String): Any
+    fun register(@RequestParam name: String, @RequestParam pass: String): Any
     {
         // Check username length
         if (name.length !in 3..32) return bad("Username length not in range 3 to 32")
 
         // Check if username exists
-        val em = ExampleMatcher.matching().withIgnorePaths("id", "passHash").withMatcher("name", ignoreCase())
-        val user = User(0, name, pass)
+        val user = User(name, pass)
         if (repo.exists(Example.of(user, em))) return bad("Username has already been used")
 
         // Check password strength
