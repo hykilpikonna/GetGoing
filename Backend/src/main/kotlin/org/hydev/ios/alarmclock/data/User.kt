@@ -54,17 +54,17 @@ interface UserRepo: JpaRepository<User, Long>
 @RequestMapping("/api/user")
 class UserApi(val repo: UserRepo)
 {
-    val em = ExampleMatcher.matching().withIgnorePaths("id", "passHash", "passSalt").withMatcher("name", ignoreCase())
+    val em = ExampleMatcher.matching().withIgnorePaths("id", "passHash", "passSalt", "name").withMatcher("email", ignoreCase())
 
     @GetMapping("/register")
     fun register(@RequestParam name: String, @RequestParam pass: String, @RequestParam @Email email: String): Any
     {
-        // Check username length
-        if (name.length !in 3..32) return bad("Username length not in range 3 to 32")
+        // Check name length
+        if (name.length !in 1..32) return bad("Name length not in range 1 to 32")
 
-        // Check if username exists
+        // Check if email exists
         val user = User(name, email, pass)
-        if (repo.exists(Example.of(user, em))) return bad("Username has already been used")
+        if (repo.exists(Example.of(user, em))) return bad("Email is already registered")
 
         // Check password strength
         if (pass.length < 8) return bad("Password must be longer than 8 chars")
