@@ -78,11 +78,11 @@ class UserApi(val repo: UserRepo)
     fun delete(@RequestParam email: String, @RequestParam pass: String): Any
     {
         // Check if username exists
-        val user = User("", email, pass)
-        if (!repo.exists(Example.of(user, em))) return bad("User doesn't exist")
+        val users = repo.findAll(Example.of(User("", email, pass), em))
+        if (users.isEmpty()) return bad("User doesn't exist")
 
         // Delete
-        repo.delete(user)
-        return user
+        users.forEach { repo.delete(it) }
+        return "Deleted"
     }
 }
