@@ -36,7 +36,11 @@ func createUrl(_ node: String, _ params: [String: String]? = [:]) -> URL
 }
 
 /// Send a HTTP request
-func send<T>(_ api: API<T>, _ params: [String: String]? = [:], _ success: @escaping (String) -> Void, err: @escaping (String) -> Void = { it in })
+func send<T>(_ api: API<T>,                             // API Node
+             _ params: [String: String]? = [:],         // Parameters to send to the server
+             _ success: @escaping (String) -> Void,     // What to do when success
+             err: @escaping (String) -> Void = {it in}  // What to do when errors happen
+)
 {
     let url = createUrl(api.loc, params)
     
