@@ -86,6 +86,12 @@ func send<T: Decodable>(_ api: API<T>, _ params: [String: String]? = [:], _ succ
             success(obj)
         }
         
+        // Failed
+        else
+        {
+            let data = String(data: raw, encoding: .utf8) ?? "Error"
+            err("\(response.statusCode) - \(data)")
+        }
     }
 
     // Execute task
