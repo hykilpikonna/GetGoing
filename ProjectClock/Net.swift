@@ -25,7 +25,7 @@ class APIs
 }
 
 /// Build a URL with the node path and params
-func url(_ node: String, _ params: [String: String]? = [:]) -> URL
+func createUrl(_ node: String, _ params: [String: String]? = [:]) -> URL
 {
     var url = URLComponents(string: baseUrl + node)
     if let params = params
@@ -35,3 +35,16 @@ func url(_ node: String, _ params: [String: String]? = [:]) -> URL
     return url!.url!
 }
 
+/// Send a HTTP request
+func send<T>(_ api: API<T>, _ params: [String: String]? = [:], _ success: @escaping (String) -> Void, err: @escaping (String) -> Void = { it in })
+{
+    let url = createUrl(api.loc, params)
+    
+    let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+        guard let data = data, let body = String(data: data, encoding: .utf8) else { err("Data cannot be parsed"); return }
+        
+        success(body)
+    }
+
+    task.resume()
+}
