@@ -47,7 +47,13 @@ class APIs
     private init() {}
 }
 
-/// Build a URL with the node path and params
+/**
+ Build a URL with the node path and params
+ 
+ - Parameter api: API Node (Eg. APIs.register)
+ - Parameter params: Parameters to send to the server (Check the documentation of the API node to see which parameters you need)
+ - Returns: URL
+ */
 func createUrl(_ node: String, _ params: [String: String]? = [:]) -> URL
 {
     var url = URLComponents(string: baseUrl + node)
