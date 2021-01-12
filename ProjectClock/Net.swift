@@ -8,6 +8,7 @@ import Foundation
 
 /// Base URL of the HTTP server
 let baseUrl = "http://localhost:8080/api" // TODO: Production settings
+let JSON = JSONDecoder()
 
 /// API class
 struct API<T>
@@ -57,20 +58,36 @@ func createUrl(_ node: String, _ params: [String: String]? = [:]) -> URL
     return url!.url!
 }
 
-/// Send a HTTP request
-func send<T>(_ api: API<T>,                             // API Node
-             _ params: [String: String]? = [:],         // Parameters to send to the server
-             _ success: @escaping (String) -> Void,     // What to do when success
-             err: @escaping (String) -> Void = {it in}  // What to do when errors happen
-)
+/**
+ Send a HTTP request
+ 
+ - Parameter api: API Node (Eg. APIs.register)
+ - Parameter params: Parameters to send to the server (Check the documentation of the API node to see which parameters you need)
+ - Parameter success: Callback of what to do when the request successfully returned
+ - Parameter err: Callback of what to do when an error happens
+ */
+func send<T: Decodable>(_ api: API<T>, _ params: [String: String]? = [:], _ success: @escaping (T) -> Void, err: @escaping (String) -> Void = {it in})
 {
     let url = createUrl(api.loc, params)
     
-    let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-        guard let data = data, let body = String(data: data, encoding: .utf8) else { err("Data cannot be parsed"); return }
+    // Create task
+    let task = URLSession.shared.dataTask(with: url) { (raw, response, error) in
         
-        success(body)
+        // Check if raw data exists
+        guard let response = response as? HTTPURLResponse, let raw = raw else { err("Data doesn't exist"); return }
+        
+        // If success
+        if (200...299).contains(response.statusCode)
+        {
+            // Parse JSON
+            guard let obj = try? JSON.decode(T.self, from: raw) else { err("JSON cannot be parsed"); return }
+            
+            // Call callback
+            success(obj)
+        }
+        
     }
 
+    // Execute task
     task.resume()
 }

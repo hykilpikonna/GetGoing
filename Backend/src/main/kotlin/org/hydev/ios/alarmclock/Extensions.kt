@@ -2,12 +2,10 @@ package org.hydev.ios.alarmclock
 
 import org.springframework.http.ResponseEntity
 import java.security.SecureRandom
-import javax.crypto.SecretKeyFactory
-
-import javax.crypto.spec.PBEKeySpec
-
 import java.security.spec.KeySpec
 import java.util.*
+import javax.crypto.SecretKeyFactory
+import javax.crypto.spec.PBEKeySpec
 
 /**
  * Generate "Bad Request" response entity
@@ -26,7 +24,7 @@ fun bad(msg: String): ResponseEntity<String> = ResponseEntity.badRequest().body(
 fun randSalt(len: Int = 16): ByteArray
 {
     val random = SecureRandom()
-    val salt = ByteArray(16)
+    val salt = ByteArray(len)
     random.nextBytes(salt)
     return salt
 }
