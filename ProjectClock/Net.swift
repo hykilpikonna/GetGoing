@@ -18,7 +18,29 @@ struct API<T>
 /// Class to store static API endpoints
 class APIs
 {
+    /**
+     Register the user in the database.
+     
+     ## Parameters
+     - name: The user's name (this is not username because it doesn't have to be unique)
+     - email: The user's email (this does have to be unique)
+     - pass: Password (initial hash)
+     
+     ## Returns
+     Success or error
+     */
     static let register = API<String>(loc: "/user/register")
+    
+    /**
+     Delete a user from the database.
+     
+     ## Parameters
+     - email: The user's email
+     - pass: Password (initial hash)
+     
+     ## Returns
+     Success or error
+     */
     static let delete = API<String>(loc: "/user/delete")
     
     private init() {}
