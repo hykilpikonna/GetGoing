@@ -18,7 +18,8 @@ struct API<T>
 /// Class to store static API endpoints
 class APIs
 {
-    static let register = API<User>(loc: "/user/register")
+    static let register = API<String>(loc: "/user/register")
+    static let delete = API<String>(loc: "/user/delete")
     
     private init() {}
 }
