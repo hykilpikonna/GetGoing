@@ -6,10 +6,25 @@
 
 import Foundation
 
-let baseUrl = "http://localhost:8080/api/" // TODO: Production settings
+/// Base URL of the HTTP server
+let baseUrl = "http://localhost:8080/api" // TODO: Production settings
+
+/// API class
+struct API<T>
+{
+    let loc: String
+}
+
+/// Class to store static API endpoints
+class APIs
+{
+    static let register = API<User>(loc: "/user/register")
+    
+    private init() {}
+}
 
 /// Build a URL with the node path and params
-func buildUrl(_ node: String, _ params: [String: String]?) -> URL
+func url(_ node: String, _ params: [String: String]? = [:]) -> URL
 {
     var url = URLComponents(string: baseUrl + node)
     if let params = params
