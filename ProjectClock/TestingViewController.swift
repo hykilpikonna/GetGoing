@@ -31,14 +31,14 @@ class TestingViewController: UIViewController {
     
     //Sends a test notification
     @IBAction func sendNotification(_ sender: Any) {
-        let alarm = Alarm(alarmTime: Date(), text: "Hello there!", wakeMethod: WVM(name: "walking", desc: "Walk"))
+        let alarm = Alarm(alarmTime: Date(), text: "Good morning!", wakeMethod: WVM(name: "walking", desc: "Walk"))
         
         let content = UNMutableNotificationContent()
         
         //Date formatting to string
         let today = Date()
         let formatter1 = DateFormatter()
-        formatter1.dateStyle = .short
+        formatter1.dateStyle = .long
         
         //Notification content
         content.title = alarm.text
@@ -46,7 +46,7 @@ class TestingViewController: UIViewController {
         content.body = "Wake method: \(alarm.wakeMethod.name)"
         
         // Notification image content
-        let imageName = "applelogo"
+        let imageName = "clock"
         guard let imageURL = Bundle.main.url(forResource: imageName, withExtension: "png") else { return }
         let attachment = try! UNNotificationAttachment(identifier: imageName, url: imageURL, options: .none)
         content.attachments = [attachment]
