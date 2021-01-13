@@ -45,6 +45,28 @@ class APIs
      */
     static let delete = API<String>(loc: "/user/delete")
     
+    /**
+     Upload curent config to the cloud.
+     
+     ## Parameters
+     - config: The config json
+     
+     ## Returns
+     Success or error
+     */
+    static let uploadConfig = API<String>(loc: "/backup/upload")
+    
+    /**
+     Download the config from the cloud.
+     
+     ## Parameters
+     None
+     
+     ## Returns
+     Config Json
+     */
+    static let downloadConfig = API<String>(loc: "/backup/download")
+    
     private init() {}
 }
 
