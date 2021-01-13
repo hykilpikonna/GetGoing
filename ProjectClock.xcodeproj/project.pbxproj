@@ -18,6 +18,8 @@
 		4FF0684825A5F18800304E6B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FF0684725A5F18800304E6B /* Assets.xcassets */; };
 		4FF0684B25A5F18800304E6B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FF0684925A5F18800304E6B /* LaunchScreen.storyboard */; };
 		7C83963625AF375B0027A94C /* NotificationLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C83963525AF375B0027A94C /* NotificationLogic.swift */; };
+		7C83963925AF68980027A94C /* TestingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C83963825AF68980027A94C /* TestingViewController.swift */; };
+		7C83963C25AF6B6B0027A94C /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C83963B25AF6B6B0027A94C /* Alarm.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		7C83962D25AF34F00027A94C /* ProjectClock.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ProjectClock.entitlements; sourceTree = "<group>"; };
 		7C83962F25AF34F10027A94C /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		7C83963525AF375B0027A94C /* NotificationLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationLogic.swift; sourceTree = "<group>"; };
+		7C83963825AF68980027A94C /* TestingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingViewController.swift; sourceTree = "<group>"; };
+		7C83963B25AF6B6B0027A94C /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +86,8 @@
 				7C83963525AF375B0027A94C /* NotificationLogic.swift */,
 				4F98955125A9260400F51321 /* Net.swift */,
 				4F509BD125AE22D100726227 /* Models.swift */,
+				7C83963825AF68980027A94C /* TestingViewController.swift */,
+				7C83963B25AF6B6B0027A94C /* Alarm.swift */,
 			);
 			path = ProjectClock;
 			sourceTree = "<group>";
@@ -167,9 +173,11 @@
 				4F8A607125A9160400D88DC3 /* AddAlarmViewController.swift in Sources */,
 				4F98955225A9260400F51321 /* Net.swift in Sources */,
 				4F8A607525A919E600D88DC3 /* Logic.swift in Sources */,
+				7C83963925AF68980027A94C /* TestingViewController.swift in Sources */,
 				4FF0684325A5F18700304E6B /* ViewController.swift in Sources */,
 				4FF0683F25A5F18700304E6B /* AppDelegate.swift in Sources */,
 				4FF0684125A5F18700304E6B /* SceneDelegate.swift in Sources */,
+				7C83963C25AF6B6B0027A94C /* Alarm.swift in Sources */,
 				4F509BD225AE22D100726227 /* Models.swift in Sources */,
 				7C83963625AF375B0027A94C /* NotificationLogic.swift in Sources */,
 			);
