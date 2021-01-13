@@ -53,7 +53,7 @@ class TestingViewController: UIViewController {
         
         
         // Readies notification to be sent
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
         let request = UNNotificationRequest(identifier: "notification.id.01", content: content, trigger: trigger)
         
         // Sends notification
