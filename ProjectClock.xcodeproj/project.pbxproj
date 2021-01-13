@@ -17,7 +17,6 @@
 		4FF0684625A5F18700304E6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FF0684425A5F18700304E6B /* Main.storyboard */; };
 		4FF0684825A5F18800304E6B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FF0684725A5F18800304E6B /* Assets.xcassets */; };
 		4FF0684B25A5F18800304E6B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FF0684925A5F18800304E6B /* LaunchScreen.storyboard */; };
-		7C83963025AF34F10027A94C /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C83962F25AF34F10027A94C /* HealthKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,7 +41,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C83963025AF34F10027A94C /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
