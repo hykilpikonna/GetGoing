@@ -7,9 +7,13 @@
 
 import UIKit
 
-class AlarmTableTableViewController: UITableViewController {
-
-    override func viewDidLoad() {
+class AlarmViewController: UIViewController
+{
+    // TODO: Remove example and use localStorage
+    var data: [Alarm] = [Alarm(alarmTime: Date(), text: "Wake up lol", wakeMethod: wvms[0])]
+    
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
@@ -21,25 +25,25 @@ class AlarmTableTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
+    override func numberOfSections(in: UITableView) -> Int { return 1 }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
+    override func tableView(_ v: UITableView, numberOfRowsInSection s: Int) -> Int { return data.count }
 
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+    override func tableView(_ v: UITableView, cellForRowAt i: IndexPath) -> UITableViewCell
+    {
+        // Get the cell and item at index i
+        let cell = tableView.dequeueReusableCell(withIdentifier: "alarm", for: i)
+        let item = data[i.row]
+        
+        // Set the content of the cell to the content of the item.
+        cell.textLabel?.text = item.text
+        
         return cell
     }
-    */
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 
     /*
     // Override to support conditional editing of the table view.
