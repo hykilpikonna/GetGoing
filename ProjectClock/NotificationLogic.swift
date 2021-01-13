@@ -21,3 +21,4 @@ func puzzleAction() {
 
 func smashAction() {
     
+}
