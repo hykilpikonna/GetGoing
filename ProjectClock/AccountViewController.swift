@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class AccountViewController: UIViewController {
 
     @IBOutlet var table: UITableView!
     
@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UITableViewDelegate {
+extension AccountViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -28,7 +28,7 @@ extension ViewController: UITableViewDelegate {
 
 }
 
-extension ViewController: UITableViewDataSource {
+extension AccountViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
