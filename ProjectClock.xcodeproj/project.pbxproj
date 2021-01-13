@@ -17,6 +17,8 @@
 		4FF0684625A5F18700304E6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FF0684425A5F18700304E6B /* Main.storyboard */; };
 		4FF0684825A5F18800304E6B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FF0684725A5F18800304E6B /* Assets.xcassets */; };
 		4FF0684B25A5F18800304E6B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FF0684925A5F18800304E6B /* LaunchScreen.storyboard */; };
+		7C5DAE9925AF7DDE00E44C52 /* applelogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C5DAE9825AF7DDE00E44C52 /* applelogo.png */; };
+		7C5DAE9C25AF812200E44C52 /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C5DAE9B25AF812200E44C52 /* clock.png */; };
 		7C83963625AF375B0027A94C /* NotificationLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C83963525AF375B0027A94C /* NotificationLogic.swift */; };
 		7C83963925AF68980027A94C /* TestingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C83963825AF68980027A94C /* TestingViewController.swift */; };
 		7C83963C25AF6B6B0027A94C /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C83963B25AF6B6B0027A94C /* Alarm.swift */; };
@@ -35,6 +37,8 @@
 		4FF0684725A5F18800304E6B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4FF0684A25A5F18800304E6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4FF0684C25A5F18800304E6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7C5DAE9825AF7DDE00E44C52 /* applelogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = applelogo.png; path = ../../../Downloads/applelogo.png; sourceTree = "<group>"; };
+		7C5DAE9B25AF812200E44C52 /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = clock.png; path = ../../../Downloads/clock.png; sourceTree = "<group>"; };
 		7C83962D25AF34F00027A94C /* ProjectClock.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ProjectClock.entitlements; sourceTree = "<group>"; };
 		7C83962F25AF34F10027A94C /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		7C83963525AF375B0027A94C /* NotificationLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationLogic.swift; sourceTree = "<group>"; };
@@ -85,6 +89,8 @@
 				4F8A607425A919E600D88DC3 /* Logic.swift */,
 				7C83963525AF375B0027A94C /* NotificationLogic.swift */,
 				4F98955125A9260400F51321 /* Net.swift */,
+				7C5DAE9825AF7DDE00E44C52 /* applelogo.png */,
+				7C5DAE9B25AF812200E44C52 /* clock.png */,
 				4F509BD125AE22D100726227 /* Models.swift */,
 				7C83963825AF68980027A94C /* TestingViewController.swift */,
 				7C83963B25AF6B6B0027A94C /* Alarm.swift */,
@@ -126,6 +132,9 @@
 		4FF0683325A5F18700304E6B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					New,
+				);
 				LastSwiftUpdateCheck = 1230;
 				LastUpgradeCheck = 1230;
 				TargetAttributes = {
@@ -158,8 +167,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FF0684B25A5F18800304E6B /* LaunchScreen.storyboard in Resources */,
+				7C5DAE9C25AF812200E44C52 /* clock.png in Resources */,
 				4FF0684825A5F18800304E6B /* Assets.xcassets in Resources */,
 				4FF0684625A5F18700304E6B /* Main.storyboard in Resources */,
+				7C5DAE9925AF7DDE00E44C52 /* applelogo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
