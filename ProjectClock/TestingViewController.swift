@@ -31,7 +31,7 @@ class TestingViewController: UIViewController {
     
     //Sends a test notification
     @IBAction func sendNotification(_ sender: Any) {
-        var alarm = Alarm(alarmTime: Date(), text: "Hello there!", wakeMethod: WVM(name: "walking", desc: "Walk"))
+        let alarm = Alarm(alarmTime: Date(), text: "Hello there!", wakeMethod: WVM(name: "walking", desc: "Walk"))
         
         let content = UNMutableNotificationContent()
         
@@ -39,26 +39,24 @@ class TestingViewController: UIViewController {
         let today = Date()
         let formatter1 = DateFormatter()
         formatter1.dateStyle = .short
-        print(formatter1.string(from: today))
         
         //Notification content
         content.title = alarm.text
         content.subtitle = formatter1.string(from: today)
-        content.body = "Wake method: \(alarm.wakeMethod)"
+        content.body = "Wake method: \(alarm.wakeMethod.name)"
         
-        // 2
+        // Notification image content
         let imageName = "applelogo"
         guard let imageURL = Bundle.main.url(forResource: imageName, withExtension: "png") else { return }
-            
         let attachment = try! UNNotificationAttachment(identifier: imageName, url: imageURL, options: .none)
-            
         content.attachments = [attachment]
         
-        // 3
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0, repeats: false)
+        
+        // Readies notification to be sent
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
         let request = UNNotificationRequest(identifier: "notification.id.01", content: content, trigger: trigger)
         
-        // 4
+        // Sends notification
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
     
