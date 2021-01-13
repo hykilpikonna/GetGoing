@@ -3,7 +3,7 @@
 //  ProjectClock
 //
 //  Created by Hykilpikonna on 1/8/21.
-//
+// and Dallon :)
 
 import UIKit
 
