@@ -9,6 +9,7 @@ import Foundation
 /// Base URL of the HTTP server
 let baseUrl = "http://localhost:8080/api" // TODO: Production settings
 let JSON = JSONDecoder()
+let localStorage = UserDefaults(suiteName: "group.org.hydev.alarm.clock")!
 
 /// API class
 struct API<T>
@@ -65,7 +66,7 @@ func createUrl(_ node: String, _ params: [String: String]? = [:]) -> URL
 }
 
 /**
- Send a HTTP request
+ Send a HTTP request. Email and authentication token (the initial hash of a password) is automatically added if they exist in localStorage.
  
  - Parameter api: API Node (Eg. APIs.register)
  - Parameter params: Parameters to send to the server (Check the documentation of the API node to see which parameters you need)
@@ -74,6 +75,14 @@ func createUrl(_ node: String, _ params: [String: String]? = [:]) -> URL
  */
 func send<T: Decodable>(_ api: API<T>, _ params: [String: String]? = [:], _ success: @escaping (T) -> Void, err: @escaping (String) -> Void = {it in})
 {
+    // Add default params
+    var params = params
+    if params != nil
+    {
+        if params!["email"] == nil { params!["email"] = localStorage.string(forKey: "email") }
+        if params!["pass"] == nil { params!["pass"] = localStorage.string(forKey: "pass") }
+    }
+    
     let url = createUrl(api.loc, params)
     
     // Create task
