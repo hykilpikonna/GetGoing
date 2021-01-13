@@ -18,7 +18,3 @@ let wvms = [
     WVM(name: "Puzzle", desc: "Complete a simple puzzle"),
     WVM(name: "Smash", desc: "It'll never truns off"),
 ]
-
-
-
-}
