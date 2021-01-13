@@ -7,14 +7,15 @@
 
 import Foundation
 import CoreMotion
+import UserNotifications
 
 let motionManager = CMMotionManager()
 
 func getAccelerometer() {
     motionManager.startAccelerometerUpdates()
-    
+    //print(motionManager.accelerometerData)
     if let accelerometerData = motionManager.accelerometerData {
-        print(accelerometerData)
+        print("Acclerometer: \(accelerometerData)")
     }
 }
 
