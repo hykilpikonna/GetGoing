@@ -6,6 +6,17 @@
 //
 
 import Foundation
+import CoreMotion
+
+let motionManager = CMMotionManager()
+
+func getAccelerometer() {
+    motionManager.startAccelerometerUpdates()
+    
+    if let accelerometerData = motionManager.accelerometerData {
+        print(accelerometerData)
+    }
+}
 
 func walkAction() {
     
