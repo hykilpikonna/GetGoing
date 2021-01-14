@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -13,6 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        UNUserNotificationCenter.current().delegate = self
         // Override point for customization after application launch.
         return true
     }
@@ -30,7 +32,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
-
-
 }
 
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    
+  // This function will be called right after user tap on the notification
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        // retrieve the root view controller (which is a tab bar controller)
+        guard let rootViewController = (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.window?.rootViewController else {
+            return
+        }
+      
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+
+        // instantiate the view controller we want to show from storyboard
+        // root view controller is tab bar controller
+        // the selected tab is a navigation controller
+        // then we push the new view controller to it
+        if  let alarmVC = storyboard.instantiateViewController(withIdentifier: "LiveAlarmViewController") as? LiveAlarmViewController,
+            let tabBarController = rootViewController as? UITabBarController,
+            let navController = tabBarController.selectedViewController as? UINavigationController {
+
+                // we can modify variable of the new view controller using notification data
+                // (eg: title of notification)
+                //alarmVC.senderDisplayName = response.notification.request.content.title
+                // you can access custom data of the push notification by using userInfo property
+                // response.notification.request.content.userInfo
+                navController.pushViewController(alarmVC, animated: true)
+        }
+        
+        // tell the app that we have finished processing the user’s action / response
+        completionHandler()
+    }
+}
