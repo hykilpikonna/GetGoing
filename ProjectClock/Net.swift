@@ -104,6 +104,30 @@ class APIs
      */
     static let familyChangePin = API<String>(loc: "/family/update_pin")
     
+    /**
+     Join family
+     
+     ## Parameters
+     - fid: Family ID
+     - pin: Admin pin
+     
+     ## Returns
+     Family object
+     */
+    static let familyJoin = API<Family>(loc: "/family/join")
+    
+    /**
+     Leave family
+     
+     ## Parameters
+     - fid: Family ID
+     - pin: Admin pin
+     
+     ## Returns
+     Success or not
+     */
+    static let familyLeave = API<String>(loc: "/family/leave")
+    
     private init() {}
 }
 
