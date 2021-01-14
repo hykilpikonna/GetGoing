@@ -15,6 +15,13 @@ struct User: Decodable
     var pass: String
 }
 
+struct Alarm: Decodable
+{
+    var alarmTime: Date
+    var text: String
+    var wakeMethod: WVM
+}
+
 struct Family: Decodable
 {
     var fid: Int
