@@ -67,6 +67,30 @@ class APIs
      */
     static let downloadConfig = API<String>(loc: "/backup/download")
     
+    /**
+     Create a family
+     
+     ## Parameters
+     - fname: Family name
+     - pin: Admin pin
+     
+     ## Returns
+     Family object
+     */
+    static let familyCreate = API<Family>(loc: "/family/create")
+    
+    /**
+     Delete a family
+     
+     ## Parameters
+     - fid: Family ID
+     - pin: Admin pin
+     
+     ## Returns
+     Success or not
+     */
+    static let familyDelete = API<String>(loc: "/family/delete")
+    
     private init() {}
 }
 
