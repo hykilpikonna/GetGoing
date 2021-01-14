@@ -14,3 +14,11 @@ struct User: Decodable
     var email: String
     var pass: String
 }
+
+struct Family: Decodable
+{
+    var fid: Int
+    var fname: String
+    var members: [String]
+    // And a hidden field: admin pin
+}
