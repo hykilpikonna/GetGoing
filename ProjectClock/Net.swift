@@ -91,6 +91,19 @@ class APIs
      */
     static let familyDelete = API<String>(loc: "/family/delete")
     
+    /**
+     Change a family's admin pin
+     
+     ## Parameters
+     - fid: Family ID
+     - orig_pin: Original admin pin
+     - new_pin: New admin pin
+     
+     ## Returns
+     Success or not
+     */
+    static let familyChangePin = API<String>(loc: "/family/update_pin")
+    
     private init() {}
 }
 
