@@ -332,7 +332,7 @@
             </objects>
             <point key="canvasLocation" x="242" y="869"/>
         </scene>
-        <!--Item-->
+        <!--Debug-->
         <scene sceneID="x23-kV-b5u">
             <objects>
                 <viewController id="r8W-6e-Hn2" customClass="TestingViewController" customModule="ProjectClock" customModuleProvider="target" sceneMemberID="viewController">
@@ -340,18 +340,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GhB-GA-PWg">
-                                <rect key="frame" x="93" y="128" width="229" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GhB-GA-PWg">
+                                <rect key="frame" x="92.5" y="128" width="229" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <state key="normal" title="Send Accel. to Console"/>
                                 <connections>
                                     <action selector="getAccel:" destination="r8W-6e-Hn2" eventType="touchUpInside" id="hDu-Hj-vnU"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8o4-jF-mCC">
-                                <rect key="frame" x="154" y="232" width="110" height="41"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8o4-jF-mCC">
+                                <rect key="frame" x="152" y="232" width="110" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="Send Notif"/>
                                 <connections>
@@ -361,8 +359,14 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hX1-uy-i87"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="GhB-GA-PWg" firstAttribute="top" secondItem="hX1-uy-i87" secondAttribute="top" constant="84" id="Y9z-Si-SeI"/>
+                            <constraint firstItem="8o4-jF-mCC" firstAttribute="top" secondItem="GhB-GA-PWg" secondAttribute="bottom" constant="64" id="gz0-iN-cIY"/>
+                            <constraint firstItem="GhB-GA-PWg" firstAttribute="centerX" secondItem="xd9-wc-Vc7" secondAttribute="centerX" id="v3H-yu-QkZ"/>
+                            <constraint firstItem="8o4-jF-mCC" firstAttribute="centerX" secondItem="xd9-wc-Vc7" secondAttribute="centerX" id="v4t-MW-7lU"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="QZ2-fJ-hLg"/>
+                    <tabBarItem key="tabBarItem" title="Debug" image="hammer.fill" catalog="system" selectedImage="hammer.fill" id="QZ2-fJ-hLg"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mZu-oh-Lmb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -583,6 +587,7 @@
     <resources>
         <image name="alarm.fill" catalog="system" width="124" height="128"/>
         <image name="checkmark" catalog="system" width="128" height="114"/>
+        <image name="hammer.fill" catalog="system" width="128" height="117"/>
         <image name="person.crop.circle" catalog="system" width="128" height="121"/>
         <image name="trash.fill" catalog="system" width="121" height="128"/>
         <systemColor name="labelColor">
