@@ -56,6 +56,9 @@ struct Alarm: Codable
     /// When should the alarm activate next
     var nextActivate: Date?
     {
+        // Make sure it's repeating
+        guard (repeats.contains { $0 }) else { return nil }
+        
         // Get current date
         let now = Date()
         let (y, m, d) = now.getYMD()
@@ -66,6 +69,9 @@ struct Alarm: Codable
         
         // If it will activate tomorrow
         if nh > hour || (nh == hour && nm > minute) { date = date.added(.day, 1) }
+        
+        // If the day is not one of the "repeat" days, keep adding 1 until it is
+        while !repeats[date.get(.weekday)] { date = date.added(.day, 1) }
     
         return date
     }
