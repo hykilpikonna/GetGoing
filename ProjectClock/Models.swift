@@ -95,4 +95,11 @@ class Alarms: Codable
     
     /// Get enabled alarms
     var listEnabled: [Alarm] { return list.filter { $0.enabled } }
+    
+    /// Get alarms that should be activating now
+    var listActivating: [Alarm]
+    {
+        let now = Date()
+        return listEnabled.filter { guard let n = $0.nextActivate else { return false }; return n < now }
+    }
 }
