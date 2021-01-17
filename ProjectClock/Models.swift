@@ -47,8 +47,12 @@ struct Alarm: Codable
     /// What days does it repeat (Sun, Mon, Tue, Wed, Thu, Fri, Sat)
     var repeats: [Bool] = [false, true, true, true, true, true, false]
     
+    /// Does it automatically disable after activating once
+    var autoDisable = true
+    
     /// When is the last time that the alarm went off
-    var lastEnabled: Date? = nil
+    var lastActivate: Date? = nil
+    
 }
 
 class Alarms: Codable
