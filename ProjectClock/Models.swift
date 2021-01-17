@@ -53,6 +53,22 @@ struct Alarm: Codable
     /// When is the last time that the alarm went off
     var lastActivate: Date? = nil
     
+    /// When should the alarm activate next
+    var nextActivate: Date?
+    {
+        // Get current date
+        let now = Date()
+        let (y, m, d) = now.getYMD()
+        let (nh, nm, _) = now.getHMS()
+        
+        // Create activation date
+        var date = Date.create(y, m, d, hour, minute)
+        
+        // If it will activate tomorrow
+        if nh > hour || (nh == hour && nm > minute) { date = date.added(.day, 1) }
+    
+        return date
+    }
 }
 
 class Alarms: Codable
