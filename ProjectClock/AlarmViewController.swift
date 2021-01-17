@@ -62,5 +62,10 @@ class AlarmTableCell: UITableViewCell
     func setData(_ alarm: Alarm)
     {
         descriptionText.text = "- " + alarm.text
+        
+        if alarm.enabled, let n = alarm.nextActivate
+        {
+            goingOffText.text = "(Going off in \(n.timeIntervalSince(Date()).str()))"
+        }
     }
 }
