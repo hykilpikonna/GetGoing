@@ -33,6 +33,9 @@ struct Alarm: Codable
     var alarmTime: Date
     var text: String
     var wakeMethod: WVM
+    
+    /// When is the last time that the alarm went off
+    var lastEnabled: Date? = nil
 }
 
 struct Family: Codable
@@ -41,4 +44,18 @@ struct Family: Codable
     var fname: String
     var members: [String]
     // And a hidden field: admin pin
+}
+
+class Alarms: Codable
+{
+    var list: [Alarm] = []
+    
+    /// Save alarms to local storage
+    func localSave() -> Alarms { localStorage.setValue(JSON.stringify(list)!, forKey: "alarms"); return self }
+    
+    /// Read alarms from local storage
+    func localRead() -> Alarms { list = JSON.parse([Alarm].self, localStorage.string(forKey: "alarms")!)!; return self }
+    
+    /// Read an alarm object from local storage
+    static func fromLocal() -> Alarms { return Alarms().localRead() }
 }
