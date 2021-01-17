@@ -9,6 +9,9 @@ import Foundation
 
 /**
  Class to activate alarms when the user is inside the app
+ 
+ Note: This will not run when app is switched to the background,
+   but it will run right after the user switched back to the app.
  */
 class AlarmActivator
 {
