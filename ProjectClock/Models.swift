@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct User: Decodable
+struct User: Codable
 {
     var id: Int
     var name: String
@@ -15,7 +15,7 @@ struct User: Decodable
     var pass: String
 }
 
-struct WVM: Decodable
+struct WVM: Codable
 {
     let name: String
     let desc: String
@@ -28,14 +28,14 @@ let wvms = [
     WVM(name: "Smash", desc: "It'll never truns off"),
 ]
 
-struct Alarm: Decodable
+struct Alarm: Codable
 {
     var alarmTime: Date
     var text: String
     var wakeMethod: WVM
 }
 
-struct Family: Decodable
+struct Family: Codable
 {
     var fid: Int
     var fname: String
