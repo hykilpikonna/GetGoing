@@ -60,3 +60,20 @@ extension Date
         return Calendar.current.date(byAdding: c, value: v, to: self)!
     }
 }
+
+extension TimeInterval
+{
+    var seconds: Int { return Int(self) % 60 }
+    var minutes: Int { return (Int(self) / 60) % 60 }
+    var hours: Int { return (Int(self) / 3600) % 24 }
+    var days: Int { return Int(self) / (3600 * 24) }
+    
+    /// Add toString to time interval
+    func str() -> String
+    {
+        if days != 0 { return "\(days)d \(hours)h \(minutes)m \(seconds)s" }
+        else if hours != 0 { return "\(hours)h \(minutes)m \(seconds)s" }
+        else if minutes != 0 { return "\(minutes)m \(seconds)s" }
+        else { return "\(seconds)s" }
+    }
+}
