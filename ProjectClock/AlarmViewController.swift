@@ -23,7 +23,7 @@ extension AlarmViewController: UITableViewDelegate, UITableViewDataSource
     func numberOfSections(in: UITableView) -> Int { return 1 }
 
     /// How many rows are there
-    func tableView(_ v: UITableView, numberOfRowsInSection s: Int) -> Int { return getLocalAlarms().count }
+    func tableView(_ v: UITableView, numberOfRowsInSection s: Int) -> Int { return Alarms.fromLocal().list.count }
 
     /// Configure each cell
     func tableView(_ v: UITableView, cellForRowAt i: IndexPath) -> UITableViewCell
@@ -31,7 +31,7 @@ extension AlarmViewController: UITableViewDelegate, UITableViewDataSource
         // Get the cell and item at index i
         let rawCell = v.dequeueReusableCell(withIdentifier: "alarm", for: i)
         guard let cell = rawCell as? AlarmTableCell else { return rawCell }
-        let item = getLocalAlarms()[i.row]
+        let item = Alarms.fromLocal().list[i.row]
     
         // Set the content of the cell to the content of the item.
         cell.setData(item)
