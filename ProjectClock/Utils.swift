@@ -17,6 +17,19 @@ extension Date
         return f.string(from: self)
     }
     
+    /// Constructor from components
+    static func create(_ year: Int, _ month: Int, _ day: Int, _ hour: Int, _ minute: Int) -> Date
+    {
+        var c = DateComponents()
+        c.year = year
+        c.month = month
+        c.day = day
+        c.hour = hour
+        c.minute = minute
+        let cal = Calendar(identifier: .gregorian)
+        return cal.date(from: c)!
+    }
+    
     /// Get year, month, day
     func getYMD() -> (y: Int, m: Int, d: Int)
     {
