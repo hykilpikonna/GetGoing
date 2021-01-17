@@ -32,7 +32,7 @@ class TestingViewController: UIViewController
     //Sends a test notification
     @IBAction func sendNotification(_ sender: Any)
     {
-        let alarm = Alarm(enabled: true, hour: 7, minute: 20, text: "Good morning!", wakeMethod: WVM(name: "walking", desc: "Walk"))
+        let alarm = Alarm(hour: 7, minute: 20, text: "Good morning!", wakeMethod: WVM(name: "walking", desc: "Walk"))
         
         let content = UNMutableNotificationContent()
         
@@ -64,7 +64,7 @@ class TestingViewController: UIViewController
     {
         let (h, m, _) = Date().getHMS()
         let alarms = Alarms.fromLocal()
-        alarms.list.append(Alarm(enabled: true, hour: h, minute: m, text: "Test alarm - \(h * m)", wakeMethod: wvms[0]))
+        alarms.list.append(Alarm(hour: h, minute: m, text: "Test alarm - \(h * m)", wakeMethod: wvms[0]))
         alarms.localSave()
     }
 }

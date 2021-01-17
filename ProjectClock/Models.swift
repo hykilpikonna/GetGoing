@@ -36,19 +36,27 @@ let wvms = [
     WVM(name: "Smash", desc: "It'll never truns off"),
 ]
 
-struct Alarm: Codable
+class Alarm: Codable
 {
-    var enabled: Bool
+    var enabled: Bool = true
     var hour: Int // Hour (24)
     var minute: Int
     var text: String
     var wakeMethod: WVM
     
+    init(hour: Int, minute: Int, text: String, wakeMethod: WVM)
+    {
+        self.hour = hour
+        self.minute = minute
+        self.text = text
+        self.wakeMethod = wakeMethod
+    }
+    
     /// What days does it repeat (Sun, Mon, Tue, Wed, Thu, Fri, Sat)
     var repeats: [Bool] = [false, true, true, true, true, true, false]
     
     /// Does it automatically disable after activating once
-    var oneTime = true
+    var oneTime = false
     
     /// When is the last time that the alarm went off
     var lastActivate: Date = Date()
