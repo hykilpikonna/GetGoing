@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		4F509BD225AE22D100726227 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F509BD125AE22D100726227 /* Models.swift */; };
 		4F8A607125A9160400D88DC3 /* AddAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8A607025A9160400D88DC3 /* AddAlarmViewController.swift */; };
-		4F8A607525A919E600D88DC3 /* Logic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8A607425A919E600D88DC3 /* Logic.swift */; };
 		4F98955225A9260400F51321 /* Net.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F98955125A9260400F51321 /* Net.swift */; };
 		4FA419AF25AF93EC004CE0FC /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA419AE25AF93EC004CE0FC /* AlarmViewController.swift */; };
 		4FF0683F25A5F18700304E6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF0683E25A5F18700304E6B /* AppDelegate.swift */; };
@@ -26,7 +25,6 @@
 /* Begin PBXFileReference section */
 		4F509BD125AE22D100726227 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		4F8A607025A9160400D88DC3 /* AddAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAlarmViewController.swift; sourceTree = "<group>"; };
-		4F8A607425A919E600D88DC3 /* Logic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logic.swift; sourceTree = "<group>"; };
 		4F98955125A9260400F51321 /* Net.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Net.swift; sourceTree = "<group>"; };
 		4FA419AE25AF93EC004CE0FC /* AlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmViewController.swift; sourceTree = "<group>"; };
 		4FF0683B25A5F18700304E6B /* ProjectClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,7 +83,6 @@
 				4FF0684725A5F18800304E6B /* Assets.xcassets */,
 				4FF0684925A5F18800304E6B /* LaunchScreen.storyboard */,
 				4FF0684C25A5F18800304E6B /* Info.plist */,
-				4F8A607425A919E600D88DC3 /* Logic.swift */,
 				7C83963525AF375B0027A94C /* NotificationLogic.swift */,
 				4F98955125A9260400F51321 /* Net.swift */,
 				7C5DAE9B25AF812200E44C52 /* clock.png */,
@@ -179,7 +176,6 @@
 			files = (
 				4F8A607125A9160400D88DC3 /* AddAlarmViewController.swift in Sources */,
 				4F98955225A9260400F51321 /* Net.swift in Sources */,
-				4F8A607525A919E600D88DC3 /* Logic.swift in Sources */,
 				7C83963925AF68980027A94C /* TestingViewController.swift in Sources */,
 				4FF0684325A5F18700304E6B /* AccountViewController.swift in Sources */,
 				4FF0683F25A5F18700304E6B /* AppDelegate.swift in Sources */,
