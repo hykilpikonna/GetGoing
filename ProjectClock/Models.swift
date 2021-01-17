@@ -30,6 +30,7 @@ let wvms = [
 
 struct Alarm: Codable
 {
+    var enabled: Bool
     var alarmTime: Date
     var text: String
     var wakeMethod: WVM
@@ -58,4 +59,7 @@ class Alarms: Codable
     
     /// Read an alarm object from local storage
     static func fromLocal() -> Alarms { return Alarms().localRead() }
+    
+    /// Get enabled alarms
+    var listEnabled: [Alarm] { return list.filter { $0.enabled } }
 }
