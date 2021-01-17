@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VaN-9W-uoG">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VaN-9W-uoG">
                                 <rect key="frame" x="0.0" y="98" width="414" height="798"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="DQJ-kT-79q">
@@ -61,23 +60,26 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="| Going off in 23 hr 22 m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EPJ-eL-Kek">
-                                                    <rect key="frame" x="179" y="70" width="215" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yra-wA-O7B">
+                                                    <rect key="frame" x="345" y="26" width="51" height="31"/>
+                                                </switch>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="(Going off in 23 hr 22 m)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EPJ-eL-Kek">
+                                                    <rect key="frame" x="179" y="68" width="215" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" systemColor="secondaryLabelColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yra-wA-O7B">
-                                                    <rect key="frame" x="345" y="26" width="49" height="31"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </switch>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="dWq-jh-9Ue" firstAttribute="baseline" secondItem="4hj-fb-FF3" secondAttribute="baseline" id="4H2-o6-GfV"/>
                                                 <constraint firstItem="YhV-X3-y1v" firstAttribute="leading" secondItem="Wl6-IQ-lVM" secondAttribute="leadingMargin" constant="10" id="Hur-MO-GTA"/>
+                                                <constraint firstItem="yra-wA-O7B" firstAttribute="top" secondItem="Wl6-IQ-lVM" secondAttribute="topMargin" constant="15" id="Jvt-p2-9cx"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="EPJ-eL-Kek" secondAttribute="trailing" id="LhS-n6-zst"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="yra-wA-O7B" secondAttribute="trailing" id="R9H-AC-mf6"/>
                                                 <constraint firstItem="mjO-SX-f31" firstAttribute="leading" secondItem="Wl6-IQ-lVM" secondAttribute="leadingMargin" constant="10" id="VOR-Go-oCw"/>
-                                                <constraint firstItem="EPJ-eL-Kek" firstAttribute="top" secondItem="4hj-fb-FF3" secondAttribute="bottom" constant="13" id="je6-UM-5Kc"/>
+                                                <constraint firstItem="EPJ-eL-Kek" firstAttribute="baseline" secondItem="YhV-X3-y1v" secondAttribute="firstBaseline" id="ilR-ei-lE6"/>
                                                 <constraint firstItem="dWq-jh-9Ue" firstAttribute="leading" secondItem="mjO-SX-f31" secondAttribute="trailing" constant="8" symbolic="YES" id="ocx-bN-3M8"/>
+                                                <constraint firstItem="EPJ-eL-Kek" firstAttribute="top" secondItem="4hj-fb-FF3" secondAttribute="bottom" constant="11" id="oon-Hl-9Jj"/>
                                                 <constraint firstItem="EPJ-eL-Kek" firstAttribute="leading" secondItem="YhV-X3-y1v" secondAttribute="trailing" constant="8" symbolic="YES" id="po7-2V-fZ6"/>
                                                 <constraint firstItem="4hj-fb-FF3" firstAttribute="top" secondItem="Wl6-IQ-lVM" secondAttribute="topMargin" constant="25" id="r6f-mB-n9x"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="4hj-fb-FF3" secondAttribute="trailing" id="rvF-yI-tOC"/>
@@ -133,7 +135,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LKF-bm-JFg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-494" y="869"/>
+            <point key="canvasLocation" x="-494.20289855072468" y="868.52678571428567"/>
         </scene>
         <!--Account-->
         <scene sceneID="tne-QT-ifu">
@@ -270,19 +272,7 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5a1-FL-1KK">
                                                 <rect key="frame" x="0.0" y="0.0" width="187" height="30"/>
-                                                <color key="backgroundColor" red="0.9137254901960784" green="0.95294117647058818" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Backup Config"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="5"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                                        <integer key="value" value="2"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
-                                                        <color key="value" name="AccentColor"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1on-v1-fQc">
                                                 <rect key="frame" x="187" y="0.0" width="187" height="30"/>
@@ -595,9 +585,6 @@
         <image name="checkmark" catalog="system" width="128" height="114"/>
         <image name="person.crop.circle" catalog="system" width="128" height="121"/>
         <image name="trash.fill" catalog="system" width="121" height="128"/>
-        <namedColor name="AccentColor">
-            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
