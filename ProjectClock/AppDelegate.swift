@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     {
         // Init default settings
         localStorage.register(defaults: [
-            "alarms": JSON.stringify([Alarm(alarmTime: Date(), text: "Wake up lol", wakeMethod: wvms[0])])!
+            "alarms": JSON.stringify([Alarm(enabled: true, alarmTime: Date(), text: "Wake up lol", wakeMethod: wvms[0])])!
         ])
         
         // Start alarm activator

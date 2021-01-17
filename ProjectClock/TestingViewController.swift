@@ -31,7 +31,7 @@ class TestingViewController: UIViewController {
     
     //Sends a test notification
     @IBAction func sendNotification(_ sender: Any) {
-        let alarm = Alarm(alarmTime: Date(), text: "Good morning!", wakeMethod: WVM(name: "walking", desc: "Walk"))
+        let alarm = Alarm(enabled: true, alarmTime: Date(), text: "Good morning!", wakeMethod: WVM(name: "walking", desc: "Walk"))
         
         let content = UNMutableNotificationContent()
         
@@ -50,7 +50,6 @@ class TestingViewController: UIViewController {
         guard let imageURL = Bundle.main.url(forResource: imageName, withExtension: "png") else { return }
         let attachment = try! UNNotificationAttachment(identifier: imageName, url: imageURL, options: .none)
         content.attachments = [attachment]
-        
         
         // Readies notification to be sent
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
