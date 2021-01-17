@@ -13,7 +13,7 @@ import Foundation
 class AlarmActivator
 {
     /// Interval in seconds
-    static var interval = 1
+    static var interval = 1.0
     
     /// Timer for scheduled calls
     var timer: Timer?
@@ -24,7 +24,7 @@ class AlarmActivator
     func start()
     {
         if timer != nil { return }
-        timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(AlarmActivator.check), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: AlarmActivator.interval, target: self, selector: #selector(AlarmActivator.check), userInfo: nil, repeats: true)
     }
     
     /**
