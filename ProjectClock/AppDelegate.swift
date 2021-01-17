@@ -12,9 +12,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 {
     var alarmActivator: AlarmActivator!
     
+    /// Override point for customization after application launch.
     func application(_ app: UIApplication, didFinishLaunchingWithOptions op: [UIApplication.LaunchOptionsKey: Any]?) -> Bool
     {
-        // Override point for customization after application launch.
+        // Init default settings
+        localStorage.register(defaults: [
+            "alarms": JSON.stringify([Alarm(alarmTime: Date(), text: "Wake up lol", wakeMethod: wvms[0])])!
+        ])
+        
+        // Start alarm activator
         alarmActivator = AlarmActivator()
         alarmActivator.start()
         
