@@ -71,7 +71,7 @@ class Alarm: Codable
         var date = Date.create(y, m, d, hour, minute)
         
         // If it will activate tomorrow
-        if nh > hour || (nh == hour && nm > minute) { date = date.added(.day, 1) }
+        if nh > hour || (nh == hour && nm >= minute) { date = date.added(.day, 1) }
         
         // If it's one-time, don't have to check for repeating date
         if oneTime { return date }
