@@ -25,7 +25,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" title="Add Alarm"/>
                                     <connections>
-                                        <segue destination="Mki-dC-5Kc" kind="presentation" id="Qim-4Q-43N"/>
+                                        <segue destination="Mki-dC-5Kc" kind="presentation" identifier="alarm-edit" id="Qim-4Q-43N"/>
                                     </connections>
                                 </button>
                                 <prototypes>
@@ -422,6 +422,9 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="220" id="VCm-rY-H4H"/>
                                                 </constraints>
+                                                <connections>
+                                                    <action selector="datePickerChange:" destination="Mki-dC-5Kc" eventType="valueChanged" id="rTz-ne-1Rk"/>
+                                                </connections>
                                             </datePicker>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alarm Ringtone" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O5c-Ga-0xh">
                                                 <rect key="frame" x="0.0" y="228" width="374" height="20.5"/>
@@ -562,10 +565,25 @@
             </objects>
             <point key="canvasLocation" x="-494" y="1576"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--View Controller-->
+        <scene sceneID="21H-AI-pzd">
+            <objects>
+                <viewController id="hDW-11-g9U" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BZn-UX-vps">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="hS6-fS-yWp"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="78q-sr-CNz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1701" y="1102"/>
+        </scene>
+        <!--Alarm Activator-->
         <scene sceneID="c7a-VN-D68">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="s8U-C8-W2S" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="s8U-C8-W2S" customClass="AlarmActivator" customModule="ProjectClock" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="203-Gr-Mvz">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -576,6 +594,7 @@
                         <segue destination="Bqt-du-DT2" kind="relationship" relationship="viewControllers" id="ZTh-ke-ZIV"/>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" destinationCreationSelector="Account" id="NN6-JO-Hmi"/>
                         <segue destination="r8W-6e-Hn2" kind="relationship" relationship="viewControllers" destinationCreationSelector="Testing" id="SLn-vq-UnH"/>
+                        <segue destination="hDW-11-g9U" kind="showDetail" identifier="activate-alarm" id="z9o-Jh-fnM"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S6R-Xr-Nfe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
