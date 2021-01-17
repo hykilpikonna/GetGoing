@@ -54,6 +54,6 @@ class AlarmActivator: UITabBarController
         // Get the alarm to activate
         guard let alarm = Alarms.fromLocal().listActivating.first else { return }
         NSLog(JSON.stringify(alarm)!)
-        performSegue(withIdentifier: "activate-alarmactivate-alarm", sender: nil)
+        performSegue(withIdentifier: "activate-alarm", sender: nil)
     }
 }
