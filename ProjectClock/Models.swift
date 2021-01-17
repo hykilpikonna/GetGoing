@@ -100,13 +100,13 @@ class Alarms: Codable
     var list: [Alarm] = []
     
     /// Save alarms to local storage
-    func localSave() -> Alarms { localStorage.setValue(JSON.stringify(list)!, forKey: "alarms"); return self }
+    func localSave() { localStorage.setValue(JSON.stringify(list)!, forKey: "alarms") }
     
     /// Read alarms from local storage
-    func localRead() -> Alarms { list = JSON.parse([Alarm].self, localStorage.string(forKey: "alarms")!)!; return self }
+    func localRead() { list = JSON.parse([Alarm].self, localStorage.string(forKey: "alarms")!)! }
     
     /// Read an alarm object from local storage
-    static func fromLocal() -> Alarms { return Alarms().localRead() }
+    static func fromLocal() -> Alarms { return Alarms().apply { $0.localRead() } }
     
     /// Get enabled alarms
     var listEnabled: [Alarm] { return list.filter { $0.enabled } }

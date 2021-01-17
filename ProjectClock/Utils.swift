@@ -77,3 +77,17 @@ extension TimeInterval
         else { return "\(seconds)s" }
     }
 }
+
+/// Apply like Kotlin
+protocol HasApply {}
+extension HasApply
+{
+    @discardableResult
+    func apply(_ c: (Self) -> ()) -> Self
+    {
+        c(self)
+        return self
+    }
+}
+extension Alarm: HasApply {}
+extension Alarms: HasApply {}

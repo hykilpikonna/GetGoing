@@ -56,8 +56,11 @@ class AlarmActivator: UITabBarController
         guard let alarm = alarms.listActivating.first else { return }
         
         // Update alarm info
-        alarm.lastActivate = Date()
-        if alarm.oneTime { alarm.enabled = false }
+        alarm.apply {
+            $0.lastActivate = Date()
+            if $0.oneTime { $0.enabled = false }
+        }
+        
         alarms.localSave()
         
         // Segue
