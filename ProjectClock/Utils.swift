@@ -53,4 +53,10 @@ extension Date
         let comp = calendar.dateComponents([c], from: self)
         return comp.value(for: c)!
     }
+    
+    /// Return a new modified date
+    func added(_ c: Calendar.Component, _ v: Int) -> Date
+    {
+        return Calendar.current.date(byAdding: c, value: v, to: self)!
+    }
 }
