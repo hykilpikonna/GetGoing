@@ -15,6 +15,14 @@ struct User: Codable
     var pass: String
 }
 
+struct Family: Codable
+{
+    var fid: Int
+    var fname: String
+    var members: [String]
+    // And a hidden field: admin pin
+}
+
 struct WVM: Codable
 {
     let name: String
@@ -31,20 +39,13 @@ let wvms = [
 struct Alarm: Codable
 {
     var enabled: Bool
-    var alarmTime: Date
+    var hour: Int // Hour (24)
+    var minute: Int
     var text: String
     var wakeMethod: WVM
     
     /// When is the last time that the alarm went off
     var lastEnabled: Date? = nil
-}
-
-struct Family: Codable
-{
-    var fid: Int
-    var fname: String
-    var members: [String]
-    // And a hidden field: admin pin
 }
 
 class Alarms: Codable

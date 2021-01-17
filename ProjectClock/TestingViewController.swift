@@ -31,7 +31,7 @@ class TestingViewController: UIViewController {
     
     //Sends a test notification
     @IBAction func sendNotification(_ sender: Any) {
-        let alarm = Alarm(enabled: true, alarmTime: Date(), text: "Good morning!", wakeMethod: WVM(name: "walking", desc: "Walk"))
+        let alarm = Alarm(enabled: true, hour: 7, minute: 20, text: "Good morning!", wakeMethod: WVM(name: "walking", desc: "Walk"))
         
         let content = UNMutableNotificationContent()
         
