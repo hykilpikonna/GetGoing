@@ -38,28 +38,37 @@ let wvms = [
 
 class Alarm: Codable
 {
-    var enabled: Bool = true
+    var enabled: Bool
     var hour: Int // Hour (24)
     var minute: Int
     var text: String
     var wakeMethod: WVM
     
-    init(hour: Int, minute: Int, text: String, wakeMethod: WVM)
+    /// What days does it repeat (Sun, Mon, Tue, Wed, Thu, Fri, Sat)
+    var repeats: [Bool]
+    
+    /// Does it automatically disable after activating once
+    var oneTime: Bool
+    
+    /// When is the last time that the alarm went off
+    var lastActivate: Date
+    
+    /// Constructor
+    init(enabled: Bool = true,
+         hour: Int, minute: Int, text: String, wakeMethod: WVM,
+         repeats: [Bool] = [false, true, true, true, true, true, false],
+         oneTime: Bool = false, lastActivate: Date = Date()
+    )
     {
+        self.enabled = enabled
         self.hour = hour
         self.minute = minute
         self.text = text
         self.wakeMethod = wakeMethod
+        self.repeats = repeats
+        self.oneTime = oneTime
+        self.lastActivate = lastActivate
     }
-    
-    /// What days does it repeat (Sun, Mon, Tue, Wed, Thu, Fri, Sat)
-    var repeats: [Bool] = [false, true, true, true, true, true, false]
-    
-    /// Does it automatically disable after activating once
-    var oneTime = false
-    
-    /// When is the last time that the alarm went off
-    var lastActivate: Date = Date()
     
     /// When should the alarm activate next since lastActivate?
     var nextActivate: Date?
