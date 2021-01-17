@@ -13,14 +13,13 @@ class TestingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert]) {
-              (granted, error) in
-              if granted {
-                  print("Authorized Notifications")
-              } else {
-                  print("Error: No notification access")
-              }
-          }
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
+            if success {
+                print("All set!")
+            } else if let error = error {
+                print(error.localizedDescription)
+            }
+        }
 
         // Do any additional setup after loading the view.
     }
