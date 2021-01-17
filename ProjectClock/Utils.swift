@@ -45,4 +45,12 @@ extension Date
         let comp = calendar.dateComponents([.hour, .minute, .second], from: self)
         return (comp.hour!, comp.minute!, comp.second!)
     }
+    
+    /// Get another component
+    func get(_ c: Calendar.Component) -> Int
+    {
+        let calendar = Calendar.current
+        let comp = calendar.dateComponents([c], from: self)
+        return comp.value(for: c)!
+    }
 }
