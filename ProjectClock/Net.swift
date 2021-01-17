@@ -8,7 +8,26 @@ import Foundation
 
 /// Base URL of the HTTP server
 let baseUrl = "http://localhost:8080/api" // TODO: Production settings
-let JSON = JSONDecoder()
+
+/// Json class
+class JSON
+{
+    static let decoder = JSONDecoder()
+    static let encoder = JSONEncoder()
+    
+    static func stringify<T: Encodable>(_ o: T) -> String?
+    {
+        guard let jsonData = try? encoder.encode(o) else { return nil }
+        return String(data: jsonData, encoding: String.Encoding.utf8)
+    }
+    
+    static func parse<T: Decodable>(_ type: T.Type, _ j: String) -> T?
+    {
+        return try? decoder.decode(type, from: j.data(using: .utf8)!)
+    }
+}
+
+/// Local storage
 let localStorage = UserDefaults(suiteName: "group.org.hydev.alarm.clock")!
 
 /// API class
@@ -178,7 +197,7 @@ func send<T: Decodable>(_ api: API<T>, _ params: [String: String]? = [:], _ succ
         if (200...299).contains(response.statusCode)
         {
             // Parse JSON
-            guard let obj = try? JSON.decode(T.self, from: raw) else { err("JSON cannot be parsed"); return }
+            guard let obj = try? JSON.decoder.decode(T.self, from: raw) else { err("JSON cannot be parsed"); return }
             
             // Call callback
             success(obj)
