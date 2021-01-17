@@ -100,7 +100,13 @@ class Alarms: Codable
     var list: [Alarm] = []
     
     /// Save alarms to local storage
-    func localSave() { localStorage.setValue(JSON.stringify(list)!, forKey: "alarms") }
+    func localSave()
+    {
+        localStorage.setValue(JSON.stringify(list)!, forKey: "alarms")
+        
+        // Reload table view
+        if let table = AlarmViewController.staticTable { table.reloadData() }
+    }
     
     /// Read alarms from local storage
     func localRead() { list = JSON.parse([Alarm].self, localStorage.string(forKey: "alarms")!)! }

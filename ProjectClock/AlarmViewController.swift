@@ -3,12 +3,14 @@ import UIKit
 class AlarmViewController: UIViewController
 {
     @IBOutlet weak var table: UITableView!
+    static var staticTable: UITableView?
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
         // Assign table delegate and data source
+        AlarmViewController.staticTable = table
         table.delegate = self
         table.dataSource = self
     }
