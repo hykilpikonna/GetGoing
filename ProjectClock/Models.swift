@@ -48,7 +48,7 @@ struct Alarm: Codable
     var repeats: [Bool] = [false, true, true, true, true, true, false]
     
     /// Does it automatically disable after activating once
-    var autoDisable = true
+    var oneTime = true
     
     /// When is the last time that the alarm went off
     var lastActivate: Date? = nil
@@ -56,9 +56,6 @@ struct Alarm: Codable
     /// When should the alarm activate next
     var nextActivate: Date?
     {
-        // Make sure it's repeating
-        guard (repeats.contains { $0 }) else { return nil }
-        
         // Get current date
         let now = Date()
         let (y, m, d) = now.getYMD()
@@ -69,6 +66,12 @@ struct Alarm: Codable
         
         // If it will activate tomorrow
         if nh > hour || (nh == hour && nm > minute) { date = date.added(.day, 1) }
+        
+        // If it's one-time, don't have to check for repeating date
+        if oneTime { return date }
+        
+        // Make sure it's repeating
+        guard (repeats.contains { $0 }) else { return nil }
         
         // If the day is not one of the "repeat" days, keep adding 1 until it is
         while !repeats[date.get(.weekday)] { date = date.added(.day, 1) }
