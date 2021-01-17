@@ -30,6 +30,9 @@ class JSON
 /// Local storage
 let localStorage = UserDefaults(suiteName: "group.org.hydev.alarm.clock")!
 
+/// Get alarms from local storage
+func getLocalAlarms() -> [Alarm] { return JSON.parse([Alarm].self, localStorage.string(forKey: "alarms")!)! }
+
 /// API class
 struct API<T>
 {
