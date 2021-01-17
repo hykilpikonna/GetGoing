@@ -37,4 +37,12 @@ extension Date
         let comp = calendar.dateComponents([.year, .month, .day], from: self)
         return (comp.year!, comp.month!, comp.day!)
     }
+    
+    /// Get hour, minute, seconds
+    func getHMS() -> (h: Int, m: Int, s: Int)
+    {
+        let calendar = Calendar.current
+        let comp = calendar.dateComponents([.hour, .minute, .second], from: self)
+        return (comp.hour!, comp.minute!, comp.second!)
+    }
 }
