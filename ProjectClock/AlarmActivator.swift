@@ -10,8 +10,7 @@ import Foundation
 /**
  Class to activate alarms when the user is inside the app
  
- Note: This will not run when app is switched to the background,
-   but it will run right after the user switched back to the app.
+ Note: This will not run when app is switched to the background or when the display is turned off, but it will run right after the user switched back to the app.
  */
 class AlarmActivator
 {
@@ -44,6 +43,7 @@ class AlarmActivator
      */
     @objc func check()
     {
+        
         NSLog("Check")
     }
 }

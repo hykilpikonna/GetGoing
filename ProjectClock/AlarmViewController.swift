@@ -4,9 +4,6 @@ class AlarmViewController: UIViewController
 {
     @IBOutlet weak var table: UITableView!
     
-    // TODO: Remove example and use localStorage
-    var data: [Alarm] = [Alarm(alarmTime: Date(), text: "Wake up lol", wakeMethod: wvms[0])]
-    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -26,7 +23,7 @@ extension AlarmViewController: UITableViewDelegate, UITableViewDataSource
     func numberOfSections(in: UITableView) -> Int { return 1 }
 
     /// How many rows are there
-    func tableView(_ v: UITableView, numberOfRowsInSection s: Int) -> Int { return data.count }
+    func tableView(_ v: UITableView, numberOfRowsInSection s: Int) -> Int { return getLocalAlarms().count }
 
     /// Configure each cell
     func tableView(_ v: UITableView, cellForRowAt i: IndexPath) -> UITableViewCell
@@ -34,7 +31,7 @@ extension AlarmViewController: UITableViewDelegate, UITableViewDataSource
         // Get the cell and item at index i
         let rawCell = v.dequeueReusableCell(withIdentifier: "alarm", for: i)
         guard let cell = rawCell as? AlarmTableCell else { return rawCell }
-        let item = data[i.row]
+        let item = getLocalAlarms()[i.row]
     
         // Set the content of the cell to the content of the item.
         cell.setData(item)

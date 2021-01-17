@@ -64,7 +64,7 @@
                                                     <rect key="frame" x="345" y="26" width="51" height="31"/>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="(Going off in 23 hr 22 m)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EPJ-eL-Kek">
-                                                    <rect key="frame" x="179" y="68" width="215" height="21"/>
+                                                    <rect key="frame" x="179" y="74.5" width="215" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" systemColor="secondaryLabelColor"/>
                                                     <nil key="highlightedColor"/>
@@ -79,7 +79,6 @@
                                                 <constraint firstItem="mjO-SX-f31" firstAttribute="leading" secondItem="Wl6-IQ-lVM" secondAttribute="leadingMargin" constant="10" id="VOR-Go-oCw"/>
                                                 <constraint firstItem="EPJ-eL-Kek" firstAttribute="baseline" secondItem="YhV-X3-y1v" secondAttribute="firstBaseline" id="ilR-ei-lE6"/>
                                                 <constraint firstItem="dWq-jh-9Ue" firstAttribute="leading" secondItem="mjO-SX-f31" secondAttribute="trailing" constant="8" symbolic="YES" id="ocx-bN-3M8"/>
-                                                <constraint firstItem="EPJ-eL-Kek" firstAttribute="top" secondItem="4hj-fb-FF3" secondAttribute="bottom" constant="11" id="oon-Hl-9Jj"/>
                                                 <constraint firstItem="EPJ-eL-Kek" firstAttribute="leading" secondItem="YhV-X3-y1v" secondAttribute="trailing" constant="8" symbolic="YES" id="po7-2V-fZ6"/>
                                                 <constraint firstItem="4hj-fb-FF3" firstAttribute="top" secondItem="Wl6-IQ-lVM" secondAttribute="topMargin" constant="25" id="r6f-mB-n9x"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="4hj-fb-FF3" secondAttribute="trailing" id="rvF-yI-tOC"/>
