@@ -67,4 +67,11 @@ class TestingViewController: UIViewController
         alarms.list.append(Alarm(hour: h, minute: m, text: "Test alarm - \(h * m)", wakeMethod: wvms[0]))
         alarms.localSave()
     }
+    
+    @IBAction func deleteAlarm(_ sender: Any)
+    {
+        let alarms = Alarms.fromLocal()
+        alarms.list.removeAll()
+        alarms.localSave()
+    }
 }
