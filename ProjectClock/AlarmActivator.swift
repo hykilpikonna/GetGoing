@@ -52,8 +52,16 @@ class AlarmActivator: UITabBarController
         NSLog("Check")
         
         // Get the alarm to activate
-        guard let alarm = Alarms.fromLocal().listActivating.first else { return }
+        let alarms = Alarms.fromLocal()
+        guard let alarm = alarms.listActivating.first else { return }
+        
+        // Update alarm info
+        alarm.lastActivate = Date()
+        if alarm.oneTime { alarm.enabled = false }
+        alarms.localSave()
+        
+        // Segue
         NSLog(JSON.stringify(alarm)!)
-        performSegue(withIdentifier: "activate-alarm", sender: nil)
+        performSegue(withIdentifier: "activate-alarm", sender: alarm)
     }
 }
