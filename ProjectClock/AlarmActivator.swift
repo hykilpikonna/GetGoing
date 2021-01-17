@@ -43,7 +43,9 @@ class AlarmActivator
      */
     @objc func check()
     {
+        // Get the alarm to activate
+        guard let alarm = Alarms.fromLocal().listActivating.first else { return }
+        NSLog(JSON.stringify(alarm)!)
         
-        NSLog("Check")
     }
 }
