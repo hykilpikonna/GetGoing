@@ -339,30 +339,60 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GhB-GA-PWg">
-                                <rect key="frame" x="92.5" y="128" width="229" height="40"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <state key="normal" title="Send Accel. to Console"/>
-                                <connections>
-                                    <action selector="getAccel:" destination="r8W-6e-Hn2" eventType="touchUpInside" id="hDu-Hj-vnU"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8o4-jF-mCC">
-                                <rect key="frame" x="152" y="232" width="110" height="41"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" title="Send Notif"/>
-                                <connections>
-                                    <action selector="sendNotification:" destination="r8W-6e-Hn2" eventType="touchUpInside" id="ry0-VK-YRb"/>
-                                </connections>
-                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Debug" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w0P-Jb-Y3X">
+                                <rect key="frame" x="20" y="54.000000000000007" width="374" height="20.333333333333336"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is this?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tcW-ZW-HgZ">
+                                <rect key="frame" x="20" y="74.333333333333329" width="374" height="14.333333333333329"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="oTa-Ok-U9h">
+                                <rect key="frame" x="20" y="108.66666666666669" width="374" height="128"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GhB-GA-PWg">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Test Accelerometer"/>
+                                        <connections>
+                                            <action selector="getAccel:" destination="r8W-6e-Hn2" eventType="touchUpInside" id="hDu-Hj-vnU"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8o4-jF-mCC">
+                                        <rect key="frame" x="0.0" y="45.999999999999986" width="374" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Send Notification"/>
+                                        <connections>
+                                            <action selector="sendNotification:" destination="r8W-6e-Hn2" eventType="touchUpInside" id="ry0-VK-YRb"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oK7-CW-NUv">
+                                        <rect key="frame" x="0.0" y="91.999999999999986" width="374" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Add an alarm activating one minute later"/>
+                                        <connections>
+                                            <action selector="addAlarm:" destination="r8W-6e-Hn2" eventType="touchUpInside" id="Ctz-XA-1z2"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hX1-uy-i87"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="GhB-GA-PWg" firstAttribute="top" secondItem="hX1-uy-i87" secondAttribute="top" constant="84" id="Y9z-Si-SeI"/>
-                            <constraint firstItem="8o4-jF-mCC" firstAttribute="top" secondItem="GhB-GA-PWg" secondAttribute="bottom" constant="64" id="gz0-iN-cIY"/>
-                            <constraint firstItem="GhB-GA-PWg" firstAttribute="centerX" secondItem="xd9-wc-Vc7" secondAttribute="centerX" id="v3H-yu-QkZ"/>
-                            <constraint firstItem="8o4-jF-mCC" firstAttribute="centerX" secondItem="xd9-wc-Vc7" secondAttribute="centerX" id="v4t-MW-7lU"/>
+                            <constraint firstItem="w0P-Jb-Y3X" firstAttribute="top" secondItem="hX1-uy-i87" secondAttribute="top" constant="10" id="42B-VU-jVH"/>
+                            <constraint firstItem="hX1-uy-i87" firstAttribute="trailing" secondItem="oTa-Ok-U9h" secondAttribute="trailing" constant="20" id="BZf-0X-jDK"/>
+                            <constraint firstItem="oTa-Ok-U9h" firstAttribute="leading" secondItem="hX1-uy-i87" secondAttribute="leading" constant="20" id="DjJ-yy-Jc0"/>
+                            <constraint firstItem="tcW-ZW-HgZ" firstAttribute="leading" secondItem="hX1-uy-i87" secondAttribute="leading" constant="20" id="MMc-9X-wep"/>
+                            <constraint firstItem="hX1-uy-i87" firstAttribute="trailing" secondItem="tcW-ZW-HgZ" secondAttribute="trailing" constant="20" id="TuV-bF-NqF"/>
+                            <constraint firstItem="oTa-Ok-U9h" firstAttribute="top" secondItem="tcW-ZW-HgZ" secondAttribute="bottom" constant="20" id="Xiz-02-dUA"/>
+                            <constraint firstItem="tcW-ZW-HgZ" firstAttribute="top" secondItem="w0P-Jb-Y3X" secondAttribute="bottom" id="i43-E7-hoY"/>
+                            <constraint firstItem="w0P-Jb-Y3X" firstAttribute="leading" secondItem="hX1-uy-i87" secondAttribute="leading" constant="20" id="mKZ-sC-tZt"/>
+                            <constraint firstItem="hX1-uy-i87" firstAttribute="trailing" secondItem="w0P-Jb-Y3X" secondAttribute="trailing" constant="20" id="zYy-da-HnI"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Debug" image="hammer.fill" catalog="system" selectedImage="hammer.fill" id="QZ2-fJ-hLg"/>

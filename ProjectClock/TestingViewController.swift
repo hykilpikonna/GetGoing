@@ -8,11 +8,13 @@
 import UIKit
 import UserNotifications
 
-class TestingViewController: UIViewController {
-
-    override func viewDidLoad() {
+class TestingViewController: UIViewController
+{
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         
+        // Request notification permission
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
             if success {
                 print("All set!")
@@ -20,16 +22,16 @@ class TestingViewController: UIViewController {
                 print(error.localizedDescription)
             }
         }
-
-        // Do any additional setup after loading the view.
     }
     
-    @IBAction func getAccel(_ sender: Any) {
+    @IBAction func getAccel(_ sender: Any)
+    {
         getAccelerometer()
     }
     
     //Sends a test notification
-    @IBAction func sendNotification(_ sender: Any) {
+    @IBAction func sendNotification(_ sender: Any)
+    {
         let alarm = Alarm(enabled: true, hour: 7, minute: 20, text: "Good morning!", wakeMethod: WVM(name: "walking", desc: "Walk"))
         
         let content = UNMutableNotificationContent()
@@ -58,14 +60,11 @@ class TestingViewController: UIViewController {
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func addAlarm(_ sender: Any)
+    {
+        let (h, m, _) = Date().getHMS()
+        let alarms = Alarms.fromLocal()
+        alarms.list.append(Alarm(enabled: true, hour: h, minute: m, text: "Test alarm - \(h * m)", wakeMethod: wvms[0]))
+        alarms.localSave()
     }
-    */
-
 }
