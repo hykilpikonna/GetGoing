@@ -45,7 +45,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         }
       
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
+
         // instantiate the view controller we want to show from storyboard
         // root view controller is tab bar controller
         // the selected tab is a navigation controller
@@ -53,7 +53,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         if  let alarmVC = storyboard.instantiateViewController(withIdentifier: "LiveAlarmViewController") as? LiveAlarmViewController,
             let tabBarController = rootViewController as? UITabBarController,
             let navController = tabBarController.selectedViewController as? UINavigationController {
-                print(2)
+
                 // we can modify variable of the new view controller using notification data
                 // (eg: title of notification)
                 //alarmVC.senderDisplayName = response.notification.request.content.title
