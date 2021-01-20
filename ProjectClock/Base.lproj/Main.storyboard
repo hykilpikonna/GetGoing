@@ -672,7 +672,7 @@
                         <segue destination="Bqt-du-DT2" kind="relationship" relationship="viewControllers" id="ZTh-ke-ZIV"/>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" destinationCreationSelector="Account" id="NN6-JO-Hmi"/>
                         <segue destination="r8W-6e-Hn2" kind="relationship" relationship="viewControllers" destinationCreationSelector="Testing" id="SLn-vq-UnH"/>
-                        <segue destination="hDW-11-g9U" kind="showDetail" identifier="activate-alarm" id="z9o-Jh-fnM"/>
+                        <segue destination="hDW-11-g9U" kind="showDetail" identifier="activate-alarm" destinationCreationSelector="sendAlarm:" id="z9o-Jh-fnM"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S6R-Xr-Nfe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

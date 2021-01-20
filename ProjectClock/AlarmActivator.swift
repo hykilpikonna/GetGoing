@@ -20,6 +20,7 @@ class AlarmActivator: UITabBarController
     
     /// Timer for scheduled calls
     var timer: Timer?
+    var alarm: Alarm?
     
     override func viewDidLoad()
     {
@@ -49,7 +50,7 @@ class AlarmActivator: UITabBarController
      */
     @objc func check()
     {
-        NSLog("Check")
+        //NSLog("Check")
         
         // Get the alarm to activate
         let alarms = Alarms.fromLocal()
@@ -62,9 +63,14 @@ class AlarmActivator: UITabBarController
         }
         
         alarms.localSave()
-        
+        self.alarm = alarm
         // Segue
-        NSLog(JSON.stringify(alarm)!)
+        //NSLog(JSON.stringify(alarm)!)
         performSegue(withIdentifier: "activate-alarm", sender: alarm)
     }
+    
+    @IBSegueAction func sendAlarm(_ coder: NSCoder) -> AlarmActivationViewController? {
+        return AlarmActivationViewController(coder: coder, currentAlarm: alarm!)
+    }
+    
 }
