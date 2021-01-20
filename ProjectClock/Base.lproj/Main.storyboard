@@ -459,14 +459,14 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
                                                         <state key="normal" title="Pick From iOS Default Ringtones"/>
                                                         <connections>
-                                                            <action selector="defaultRingtonesButton:" destination="Mki-dC-5Kc" eventType="touchUpInside" id="JX9-Go-ghq"/>
+                                                            <action selector="defaultRingtonesButton:" destination="Mki-dC-5Kc" eventType="touchUpInside" id="0oM-fE-Gyh"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A3Z-Qp-XmN">
                                                         <rect key="frame" x="0.0" y="30" width="374" height="30"/>
                                                         <state key="normal" title="Pick From Sound Library"/>
                                                         <connections>
-                                                            <action selector="soundLibraryButton:" destination="Mki-dC-5Kc" eventType="touchUpInside" id="veu-vV-1UQ"/>
+                                                            <action selector="soundLibraryButton:" destination="Mki-dC-5Kc" eventType="touchUpInside" id="5G8-FV-bDx"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -503,9 +503,6 @@
                                                             </label>
                                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5oN-BL-Xtu">
                                                                 <rect key="frame" x="285" y="0.0" width="51" height="31"/>
-                                                                <connections>
-                                                                    <action selector="repeatWeekdaysSwitch:" destination="Mki-dC-5Kc" eventType="valueChanged" id="eTz-Au-uMG"/>
-                                                                </connections>
                                                             </switch>
                                                         </subviews>
                                                     </stackView>
@@ -520,9 +517,6 @@
                                                             </label>
                                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WPM-Fh-sRB">
                                                                 <rect key="frame" x="285" y="0.0" width="51" height="31"/>
-                                                                <connections>
-                                                                    <action selector="repeatWeekendsSwitch:" destination="Mki-dC-5Kc" eventType="valueChanged" id="WaZ-8P-yyC"/>
-                                                                </connections>
                                                             </switch>
                                                         </subviews>
                                                     </stackView>
@@ -587,6 +581,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="Ydw-dw-vLC"/>
                     <connections>
+                        <outlet property="repeatWeekdaysSwitch" destination="5oN-BL-Xtu" id="gqb-l3-1jZ"/>
+                        <outlet property="repeatWeekendsSwitch" destination="WPM-Fh-sRB" id="LB7-zW-jpC"/>
                         <outlet property="scrollView" destination="ybc-8d-6pJ" id="m1B-ff-zeC"/>
                         <outlet property="scrollViewInner" destination="N7f-vi-SFU" id="LQW-6T-f6x"/>
                         <outlet property="timePicker" destination="qSt-1V-2DQ" id="aDM-jE-0OP"/>

@@ -18,6 +18,10 @@ class AddAlarmViewController: UIViewController
         scrollView.contentSize = scrollViewInner.frame.size
     }
     
+    @IBOutlet weak var repeatWeekdaysSwitch: UISwitch!
+    @IBOutlet weak var repeatWeekendsSwitch: UISwitch!
+    
+
     // Pickers
     @IBOutlet weak var timePicker: UIDatePicker!
     @IBOutlet weak var wvmPicker: UIPickerView!
@@ -26,10 +30,7 @@ class AddAlarmViewController: UIViewController
     }
     @IBAction func soundLibraryButton(_ sender: Any) {
     }
-    @IBAction func repeatWeekdaysSwitch(_ sender: Any) {
-    }
-    @IBAction func repeatWeekendsSwitch(_ sender: Any) {
-    }
+    
     
     override func viewDidLoad()
     {
