@@ -22,11 +22,22 @@ class AddAlarmViewController: UIViewController
     @IBOutlet weak var timePicker: UIDatePicker!
     @IBOutlet weak var wvmPicker: UIPickerView!
     
+    @IBAction func defaultRingtonesButton(_ sender: Any) {
+    }
+    @IBAction func soundLibraryButton(_ sender: Any) {
+    }
+    @IBAction func repeatWeekdaysSwitch(_ sender: Any) {
+    }
+    @IBAction func repeatWeekendsSwitch(_ sender: Any) {
+    }
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
     }
 }
+
+
 
 class WVMDataSource: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource
 {
