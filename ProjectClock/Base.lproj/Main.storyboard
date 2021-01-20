@@ -458,10 +458,16 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cZ8-yN-fp6">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
                                                         <state key="normal" title="Pick From iOS Default Ringtones"/>
+                                                        <connections>
+                                                            <action selector="defaultRingtonesButton:" destination="Mki-dC-5Kc" eventType="touchUpInside" id="0oM-fE-Gyh"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A3Z-Qp-XmN">
                                                         <rect key="frame" x="0.0" y="30" width="374" height="30"/>
                                                         <state key="normal" title="Pick From Sound Library"/>
+                                                        <connections>
+                                                            <action selector="soundLibraryButton:" destination="Mki-dC-5Kc" eventType="touchUpInside" id="5G8-FV-bDx"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -575,6 +581,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="Ydw-dw-vLC"/>
                     <connections>
+                        <outlet property="repeatWeekdaysSwitch" destination="5oN-BL-Xtu" id="gqb-l3-1jZ"/>
+                        <outlet property="repeatWeekendsSwitch" destination="WPM-Fh-sRB" id="LB7-zW-jpC"/>
                         <outlet property="scrollView" destination="ybc-8d-6pJ" id="m1B-ff-zeC"/>
                         <outlet property="scrollViewInner" destination="N7f-vi-SFU" id="LQW-6T-f6x"/>
                         <outlet property="timePicker" destination="qSt-1V-2DQ" id="aDM-jE-0OP"/>

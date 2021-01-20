@@ -61,12 +61,27 @@ class AlarmTableCell: UITableViewCell
     @IBOutlet weak var goingOffText: UILabel!
     
     /// Update information on the cell to information in the alarm object
+    //WARNING:Terrible code lies ahead! You WILL be dissapointed! But it works, and that is all that matters.
+
     func setData(_ alarm: Alarm)
     {
         descriptionText.text = "- " + alarm.text
-        
-        if alarm.enabled, let n = alarm.nextActivate
-        {
+        ampm.text = alarm.hour<12 || alarm.hour==24 ? "AM":"PM"
+        time.text = alarm.minute<10 ? "\(alarm.hour)" + ":" + "0" + "\(alarm.minute)":"\(alarm.hour)" + ":" + "\(alarm.minute)"
+       
+        // displays the specific days alarm is activated
+        let daysDict = [0: "Mon", 1: "Tues", 2: "Wed", 3: "Thurs", 4: "Fri", 5: "Sat", 6: "Sun"]
+        var daysActive : [String] = []
+        if alarm.oneTime {repeatText.text = "No Repeat"}
+        else{
+            for (index, element) in alarm.repeats.enumerated(){
+                if element{
+                    daysActive.append(daysDict[index] ?? "")
+                }
+            }
+            repeatText.text = daysActive.joined(separator: ", ")
+        }
+        if alarm.enabled, let n = alarm.nextActivate{
             goingOffText.text = "(Going off in \(n.timeIntervalSince(Date()).str()))"
         }
     }
