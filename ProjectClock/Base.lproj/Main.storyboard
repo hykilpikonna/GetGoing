@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="s8U-C8-W2S">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="s8U-C8-W2S">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -639,13 +639,22 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oLm-Yh-rM4">
+                                <rect key="frame" x="114.5" y="778" width="185" height="30"/>
+                                <state key="normal" title="[DEBUG] Force Stop Alarm"/>
+                                <connections>
+                                    <action selector="debugForceStop:" destination="hDW-11-g9U" eventType="touchUpInside" id="nko-gr-9Fu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hS6-fS-yWp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="oLm-Yh-rM4" firstAttribute="bottom" secondItem="hS6-fS-yWp" secondAttribute="bottom" id="5EN-4c-jdo"/>
                             <constraint firstItem="vmg-Oj-8tB" firstAttribute="top" secondItem="hS6-fS-yWp" secondAttribute="top" constant="20" id="5lz-9m-i9F"/>
                             <constraint firstItem="vmg-Oj-8tB" firstAttribute="leading" secondItem="hS6-fS-yWp" secondAttribute="leading" constant="20" id="7fm-Y8-FaE"/>
                             <constraint firstItem="42Q-0v-ZS3" firstAttribute="top" secondItem="vmg-Oj-8tB" secondAttribute="bottom" constant="-5" id="GNM-uI-sQt"/>
+                            <constraint firstItem="oLm-Yh-rM4" firstAttribute="centerX" secondItem="BZn-UX-vps" secondAttribute="centerX" id="HxH-v7-dVA"/>
                             <constraint firstItem="hS6-fS-yWp" firstAttribute="trailing" secondItem="42Q-0v-ZS3" secondAttribute="trailing" constant="20" id="L1F-Bv-r5M"/>
                             <constraint firstItem="42Q-0v-ZS3" firstAttribute="leading" secondItem="hS6-fS-yWp" secondAttribute="leading" constant="20" id="Nbf-jB-Uq5"/>
                             <constraint firstItem="mjE-Hr-RIc" firstAttribute="centerY" secondItem="BZn-UX-vps" secondAttribute="centerY" id="SFw-9a-XAc"/>
