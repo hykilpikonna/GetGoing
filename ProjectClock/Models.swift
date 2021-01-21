@@ -89,7 +89,7 @@ class Alarm: Codable
         guard (repeats.contains { $0 }) else { return nil }
         
         // If the day is not one of the "repeat" days, keep adding 1 until it is
-        while !repeats[date.get(.weekday)] { date = date.added(.day, 1) }
+        while !repeats[date.get(.weekday) - 1] { date = date.added(.day, 1) }
     
         return date
     }
