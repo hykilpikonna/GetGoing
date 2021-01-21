@@ -56,4 +56,9 @@ class AlarmActivationViewController: UIViewController
             }
         }
     }
+    
+    @IBAction func debugForceStop(_ sender: Any)
+    {
+        timer?.invalidate()
+    }
 }
