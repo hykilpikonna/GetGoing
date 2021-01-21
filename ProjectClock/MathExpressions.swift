@@ -153,3 +153,48 @@ class QuadraticProb{
         return roots
     }
 }
+
+class RPS {
+    
+    //@IBOutlet weak var resultsLabel: UILabel!
+    
+    enum Choice: String {
+        case rock = "ROCK"
+        case paper = "PAPER"
+        case scissors = "SCISSORS"
+        
+        static func randomComputerChoice() -> Choice {
+            let choices: [Choice] = [.rock, .paper, .scissors]
+            return choices[Int.random(in: 0...2)]
+        }
+    }
+    /**
+    @IBAction func rock(_ sender: UIButton) {
+        let computerChoice = Choice.randomComputerChoice()
+        resultsLabel.text = playRPS(you: .rock, computer: computerChoice)
+    }
+    
+    @IBAction func paper(_ sender: UIButton) {
+        let computerChoice = Choice.randomComputerChoice()
+        resultsLabel.text = playRPS(you: .paper, computer: computerChoice)
+    }
+    
+    @IBAction func scissors(_ sender: UIButton) {
+        let computerChoice = Choice.randomComputerChoice()
+        resultsLabel.text = playRPS(you: .scissors, computer: computerChoice)
+    }
+    */
+    
+    func playRPS(you: Choice, computer: Choice) -> String {
+        if you == computer { return "It's a tie... GO AGAIN!" }
+        else if you == .rock && computer == .scissors { return "You smashed it!" }
+        else if you == .paper && computer == .rock { return "We still don't know how you won..." }
+        else if you == .scissors && computer == .paper { return "You are Dwayne 'The Scissors' Johnson!" }
+        else {
+            let randomNum = Int.random(in: 0...2)
+            if randomNum == 0 { return "Machines win again." }
+            else if randomNum == 1 { return "Go back to robotics!" }
+            else { return "Are you even taking this seriously???" }
+        }
+    }
+}
