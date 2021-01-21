@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="s8U-C8-W2S">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="s8U-C8-W2S">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -639,22 +639,43 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oLm-Yh-rM4">
-                                <rect key="frame" x="114.5" y="778" width="185" height="30"/>
-                                <state key="normal" title="[DEBUG] Force Stop Alarm"/>
-                                <connections>
-                                    <action selector="debugForceStop:" destination="hDW-11-g9U" eventType="touchUpInside" id="nko-gr-9Fu"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OMQ-qK-fej" userLabel="PuzzleAlarm">
+                                <rect key="frame" x="20" y="261" width="374" height="343"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Solve: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZ0-R6-FDq">
+                                        <rect key="frame" x="39" y="35" width="300" height="33"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eTb-g7-8x3">
+                                        <rect key="frame" x="39" y="154" width="309" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" textContentType="cc-number"/>
+                                        <connections>
+                                            <action selector="checkPuzzleSolution:" destination="hDW-11-g9U" eventType="editingChanged" id="nuZ-mN-UR3"/>
+                                        </connections>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Input 1 answer:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vHe-pz-8w2">
+                                        <rect key="frame" x="39" y="113" width="174" height="33"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hS6-fS-yWp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="oLm-Yh-rM4" firstAttribute="bottom" secondItem="hS6-fS-yWp" secondAttribute="bottom" id="5EN-4c-jdo"/>
                             <constraint firstItem="vmg-Oj-8tB" firstAttribute="top" secondItem="hS6-fS-yWp" secondAttribute="top" constant="20" id="5lz-9m-i9F"/>
                             <constraint firstItem="vmg-Oj-8tB" firstAttribute="leading" secondItem="hS6-fS-yWp" secondAttribute="leading" constant="20" id="7fm-Y8-FaE"/>
                             <constraint firstItem="42Q-0v-ZS3" firstAttribute="top" secondItem="vmg-Oj-8tB" secondAttribute="bottom" constant="-5" id="GNM-uI-sQt"/>
-                            <constraint firstItem="oLm-Yh-rM4" firstAttribute="centerX" secondItem="BZn-UX-vps" secondAttribute="centerX" id="HxH-v7-dVA"/>
                             <constraint firstItem="hS6-fS-yWp" firstAttribute="trailing" secondItem="42Q-0v-ZS3" secondAttribute="trailing" constant="20" id="L1F-Bv-r5M"/>
                             <constraint firstItem="42Q-0v-ZS3" firstAttribute="leading" secondItem="hS6-fS-yWp" secondAttribute="leading" constant="20" id="Nbf-jB-Uq5"/>
                             <constraint firstItem="mjE-Hr-RIc" firstAttribute="centerY" secondItem="BZn-UX-vps" secondAttribute="centerY" id="SFw-9a-XAc"/>
@@ -662,10 +683,15 @@
                             <constraint firstItem="hS6-fS-yWp" firstAttribute="trailing" secondItem="vmg-Oj-8tB" secondAttribute="trailing" constant="20" id="vVE-ID-dgj"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="puzzleAnswerInput" destination="eTb-g7-8x3" id="xIh-TJ-vhq"/>
+                        <outlet property="puzzleQuestionLabel" destination="CZ0-R6-FDq" id="gon-N6-XTD"/>
+                        <outlet property="puzzleView" destination="OMQ-qK-fej" id="KLT-oe-RJX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="78q-sr-CNz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1701" y="1102"/>
+            <point key="canvasLocation" x="1700.0000000000002" y="1101.5625"/>
         </scene>
         <!--Alarm Activator-->
         <scene sceneID="c7a-VN-D68">
@@ -700,6 +726,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
