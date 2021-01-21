@@ -118,15 +118,19 @@ let c = MathExpression.random()
     }
 }
 
+class QuadraticProb{
+    //generates the roots
+    let root1 = Int.random(in: 1...10)//ax^2
+    let root2 = Int.random(in: 1...10)//bx
 
 class QuadraticProb{
-    
+
     let a = Int.random(in: 1...10)//ax^2
     let b = Int.random(in: 1...10)//bx
     let c = Int.random(in: 1...10)//c
     var roots = [Int]()
 
-    
+
     func getProblem() -> String{
          return "\(a)x^2 + \(b)x + \(c)"
     }
@@ -134,7 +138,7 @@ class QuadraticProb{
     //finds the roots of the quadratic **NOTE**: the return type is [Int], not a String
     func  getAnswer() -> [Int]{
         let d = Int(pow(Double(b), 2) - 4 * Double(a) * Double(c)) // discriminant
-       
+
         // if d>0 , equation has two distinct real roots exist.
         if d > 0 {
             let x1 = Int((-Double(b) + sqrt(Double(d)))/(2*Double(a)))
