@@ -8,6 +8,7 @@
 import Foundation
 import CoreMotion
 import UserNotifications
+import UIKit
 
 let motionManager = CMMotionManager()
 
@@ -27,14 +28,15 @@ func jumpAction() {
     
 }
 
-func puzzleAction() {
+func puzzleAction(puzzleQuestionLabel: UILabel) -> [Int] {
     var problem = QuadraticProb()
     
     let answer = problem.getAnswer()
     let problemString = problem.getProblem()
     
-    print("Problem: \(problemString)")
+    puzzleQuestionLabel.text = "Solve: \(problemString)"
     print("Answer: \(answer)")
+    return answer
 }
 
 func smashAction() {

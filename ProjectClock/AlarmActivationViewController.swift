@@ -13,6 +13,12 @@ class AlarmActivationViewController: UIViewController
     var timer: Timer?
     var currentAlarm: Alarm?
     
+    //Outlets
+    @IBOutlet weak var puzzleView: UIView!
+    @IBOutlet weak var puzzleQuestionLabel: UILabel!
+    @IBOutlet weak var puzzleAnswerInput: UITextField!
+    var puzzleAnswers: [Int] = []
+    
     init?(coder: NSCoder, currentAlarm: Alarm)
     {
         self.currentAlarm = currentAlarm
@@ -27,6 +33,9 @@ class AlarmActivationViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        //Hide all inactive wakemethods
+        puzzleView.isHidden = true
+        
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(AlarmActivationViewController.playSound), userInfo: nil, repeats: true)
         setAlarmType()
         print(MathExpression.random())
@@ -48,12 +57,19 @@ class AlarmActivationViewController: UIViewController
             case "Jump":
                 jumpAction()
             case "Puzzle":
-                puzzleAction()
+                self.puzzleAnswers = puzzleAction(puzzleQuestionLabel: puzzleQuestionLabel)
+                puzzleView.isHidden = false
             case "Smash":
                 print("")
             default:
                 print("Invalid alarm type")
             }
+        }
+    }
+    
+    @IBAction func checkPuzzleSolution(_ sender: Any) {
+        if puzzleAnswers.contains(Int(puzzleAnswerInput.text!)!) {
+            print("alarm solved")
         }
     }
 }
