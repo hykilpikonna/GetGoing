@@ -28,7 +28,13 @@ func jumpAction() {
 }
 
 func puzzleAction() {
+    var problem = QuadraticProb()
     
+    let answer = problem.getAnswer()
+    let problemString = problem.getProblem()
+    
+    print("Problem: \(problemString)")
+    print("Answer: \(answer)")
 }
 
 func smashAction() {

@@ -119,7 +119,7 @@ let c = MathExpression.random()
 }
 
 
-class quadraticProb{
+class QuadraticProb{
     
     let a = Int.random(in: 1...10)//ax^2
     let b = Int.random(in: 1...10)//bx
