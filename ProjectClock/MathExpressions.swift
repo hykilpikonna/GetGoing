@@ -123,37 +123,17 @@ class QuadraticProb{
     let root1 = Int.random(in: 1...10)//ax^2
     let root2 = Int.random(in: 1...10)//bx
 
-class QuadraticProb{
-
-    let a = Int.random(in: 1...10)//ax^2
-    let b = Int.random(in: 1...10)//bx
-    let c = Int.random(in: 1...10)//c
-    var roots = [Int]()
-
 
     func getProblem() -> String{
-         return "\(a)x^2 + \(b)x + \(c)"
+        let b = root1 + root2
+        let c = root1 * root2
+        
+        return "x^2 + \(b) + \(c)"
     }
 
     //finds the roots of the quadratic **NOTE**: the return type is [Int], not a String
     func  getAnswer() -> [Int]{
-        let d = Int(pow(Double(b), 2) - 4 * Double(a) * Double(c)) // discriminant
-
-        // if d>0 , equation has two distinct real roots exist.
-        if d > 0 {
-            let x1 = Int((-Double(b) + sqrt(Double(d)))/(2*Double(a)))
-            let x2 = Int((-Double(b) - sqrt(Double(d)))/(2*Double(a)))
-            roots = [x1, x2]
-        }
-        //if d=0, equation has two repeated real roots.
-        else if d == 0 {
-            let x = Int(-Double(b)/(2*Double(a)))
-            roots = [x]
-        }
-        //    if d<0 equation has two complex roots, but idk how to calculate that by hand, so we'll return nothing
-        else if d < 0 {
-            roots = []
-        }
+        let roots = [root1, root2]
         return roots
     }
 }
