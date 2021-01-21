@@ -29,6 +29,7 @@ class AlarmActivationViewController: UIViewController
         super.viewDidLoad()
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(AlarmActivationViewController.playSound), userInfo: nil, repeats: true)
         setAlarmType()
+        print(MathExpression.random())
     }
     
     @objc func playSound()
