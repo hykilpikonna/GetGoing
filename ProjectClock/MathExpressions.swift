@@ -118,7 +118,7 @@ let c = MathExpression.random()
     }
 }
 
-class quadraticProb{
+class QuadraticProb{
     //generates the roots
     let root1 = Int.random(in: 1...10)//ax^2
     let root2 = Int.random(in: 1...10)//bx
