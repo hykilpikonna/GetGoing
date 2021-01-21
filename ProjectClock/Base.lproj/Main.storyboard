@@ -422,6 +422,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" image="trash.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="cancelAlarmButton:" destination="Mki-dC-5Kc" eventType="touchUpInside" id="4zo-hG-Mnk"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Going off in 23 hr 59 min" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xqs-n0-H9G">
                                 <rect key="frame" x="20" y="40.5" width="374" height="14.5"/>

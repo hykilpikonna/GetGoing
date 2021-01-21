@@ -38,6 +38,14 @@ class AddAlarmViewController: UIViewController
     }
     
     /**
+     Called when the user clicks the remove button and brings them back to the home page
+     */
+    @IBAction func cancelAlarmButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+        //might need to reset all UI elements
+    }
+    
+    /**
      Called when the user clicks Add Alarm
      */
     @IBAction func addAlarmButton(_ sender: Any) {
