@@ -67,6 +67,9 @@ class AlarmTableCell: UITableViewCell
     {
         descriptionText.text = "- " + alarm.text
         ampm.text = alarm.hour<12 || alarm.hour==24 ? "AM":"PM"
+        if alarm.hour > 12{
+            alarm.hour -= 12
+        }
         time.text = alarm.minute<10 ? "\(alarm.hour)" + ":" + "0" + "\(alarm.minute)":"\(alarm.hour)" + ":" + "\(alarm.minute)"
        
         // displays the specific days alarm is activated

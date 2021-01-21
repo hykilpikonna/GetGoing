@@ -29,7 +29,7 @@ func jumpAction() {
 }
 
 func puzzleAction(puzzleQuestionLabel: UILabel) -> [Int] {
-    var problem = QuadraticProb()
+    let problem = QuadraticProb()
     
     let answer = problem.getAnswer()
     let problemString = problem.getProblem()

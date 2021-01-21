@@ -2,10 +2,13 @@
 //  MathExpressions.swift
 //  ProjectClock
 //
-// Class that will generate a simple math expression
+// Puzzles to complete for task (math or RPS)
+//
+//CREDITS: user:2538939 ("Code Different) on Stack Exchange for MathElement enum and MathExpression class on Mar 31 '17
 
 import Foundation
 
+//CREDITS: user:2538939 on Stack Exchange
 enum MathElement : CustomStringConvertible {
     case Integer(value: Int)
     case Percentage(value: Int)
@@ -43,6 +46,7 @@ enum MathOperator : String {
     }
 }
 
+//CREDITS: user:2538939 on Stack Exchange
 class MathExpression : CustomStringConvertible {
     var lhs: MathElement
     var rhs: MathElement
@@ -120,13 +124,14 @@ let c = MathExpression.random()
 
 class QuadraticProb{
     //generates the roots
-    let root1 = Int.random(in: 1...10)//ax^2
-    let root2 = Int.random(in: 1...10)//bx
+    let root1 = Int.random(in: 1...10)
+    let root2 = Int.random(in: 1...10)
 
 
     func getProblem() -> String{
-        let b = root1 + root2
-        let c = root1 * root2
+        //a is 1
+        let b = root1 + root2 //bx
+        let c = root1 * root2 //x
         
         return "x^2 + \(b) + \(c)"
     }
