@@ -51,7 +51,7 @@ class AddAlarmViewController: UIViewController
                           lastActivate: Date())
         
         // TODO: Set alarm.repeats to correspond with what the user selects
-
+        
         
         // Add the alarm to the list and save the list
         Alarms.fromLocal().apply { $0.list.append(alarm) }.localSave();
