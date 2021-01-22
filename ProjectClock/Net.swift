@@ -200,7 +200,7 @@ func send<T: Decodable>(_ api: API<T>, _ params: [String: String]? = [:], _ succ
     }
     
     // Create task
-    let task = URLSession.shared.dataTask(with: createRequest(api.loc)) { (raw, response, error) in
+    let task = URLSession.shared.dataTask(with: createRequest(api.loc, params)) { (raw, response, error) in
         
         // Check if raw data exists
         guard let response = response as? HTTPURLResponse, let raw = raw else { err("Data doesn't exist"); return }
