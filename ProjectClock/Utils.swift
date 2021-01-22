@@ -168,3 +168,6 @@ extension String
         return regex.firstMatch(in: lhs, options: [], range: range) != nil
     }
 }
+
+/// More convenient ui update closure
+func ui(closure: () -> Void) { DispatchQueue.main.async { closure() } }
