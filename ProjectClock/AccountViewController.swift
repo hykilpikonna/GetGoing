@@ -28,19 +28,20 @@ class LoginVC: UIViewController
         // Verify username and password
         guard let name = username.text, name ~= "[A-Za-z0-9_-]{3,16}" else
         {
-            alert("Username Invalid", "Username must be 3 to 16 characters long, and must only contain a-z, 0-9, underscore, and minus signs (-).")
+            msg("Username Invalid", "Username must be 3 to 16 characters long, and must only contain a-z, 0-9, underscore, and minus signs (-).")
             return
         }
-        guard let pass = password.text, pass.count > 8 else
+        guard let pass = password.text, pass.count >= 8 else
         {
-            alert("Password Invalid", "Password must be more than 8 characters long")
+            msg("Password Invalid", "Password must be more than or equal to 8 characters long")
             return
         }
         
         // Send register request
-        alert("Registering...", "Please Wait", okayable: true)
-        send(APIs.register, ["username": name, "password": pass]) { it in
+        let a = alert("Registering...", "Please Wait")
+        send(APIs.register, ["username": name, "password": pass.sha256]) { it in
             print(it)
+            a.dismiss()
         }
     }
     

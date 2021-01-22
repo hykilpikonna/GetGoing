@@ -134,8 +134,12 @@ extension UIViewController
         return alert
     }
     
+    /// A message is an okayable alert
+    @discardableResult
+    func msg(_ title: String, _ message: String) -> UIAlertController { alert(title, message, okayable: true) }
+    
     /// More convenient dismiss function
-    func dismiss() { dismiss(animated: false, completion: nil) }
+    func dismiss(_ completion: (() -> Void)? = nil) { dismiss(animated: false, completion: completion) }
 }
 
 
