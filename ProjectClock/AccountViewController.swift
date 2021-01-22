@@ -31,7 +31,7 @@ class LoginVC: UIViewController
             alert("Username Invalid", "Username must be 3 to 16 characters long, and must only contain a-z, 0-9, underscore, and minus signs (-).")
             return
         }
-        guard password.text?.count? > 8 else
+        guard let text = password.text, text.count > 8 else
         {
             alert("Password Invalid", "Password must be more than 8 characters long")
         }
