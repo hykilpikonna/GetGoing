@@ -139,7 +139,7 @@ extension UIViewController
     func msg(_ title: String, _ message: String) -> UIAlertController { alert(title, message, okayable: true) }
     
     /// More convenient dismiss function
-    func dismiss(_ completion: (() -> Void)? = nil) { ui { dismiss(animated: false, completion: completion) } }
+    func dismiss(_ completion: (() -> Void)? = nil) { ui { self.dismiss(animated: false, completion: completion) } }
 }
 
 

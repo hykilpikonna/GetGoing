@@ -104,8 +104,9 @@ class LoginVC: UIViewController
         }
         err:
         {
-            print($0)
-            a.dismiss { self.msg("An error occurred", "Maybe the server is on fire, just wait a few hours.") }
+            let messages = ["409 - [\"A0111\"]":"Account already exists, please login instead."]
+            let message = messages[$0] ?? "Maybe the server is on fire, just wait a few hours."
+            a.dismiss { self.msg("An error occurred", message) }
         }
     }
     
