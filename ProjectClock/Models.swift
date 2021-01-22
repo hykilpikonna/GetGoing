@@ -32,7 +32,7 @@ struct WVM: Codable
 let wvms = [
     WVM(name: "Walk", desc: "Walk a few steps"),
     WVM(name: "Jump", desc: "Make a few jumps"),
-    WVM(name: "Puzzle", desc: "Complete a simple puzzle"),
+    WVM(name: "Factor", desc: "Factor a binomial"),
     WVM(name: "Smash", desc: "It'll never truns off"),
 ]
 

@@ -56,7 +56,7 @@ class AlarmActivationViewController: UIViewController
                 walkAction()
             case "Jump":
                 jumpAction()
-            case "Puzzle":
+            case "Factor":
                 self.puzzleAnswers = puzzleAction(puzzleQuestionLabel: puzzleQuestionLabel)
                 puzzleView.isHidden = false
             case "Smash":
