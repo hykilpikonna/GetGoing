@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CryptoKit
 
 extension Date
 {
@@ -91,3 +92,15 @@ extension HasApply
 }
 extension Alarm: HasApply {}
 extension Alarms: HasApply {}
+
+/// Hashing
+extension Digest
+{
+    var bytes: [UInt8] { Array(makeIterator()) }
+    var b64: String { Data(bytes).base64EncodedString() }
+}
+
+extension String
+{
+    var sha256: String { SHA256.hash(data: self.data(using: .utf8)!).b64 }
+}
