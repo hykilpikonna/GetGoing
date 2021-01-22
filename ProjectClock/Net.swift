@@ -43,9 +43,8 @@ class APIs
      Register the user in the database.
      
      ## Parameters
-     - name: The user's name (this is not username because it doesn't have to be unique)
-     - email: The user's email (this does have to be unique)
-     - pass: Password (initial hash)
+     - username: The user's unique username
+     - password: Password hash
      
      ## Returns
      Success or error
@@ -53,11 +52,23 @@ class APIs
     static let register = API<String>(loc: "/user/register")
     
     /**
+     Verify password and login.
+     
+     ## Parameters
+     - username: The user's unique username
+     - password: Password hash
+     
+     ## Returns
+     Success or error
+     */
+    static let login = API<String>(loc: "/user/login")
+    
+    /**
      Delete a user from the database.
      
      ## Parameters
-     - email: The user's email
-     - pass: Password (initial hash)
+     - username: The user's unique username
+     - password: Password hash
      
      ## Returns
      Success or error
@@ -67,7 +78,7 @@ class APIs
     /**
      Upload curent config to the cloud.
      
-     ## Parameters
+     ## Parameters (Besides from username and password)
      - config: The config json
      
      ## Returns
@@ -78,7 +89,7 @@ class APIs
     /**
      Download the config from the cloud.
      
-     ## Parameters
+     ## Parameters (Besides from username and password)
      None
      
      ## Returns
@@ -89,7 +100,7 @@ class APIs
     /**
      Create a family
      
-     ## Parameters
+     ## Parameters (Besides from username and password)
      - fname: Family name
      - pin: Admin pin
      
@@ -101,7 +112,7 @@ class APIs
     /**
      Delete a family
      
-     ## Parameters
+     ## Parameters (Besides from username and password)
      - fid: Family ID
      - pin: Admin pin
      
@@ -113,7 +124,7 @@ class APIs
     /**
      Change a family's admin pin
      
-     ## Parameters
+     ## Parameters (Besides from username and password)
      - fid: Family ID
      - orig_pin: Original admin pin
      - new_pin: New admin pin
@@ -126,7 +137,7 @@ class APIs
     /**
      Join family
      
-     ## Parameters
+     ## Parameters (Besides from username and password)
      - fid: Family ID
      - pin: Admin pin
      
@@ -138,7 +149,7 @@ class APIs
     /**
      Leave family
      
-     ## Parameters
+     ## Parameters (Besides from username and password)
      - fid: Family ID
      - pin: Admin pin
      
