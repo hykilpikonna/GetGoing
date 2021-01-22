@@ -30,10 +30,11 @@ struct WVM: Codable
 }
 
 let wvms = [
-    WVM(name: "Walk", desc: "Walk a few steps"),
-    WVM(name: "Jump", desc: "Make a few jumps"),
     WVM(name: "Factor", desc: "Factor a binomial"),
+    WVM(name: "RPS", desc: "Win a game of rock paper scissors"),
     WVM(name: "Smash", desc: "It'll never truns off"),
+    WVM(name: "Walk", desc: "Walk a few steps"),
+    WVM(name: "Jump", desc: "Make a few jumps")
 ]
 
 class Alarm: Codable

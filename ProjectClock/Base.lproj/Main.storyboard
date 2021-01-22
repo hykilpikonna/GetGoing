@@ -656,7 +656,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" textContentType="cc-number"/>
                                         <connections>
-                                            <action selector="checkPuzzleSolution:" destination="hDW-11-g9U" eventType="editingChanged" id="nuZ-mN-UR3"/>
+                                            <action selector="checkBinomialSolution:" destination="hDW-11-g9U" eventType="editingChanged" id="nuZ-mN-UR3"/>
                                         </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Input 1 answer:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vHe-pz-8w2">

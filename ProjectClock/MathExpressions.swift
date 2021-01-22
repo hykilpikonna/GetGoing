@@ -181,16 +181,17 @@ class RPS {
     }
      */
     
-    func playRPS(you: Choice, computer: Choice) -> String {
-        if you == computer { return "It's a tie... GO AGAIN!" }
-        else if you == .rock && computer == .scissors { return "You smashed it!" }
-        else if you == .paper && computer == .rock { return "We still don't know how you won..." }
-        else if you == .scissors && computer == .paper { return "You are Dwayne 'The Scissors' Johnson!" }
+    func playRPS(you: Choice, computer: Choice) -> Bool? {
+        if you == computer { return nil }
+        else if you == .rock && computer == .scissors { return true }
+        else if you == .paper && computer == .rock { return false}
+        else if you == .scissors && computer == .paper { return true }
         else {
             let randomNum = Int.random(in: 0...2)
-            if randomNum == 0 { return "Machines win again." }
-            else if randomNum == 1 { return "Go back to robotics!" }
-            else { return "Are you even taking this seriously???" }
+            if randomNum == 0 { return false }
+            // DO THESE RETURN THE RIGHT THING?
+            else if randomNum == 1 { return false}
+            else { return false }
         }
     }
 }

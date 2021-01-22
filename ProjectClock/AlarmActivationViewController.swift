@@ -57,7 +57,7 @@ class AlarmActivationViewController: UIViewController
             case "Jump":
                 jumpAction()
             case "Factor":
-                self.puzzleAnswers = puzzleAction(puzzleQuestionLabel: puzzleQuestionLabel)
+                self.puzzleAnswers = factorAction(puzzleQuestionLabel: puzzleQuestionLabel)
                 puzzleView.isHidden = false
             case "Smash":
                 print("")
@@ -66,8 +66,9 @@ class AlarmActivationViewController: UIViewController
             }
         }
     }
-    
-    @IBAction func checkPuzzleSolution(_ sender: Any) {
+   
+    //Verfies and ends factoring WVM
+    @IBAction func checkBinomialSolution(_ sender: Any) {
         if let input = puzzleAnswerInput.text {
             if let numericalInput = Int(input) {
                 if puzzleAnswers.contains(numericalInput) {
@@ -77,6 +78,7 @@ class AlarmActivationViewController: UIViewController
         }
     }
     
+    //Standard way to turn off and close the alarm
     func endAlarm() {
         timer?.invalidate()
         print("Alarm solved")

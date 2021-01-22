@@ -15,10 +15,15 @@ func walkAction() {
 }
 
 func jumpAction() {
+    let rps = RPS()
+}
+
+func rpsAction() {
     
 }
 
-func puzzleAction(puzzleQuestionLabel: UILabel) -> [Int] {
+// Handles the core logic behind the factoring alarm
+func factorAction(puzzleQuestionLabel: UILabel) -> [Int] {
     let problem = QuadraticProb()
     
     let answer = problem.getAnswer()
