@@ -24,7 +24,7 @@ class AccountViewController: UIViewController
         AccountViewController.this = self
     
         // Check if already registered/logged in
-        if localStorage["id"] != nil { login() }
+        if localStorage.string(forKey: "id") != nil { login() }
         
         super.viewDidLoad()
     }
