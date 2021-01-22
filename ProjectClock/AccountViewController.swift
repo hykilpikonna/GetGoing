@@ -83,36 +83,28 @@ class LoginVC: UIViewController
             return
         }
         
+        // Error messages
+        let errors = ["409 - [\"A0111\"]": "Account already exists, please login instead.",
+                      "401 -": "Incorrect username/password",
+                      "404 -": "Username does not exist in the database",
+        ]
+        
         // Send register request
-        let a = alert(login ? "Logging in..." : "Registering...", "Please Wait")
-        send(login ? APIs.login : APIs.register, ["username": name, "password": pass.sha256])
+        sendReq(login ? APIs.login : APIs.register,
+                title: login ? "Logging in..." : "Registering...", errors: errors,
+                params: ["username": name, "password": pass.sha256])
         {
             // Store username and password
             localStorage["name"] = name
             localStorage["pass"] = pass.sha256
             localStorage["id"] = $0
             
-            a.dismiss
-            {
-                // Send feedback
-                if login { self.msg("Login success!", "Now you can use account features, yay!") }
-                else { self.msg("Registration success!", "Now you have an account, yay!") }
-                
-                // Hide registration and show account detail view
-                AccountViewController.this.login()
-            }
-        }
-        err:
-        {
-            // Display error message
-            print($0)
-            let messages = ["409 - [\"A0111\"]": "Account already exists, please login instead.",
-                            "401 -": "Incorrect username/password",
-                            "404 -": "Username does not exist in the database",
-            ]
-            let message = messages[$0.trimmingCharacters(in: .whitespaces)]
-                ?? "Maybe the server is on fire, just wait a few hours."
-            a.dismiss { self.msg("An error occurred", message) }
+            // Send feedback
+            if login { self.msg("Login success!", "Now you can use account features, yay!") }
+            else { self.msg("Registration success!", "Now you have an account, yay!") }
+            
+            // Hide registration and show account detail view
+            AccountViewController.this.login()
         }
     }
     
