@@ -12,12 +12,27 @@ class AccountViewController: UIViewController
     @IBOutlet var vLogin: UIView!
     @IBOutlet var vManage: UIView!
     
+    // For instance references
+    static var this: AccountViewController!
+    
     override func viewDidLoad()
     {
+        AccountViewController.this = self
         super.viewDidLoad()
+    }
+    
+    /**
+     Login from the account page
+     */
+    func login()
+    {
+        
     }
 }
 
+/**
+ View controller for registration and login
+ */
 class LoginVC: UIViewController
 {
     @IBOutlet weak var username: UITextField!
@@ -57,6 +72,8 @@ class LoginVC: UIViewController
                 if login { self.msg("Login success!", "Now you can use account features, yay!") }
                 else { self.msg("Registration success!", "Now you have an account, yay!") }
                 
+                // Hide registration and show account detail view
+                ui { AccountViewController.this.login() }
             }
         }
         err:
