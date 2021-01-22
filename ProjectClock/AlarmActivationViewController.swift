@@ -71,10 +71,15 @@ class AlarmActivationViewController: UIViewController
         if let input = puzzleAnswerInput.text {
             if let numericalInput = Int(input) {
                 if puzzleAnswers.contains(numericalInput) {
-                    timer?.invalidate()
-                    print("Alarm solved")
+                    endAlarm()
                 }
             }
         }
+    }
+    
+    func endAlarm() {
+        timer?.invalidate()
+        print("Alarm solved")
+        dismiss(animated: true, completion: nil)
     }
 }
