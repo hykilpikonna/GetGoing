@@ -37,6 +37,19 @@ class AccountViewController: UIViewController
         vLogin.isHidden = true
         vManage.isHidden = false
     }
+    
+    /**
+     Logout
+     */
+    func logout()
+    {
+        // Remove login info
+        ["id", "user", "pass"].forEach { localStorage.removeObject(forKey: $0) }
+        
+        // Switch UI
+        vLogin.isHidden = false
+        vManage.isHidden = true
+    }
 }
 
 /**
