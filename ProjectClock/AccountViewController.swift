@@ -26,7 +26,8 @@ class AccountViewController: UIViewController
      */
     func login()
     {
-        
+        vLogin.isHidden = true
+        vManage.isHidden = false
     }
 }
 
