@@ -23,7 +23,12 @@ class LoginVC: UIViewController
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
     
-    @IBAction func register(_ sender: Any)
+    /**
+     Send user login/registration request
+     
+     - Parameter login: True: Login, False: Register
+     */
+    func userRequest(login: Bool)
     {
         // Verify username and password
         guard let name = username.text, name ~= "[A-Za-z0-9_-]{3,16}" else
@@ -38,19 +43,43 @@ class LoginVC: UIViewController
         }
         
         // Send register request
-        let a = alert("Registering...", "Please Wait")
-        send(APIs.register, ["username": name, "password": pass.sha256]) { it in
-            print(it)
-            a.dismiss()
+        let a = alert(login ? "Logging in..." : "Registering...", "Please Wait")
+        send(login ? APIs.login : APIs.register, ["username": name, "password": pass.sha256])
+        {
+            // Store username and password
+            localStorage["name"] = name
+            localStorage["pass"] = pass.sha256
+            localStorage["id"] = $0
+            
+            a.dismiss
+            {
+                // Send feedback
+                if login { self.msg("Login success!", "Now you can use account features, yay!") }
+                else { self.msg("Registration success!", "Now you have an account, yay!") }
+                
+            }
         }
-        err: { e in
+        err:
+        {
+            print($0)
             a.dismiss { self.msg("An error occurred", "Maybe the server is on fire, just wait a few hours.") }
         }
     }
     
+    /**
+     Called when the user clicks register
+     */
+    @IBAction func register(_ sender: Any)
+    {
+        userRequest(login: false)
+    }
+    
+    /**
+     Called when the user clicks login
+     */
     @IBAction func login(_ sender: Any)
     {
-        
+        userRequest(login: true)
     }
 }
 
