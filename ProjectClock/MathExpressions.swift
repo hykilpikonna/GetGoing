@@ -2,13 +2,14 @@
 //  MathExpressions.swift
 //  ProjectClock
 //
-// Puzzles to complete for task (math or RPS)
+//  Puzzles to complete for task (math or RPS)
 //
-//CREDITS: user:2538939 ("Code Different) on Stack Exchange for MathElement enum and MathExpression class on Mar 31 '17
 
 import Foundation
 
-// CREDITS: user:2538939 on Stack Exchange
+/**
+ Math element for problem generation (Credit: https://stackoverflow.com/a/43132311/7346633)
+ */
 enum MathElement : CustomStringConvertible {
     case Integer(value: Int)
     case Percentage(value: Int)
@@ -31,6 +32,9 @@ enum MathElement : CustomStringConvertible {
     }
 }
 
+/**
+ Math operator for problem generation (Credit: https://stackoverflow.com/a/43132311/7346633)
+ */
 enum MathOperator : String {
     case plus = "+"
     case minus = "-"
@@ -46,7 +50,9 @@ enum MathOperator : String {
     }
 }
 
-// CREDITS: user:2538939 on Stack Exchange
+/**
+ Math expressions for problem generation (Credit: https://stackoverflow.com/a/43132311/7346633)
+ */
 class MathExpression : CustomStringConvertible {
     var lhs: MathElement
     var rhs: MathElement
