@@ -43,6 +43,9 @@ class LoginVC: UIViewController
             print(it)
             a.dismiss()
         }
+        err: { e in
+            a.dismiss { self.msg("An error occurred", "Maybe the server is on fire, just wait a few hours.") }
+        }
     }
     
     @IBAction func login(_ sender: Any)
