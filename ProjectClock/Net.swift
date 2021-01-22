@@ -181,8 +181,8 @@ func send<T: Decodable>(_ api: API<T>, _ params: [String: String]? = [:], _ succ
     var params = params
     if params != nil
     {
-        if params!["email"] == nil { params!["email"] = localStorage.string(forKey: "email") }
-        if params!["pass"] == nil { params!["pass"] = localStorage.string(forKey: "pass") }
+        if params!["username"] == nil { params!["username"] = localStorage.string(forKey: "name") }
+        if params!["password"] == nil { params!["password"] = localStorage.string(forKey: "pass") }
     }
     
     let url = createUrl(api.loc, params)

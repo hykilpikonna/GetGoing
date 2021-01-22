@@ -110,12 +110,25 @@ extension String
 }
 
 
-/// Alerts
+/// UI Extensions
 extension UIViewController
 {
-    func alert(_ title: String, _ message: String)
+    /**
+     Send an alert
+     
+     - Parameter title: Title of the alert
+     - Parameter message: Body message of the alert
+     - Parameter okayable: Whether the alert can be okayed
+     */
+    func alert(_ title: String, _ message: String, okayable: Bool = false)
     {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        if okayable
+        {
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+        }
+        
         self.present(alert, animated: true, completion: nil)
     }
 }
