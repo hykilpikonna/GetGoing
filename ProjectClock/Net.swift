@@ -162,20 +162,23 @@ class APIs
 }
 
 /**
- Build a URL with the node path and params
+ Build a URLRequest with the node path and params
  
  - Parameter api: API Node (Eg. APIs.register)
  - Parameter params: Parameters to send to the server (Check the documentation of the API node to see which parameters you need)
- - Returns: URL
+ - Returns: URLRequest
  */
-func createUrl(_ node: String, _ params: [String: String]? = [:]) -> URL
+func createRequest(_ node: String, _ params: [String: String]? = [:]) -> URLRequest
 {
-    var url = URLComponents(string: baseUrl + node)
-    if let params = params
-    {
-        url?.queryItems = params.map { URLQueryItem(name: $0, value: $1) }
-    }
-    return url!.url!
+    // Create URL and request
+    let url = URLComponents(string: baseUrl + node)
+    var request = URLRequest(url: url!.url!)
+    request.httpMethod = "POST"
+    
+    // Put parameters inside headers
+    params?.forEach { request.setValue($1, forHTTPHeaderField: $0) }
+    
+    return request
 }
 
 /**
@@ -196,15 +199,8 @@ func send<T: Decodable>(_ api: API<T>, _ params: [String: String]? = [:], _ succ
         if params!["password"] == nil { params!["password"] = localStorage.string(forKey: "pass") }
     }
     
-    // Create request
-    let url = createUrl(api.loc)
-    print(url.absoluteURL)
-    var request = URLRequest(url: url)
-    request.httpMethod = "POST"
-    params?.forEach { request.setValue($1, forHTTPHeaderField: $0) }
-    
     // Create task
-    let task = URLSession.shared.dataTask(with: request) { (raw, response, error) in
+    let task = URLSession.shared.dataTask(with: createRequest(api.loc)) { (raw, response, error) in
         
         // Check if raw data exists
         guard let response = response as? HTTPURLResponse, let raw = raw else { err("Data doesn't exist"); return }
