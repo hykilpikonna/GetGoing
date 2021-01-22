@@ -170,4 +170,24 @@ extension String
 }
 
 /// More convenient ui update closure
-func ui(closure: () -> Void) { DispatchQueue.main.async { closure() } }
+func ui(closure: @escaping () -> Void) { DispatchQueue.main.async { closure() } }
+
+/// More convenient UserDefaults access (Credit: https://gist.github.com/Otbivnoe/04b8bd7984fba0cb58ca7f136fd95582)
+extension UserDefaults
+{
+    subscript<T>(key: String) -> T?
+    {
+        get { return value(forKey: key) as? T }
+        set { set(newValue, forKey: key) }
+    }
+    
+    subscript<T: RawRepresentable>(key: String) -> T?
+    {
+        get
+        {
+            if let rawValue = value(forKey: key) as? T.RawValue { return T(rawValue: rawValue) }
+            return nil
+        }
+        set { self[key] = newValue?.rawValue }
+    }
+}
