@@ -196,10 +196,15 @@ func send<T: Decodable>(_ api: API<T>, _ params: [String: String]? = [:], _ succ
         if params!["password"] == nil { params!["password"] = localStorage.string(forKey: "pass") }
     }
     
-    let url = createUrl(api.loc, params)
+    // Create request
+    let url = createUrl(api.loc)
+    print(url.absoluteURL)
+    var request = URLRequest(url: url)
+    request.httpMethod = "POST"
+    params?.forEach { request.setValue($1, forHTTPHeaderField: $0) }
     
     // Create task
-    let task = URLSession.shared.dataTask(with: url) { (raw, response, error) in
+    let task = URLSession.shared.dataTask(with: request) { (raw, response, error) in
         
         // Check if raw data exists
         guard let response = response as? HTTPURLResponse, let raw = raw else { err("Data doesn't exist"); return }
