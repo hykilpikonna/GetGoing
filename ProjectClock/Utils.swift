@@ -7,7 +7,9 @@
 
 import Foundation
 import CryptoKit
+import UIKit
 
+/// Date manipulations
 extension Date
 {
     /// Add toString to Date
@@ -79,6 +81,7 @@ extension TimeInterval
     }
 }
 
+
 /// Apply like Kotlin
 protocol HasApply {}
 extension HasApply
@@ -93,6 +96,7 @@ extension HasApply
 extension Alarm: HasApply {}
 extension Alarms: HasApply {}
 
+
 /// Hashing
 extension Digest
 {
@@ -103,4 +107,15 @@ extension Digest
 extension String
 {
     var sha256: String { SHA256.hash(data: self.data(using: .utf8)!).b64 }
+}
+
+
+/// Alerts
+extension UIViewController
+{
+    func alert(_ title: String, _ message: String)
+    {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        self.present(alert, animated: true, completion: nil)
+    }
 }
