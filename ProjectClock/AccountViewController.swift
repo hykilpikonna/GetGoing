@@ -15,9 +15,17 @@ class AccountViewController: UIViewController
     // For instance references
     static var this: AccountViewController!
     
+    /**
+     Called when the user switch to this tab
+     */
     override func viewDidLoad()
     {
+        // Static instance reference
         AccountViewController.this = self
+    
+        // Check if already registered/logged in
+        if localStorage["id"] != nil { login() }
+        
         super.viewDidLoad()
     }
     
