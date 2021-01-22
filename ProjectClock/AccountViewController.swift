@@ -104,9 +104,11 @@ class LoginVC: UIViewController
         }
         err:
         {
+            // Display error message
             print($0)
             let messages = ["409 - [\"A0111\"]": "Account already exists, please login instead.",
                             "401 -": "Incorrect username/password",
+                            "404 -": "Username does not exist in the database",
             ]
             let message = messages[$0.trimmingCharacters(in: .whitespaces)]
                 ?? "Maybe the server is on fire, just wait a few hours."
