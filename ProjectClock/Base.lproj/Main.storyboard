@@ -742,6 +742,9 @@
                                         <state key="normal" title="Delete Account">
                                             <color key="titleColor" systemColor="systemRedColor"/>
                                         </state>
+                                        <connections>
+                                            <action selector="deleteAccount:" destination="3gV-kF-UbK" eventType="touchUpInside" id="iQ9-m9-VIm"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>

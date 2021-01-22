@@ -162,4 +162,12 @@ class ManageVC: UIViewController
     {
         AccountViewController.this.logout()
     }
+    
+    /**
+     Called when the user clicks the delete account button
+     */
+    @IBAction func deleteAccount(_ sender: Any)
+    {
+        
+    }
 }
