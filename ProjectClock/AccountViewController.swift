@@ -168,6 +168,11 @@ class ManageVC: UIViewController
      */
     @IBAction func deleteAccount(_ sender: Any)
     {
-        
+        sendReq(APIs.delete, title: "Deleting...")
+        {
+            print("Deleted! \($0)")
+            self.msg("Deleted!", "You are erased from our database, you no longer exist.")
+            self.logout(sender)
+        }
     }
 }
