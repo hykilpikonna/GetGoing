@@ -7,6 +7,9 @@
 
 import UIKit
 
+/**
+ Account view controller controlling the two separate view controllers
+ */
 class AccountViewController: UIViewController
 {
     @IBOutlet var vLogin: UIView!
@@ -126,6 +129,9 @@ class LoginVC: UIViewController
     }
 }
 
+/**
+ Account manage view controller
+ */
 class ManageVC: UIViewController
 {
     static var this: ManageVC!
