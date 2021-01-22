@@ -139,7 +139,7 @@ class QuadraticProb {
         let b = root1 + root2 //bx
         let c = root1 * root2 //x
         
-        return "x^2 + \(b) + \(c)"
+        return "x^2 + \(b)x + \(c)"
     }
     
     /**

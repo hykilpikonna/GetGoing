@@ -38,7 +38,7 @@ class AlarmActivationViewController: UIViewController
         
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(AlarmActivationViewController.playSound), userInfo: nil, repeats: true)
         setAlarmType()
-        print(MathExpression.random())
+        //print(MathExpression.random())
     }
     
     @objc func playSound()
@@ -68,8 +68,13 @@ class AlarmActivationViewController: UIViewController
     }
     
     @IBAction func checkPuzzleSolution(_ sender: Any) {
-        if puzzleAnswers.contains(Int(puzzleAnswerInput.text!)!) {
-            print("alarm solved")
+        if let input = puzzleAnswerInput.text {
+            if let numericalInput = Int(input) {
+                if puzzleAnswers.contains(numericalInput) {
+                    timer?.invalidate()
+                    print("Alarm solved")
+                }
+            }
         }
     }
 }
