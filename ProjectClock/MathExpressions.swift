@@ -8,12 +8,12 @@
 
 import Foundation
 
-//CREDITS: user:2538939 on Stack Exchange
+// CREDITS: user:2538939 on Stack Exchange
 enum MathElement : CustomStringConvertible {
     case Integer(value: Int)
     case Percentage(value: Int)
     case Expression(expression: MathExpression)
-
+    
     var description: String {
         switch self {
         case .Integer(let value): return "\(value)"
@@ -21,7 +21,7 @@ enum MathElement : CustomStringConvertible {
         case .Expression(let expr): return expr.description
         }
     }
-
+    
     var nsExpressionFormatString : String {
         switch self {
         case .Integer(let value): return "\(value).0"
@@ -37,31 +37,31 @@ enum MathOperator : String {
     case multiply = "*"
     case divide = "/"
     case power = "**"
-
+    
     static func random() -> MathOperator {
         let allMathOperators: [MathOperator] = [.plus, .minus, .multiply, .divide, .power]
         let index = Int(arc4random_uniform(UInt32(allMathOperators.count)))
-
+        
         return allMathOperators[index]
     }
 }
 
-//CREDITS: user:2538939 on Stack Exchange
+// CREDITS: user:2538939 on Stack Exchange
 class MathExpression : CustomStringConvertible {
     var lhs: MathElement
     var rhs: MathElement
-    var `operator`: MathOperator
-
-    init(lhs: MathElement, rhs: MathElement, operator: MathOperator) {
+    var op: MathOperator
+    
+    init(lhs: MathElement, rhs: MathElement, op: MathOperator) {
         self.lhs = lhs
         self.rhs = rhs
-        self.operator = `operator`
+        self.op = op
     }
-
+    
     var description: String {
         var leftString = ""
         var rightString = ""
-
+        
         if case .Expression(_) = lhs {
             leftString = "(\(lhs))"
         } else {
@@ -72,79 +72,85 @@ class MathExpression : CustomStringConvertible {
         } else {
             rightString = rhs.description
         }
-
-        return "\(leftString) \(self.operator.rawValue) \(rightString)"
+        
+        return "\(leftString) \(self.op.rawValue) \(rightString)"
     }
-
+    
     var result : Int? {
-        let format = "\(lhs.nsExpressionFormatString) \(`operator`.rawValue) \(rhs.nsExpressionFormatString)"
+        let format = "\(lhs.nsExpressionFormatString) \(op.rawValue) \(rhs.nsExpressionFormatString)"
         let expr = NSExpression(format: format)
         return expr.expressionValue(with: nil, context: nil) as? Int
     }
-
+    
     static func random() -> MathExpression {
         let lhs = MathElement.Integer(value: Int(arc4random_uniform(10)))
         let rhs = MathElement.Integer(value: Int(arc4random_uniform(10)))
-
-        return MathExpression(lhs: lhs, rhs: rhs, operator: .random())
+        
+        return MathExpression(lhs: lhs, rhs: rhs, op: .random())
     }
 }
 
-//WARNING: This code is ugly, and probably out of place...but it works!
-// Simple Problem - 2 expressions
-class AlgProb2  : MathExpression{
-let a = MathExpression.random()
-let b = MathExpression.random()
-
-
+/**
+ Generate simple problem - 2 expressions
+ */
+class AlgProb2  : MathExpression {
+    let a = MathExpression.random()
+    let b = MathExpression.random()
+    
     func getProblem() -> String {
-        let problem = ("\(a) + \(b)")
-        return problem
+        return "\(a) + \(b)"
     }
+    
     func getAnswer() -> String {
-        let answer = "\(a.result! + b.result!)"
-        return answer
+        return "\(a.result! + b.result!)"
     }
 }
-// Simple Problem - 3 expressions
-class AlgProb3  : MathExpression{
-let a = MathExpression.random()
-let b = MathExpression.random()
-let c = MathExpression.random()
 
+/**
+ Generate simple problem - 3 expressions
+ */
+class AlgProb3  : MathExpression {
+    let a = MathExpression.random()
+    let b = MathExpression.random()
+    let c = MathExpression.random()
+    
     func getProblem() -> String {
-        let problem = ("\(a) + \(b) + \(c)")
-        return problem
+        return "\(a) + \(b) + \(c)"
     }
+    
     func getAnswer() -> String {
-        let answer = "\(a.result! + b.result! + c.result!)"
-        return answer
+        return "\(a.result! + b.result! + c.result!)"
     }
 }
 
-class QuadraticProb{
-    //generates the roots
+/**
+ Generate quadratic factorization problem
+ */
+class QuadraticProb {
+    // Generates the roots
     let root1 = Int.random(in: 1...10)
     let root2 = Int.random(in: 1...10)
-
-
-    func getProblem() -> String{
+    
+    /**
+     Generate problem description
+     */
+    func getProblem() -> String {
         //a is 1
         let b = root1 + root2 //bx
         let c = root1 * root2 //x
         
         return "x^2 + \(b) + \(c)"
     }
-
-    //finds the roots of the quadratic **NOTE**: the return type is [Int], not a String
-    func  getAnswer() -> [Int]{
-        let roots = [root1, root2]
-        return roots
+    
+    /**
+     Finds the roots of the quadratic **NOTE**: the return type is [Int], not a String
+     */
+    func  getAnswer() -> [Int] {
+        return [root1, root2]
     }
 }
 
 class RPS {
-    
     //@IBOutlet weak var resultsLabel: UILabel!
     
     enum Choice: String {
@@ -157,22 +163,23 @@ class RPS {
             return choices[Int.random(in: 0...2)]
         }
     }
-    /**
+    
+    /*
     @IBAction func rock(_ sender: UIButton) {
         let computerChoice = Choice.randomComputerChoice()
         resultsLabel.text = playRPS(you: .rock, computer: computerChoice)
     }
-    
+
     @IBAction func paper(_ sender: UIButton) {
         let computerChoice = Choice.randomComputerChoice()
         resultsLabel.text = playRPS(you: .paper, computer: computerChoice)
     }
-    
+
     @IBAction func scissors(_ sender: UIButton) {
         let computerChoice = Choice.randomComputerChoice()
         resultsLabel.text = playRPS(you: .scissors, computer: computerChoice)
     }
-    */
+     */
     
     func playRPS(you: Choice, computer: Choice) -> String {
         if you == computer { return "It's a tie... GO AGAIN!" }
