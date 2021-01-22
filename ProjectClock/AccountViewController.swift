@@ -127,6 +127,8 @@ class ManageVC: UIViewController
 {
     static var this: ManageVC!
     
+    @IBOutlet weak var lUsername: UILabel!
+    @IBOutlet weak var lJoinDate: UILabel!
     
     /**
      Called when the user switched to the account tab (whether the view container is hidden or not)
@@ -143,7 +145,9 @@ class ManageVC: UIViewController
      */
     func display()
     {
-        
+        lUsername.text = localStorage.string(forKey: "name")
+        // TODO: Correct join date
+        lJoinDate.text = localStorage.string(forKey: "id")
     }
     
     /**
@@ -151,6 +155,6 @@ class ManageVC: UIViewController
      */
     @IBAction func logout(_ sender: Any)
     {
-        
+        AccountViewController.this.logout()
     }
 }
