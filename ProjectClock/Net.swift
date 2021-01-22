@@ -7,7 +7,7 @@
 import Foundation
 
 /// Base URL of the HTTP server
-let baseUrl = "http://localhost:8080/api" // TODO: Production settings
+let baseUrl = "http://localhost:8080" // TODO: Production settings
 
 /// Json class
 class JSON
@@ -212,6 +212,9 @@ func send<T: Decodable>(_ api: API<T>, _ params: [String: String]? = [:], _ succ
         // If success
         if (200...299).contains(response.statusCode)
         {
+            // If the desired type is string, it doesn't have to parse json.
+            if T.self == String.self, let msg = String(data: raw, encoding: .utf8) { success(msg as! T); return }
+            
             // Parse JSON
             guard let obj = try? JSON.decoder.decode(T.self, from: raw) else { err("JSON cannot be parsed"); return }
             
