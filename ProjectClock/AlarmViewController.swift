@@ -66,25 +66,27 @@ class AlarmTableCell: UITableViewCell
     func setData(_ alarm: Alarm)
     {
         descriptionText.text = "- " + alarm.text
-        ampm.text = alarm.hour<12 || alarm.hour==24 ? "AM":"PM"
-        if alarm.hour > 12{
-            alarm.hour -= 12
-        }
-        time.text = alarm.minute<10 ? "\(alarm.hour)" + ":" + "0" + "\(alarm.minute)":"\(alarm.hour)" + ":" + "\(alarm.minute)"
+        
+        // Display Hour, Minute, and AM or PM
+        ampm.text = alarm.hour < 12 || alarm.hour == 24 ? "AM" : "PM"
+        let hour = alarm.hour <= 12 ? alarm.hour : alarm.hour - 12
+        time.text = alarm.minute < 10 ? "\(hour):0\(alarm.minute)" : "\(hour):\(alarm.minute)"
        
         // displays the specific days alarm is activated
         let daysDict = [0: "Mon", 1: "Tues", 2: "Wed", 3: "Thurs", 4: "Fri", 5: "Sat", 6: "Sun"]
         var daysActive : [String] = []
         if alarm.oneTime {repeatText.text = "No Repeat"}
-        else{
-            for (index, element) in alarm.repeats.enumerated(){
-                if element{
+        else {
+            for (index, element) in alarm.repeats.enumerated() {
+                if element {
                     daysActive.append(daysDict[index] ?? "")
                 }
             }
             repeatText.text = daysActive.joined(separator: ", ")
         }
-        if alarm.enabled, let n = alarm.nextActivate{
+        
+        // Show next activation date
+        if alarm.enabled, let n = alarm.nextActivate {
             goingOffText.text = "(Going off in \(n.timeIntervalSince(Date()).str()))"
         }
     }
