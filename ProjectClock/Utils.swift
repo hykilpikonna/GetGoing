@@ -140,6 +140,24 @@ extension UIViewController
     
     /// More convenient dismiss function
     func dismiss(_ completion: (() -> Void)? = nil) { ui { self.dismiss(animated: false, completion: completion) } }
+    
+    /**
+     Send a http request even more conveniently
+     */
+    func sendReq<T: Decodable>(_ api: API<T>, title: String, errors: [String: String] = [:], params: [String: String]? = [:], _ success: @escaping (T) -> Void, err: @escaping (String) -> Void = {it in})
+    {
+        // Send request
+        let a = alert(title, "Please Wait")
+        send(api, params) { it in a.dismiss { success(it) } }
+        err:
+        {
+            // Display error message
+            print("===== Error: \($0) =====")
+            let message = errors[$0.trimmingCharacters(in: .whitespaces)]
+                ?? "Maybe the server is on fire, just wait a few hours."
+            a.dismiss { self.msg("An error occurred", message) }
+        }
+    }
 }
 
 
