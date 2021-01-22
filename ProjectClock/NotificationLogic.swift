@@ -10,16 +10,6 @@ import CoreMotion
 import UserNotifications
 import UIKit
 
-let motionManager = CMMotionManager()
-
-func getAccelerometer() {
-    motionManager.startAccelerometerUpdates()
-    //print(motionManager.accelerometerData)
-    if let accelerometerData = motionManager.accelerometerData {
-        print("Acclerometer: \(accelerometerData)")
-    }
-}
-
 func walkAction() {
     
 }

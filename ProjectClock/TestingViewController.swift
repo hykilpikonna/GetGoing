@@ -24,11 +24,6 @@ class TestingViewController: UIViewController
         }
     }
     
-    @IBAction func getAccel(_ sender: Any)
-    {
-        getAccelerometer()
-    }
-    
     //Sends a test notification
     @IBAction func sendNotification(_ sender: Any)
     {
