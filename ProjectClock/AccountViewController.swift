@@ -36,6 +36,7 @@ class AccountViewController: UIViewController
     {
         vLogin.isHidden = true
         vManage.isHidden = false
+        ManageVC.this.display()
     }
     
     /**
@@ -124,5 +125,32 @@ class LoginVC: UIViewController
 
 class ManageVC: UIViewController
 {
+    static var this: ManageVC!
     
+    
+    /**
+     Called when the user switched to the account tab (whether the view container is hidden or not)
+     */
+    override func viewDidLoad()
+    {
+        // Static reference
+        ManageVC.this = self
+        super.viewDidLoad()
+    }
+    
+    /**
+     Display account info
+     */
+    func display()
+    {
+        
+    }
+    
+    /**
+     Called when the user clicks the logout button
+     */
+    @IBAction func logout(_ sender: Any)
+    {
+        
+    }
 }
