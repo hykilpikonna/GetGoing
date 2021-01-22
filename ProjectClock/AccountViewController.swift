@@ -89,20 +89,23 @@ class LoginVC: UIViewController
             localStorage["pass"] = pass.sha256
             localStorage["id"] = $0
             
-            a.dismiss
+            ui
             {
-                // Send feedback
-                if login { self.msg("Login success!", "Now you can use account features, yay!") }
-                else { self.msg("Registration success!", "Now you have an account, yay!") }
-                
-                // Hide registration and show account detail view
-                ui { AccountViewController.this.login() }
+                a.dismiss
+                {
+                    // Send feedback
+                    if login { self.msg("Login success!", "Now you can use account features, yay!") }
+                    else { self.msg("Registration success!", "Now you have an account, yay!") }
+                    
+                    // Hide registration and show account detail view
+                    AccountViewController.this.login()
+                }
             }
         }
         err:
         {
             print($0)
-            a.dismiss { self.msg("An error occurred", "Maybe the server is on fire, just wait a few hours.") }
+            ui { a.dismiss { self.msg("An error occurred", "Maybe the server is on fire, just wait a few hours.") } }
         }
     }
     
