@@ -24,6 +24,7 @@ class StopwatchViewController: UIViewController {
     var minutes = 0
     var seconds = 0
     
+    var lappedTimes: [String] = ["1", "2", "3"]
     var timer = Timer()
     
     override func viewDidLoad() {
@@ -37,12 +38,12 @@ class StopwatchViewController: UIViewController {
 extension StopwatchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 100
+        return lappedTimes.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "lapCell", for: indexPath)
-        cell.textLabel?.text = "I am a lap cell \(indexPath.row + 1)"
+        cell.textLabel?.text = lappedTimes[indexPath.row]
         return cell
     }
 }
