@@ -326,6 +326,9 @@
                                                 <state key="normal" title="Start">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="start:" destination="PYt-Lf-JNp" eventType="touchUpInside" id="ucf-fN-SgP"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O4A-eq-kEz">
                                                 <rect key="frame" x="0.0" y="40" width="374" height="30"/>
@@ -333,6 +336,9 @@
                                                 <state key="normal" title="Stop">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="stop:" destination="PYt-Lf-JNp" eventType="touchUpInside" id="ncg-GB-bAj"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q7i-3U-NbI">
                                                 <rect key="frame" x="0.0" y="80" width="374" height="30"/>
@@ -340,6 +346,9 @@
                                                 <state key="normal" title="Reset">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="reset:" destination="PYt-Lf-JNp" eventType="touchUpInside" id="3ff-of-rJl"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="794-VN-m96">
                                                 <rect key="frame" x="0.0" y="120" width="374" height="30"/>
@@ -347,6 +356,9 @@
                                                 <state key="normal" title="Lap">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="lap:" destination="PYt-Lf-JNp" eventType="touchUpInside" id="UT9-pP-BWA"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>

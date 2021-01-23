@@ -24,7 +24,7 @@ class StopwatchViewController: UIViewController {
     var minutes = 0
     var seconds = 0
     
-    var lappedTimes: [String] = ["1", "2", "3"]
+    var lappedTimes: [String] = []
     var timer = Timer()
     
     override func viewDidLoad() {
@@ -32,7 +32,23 @@ class StopwatchViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-
+    
+    @IBAction func start(_ sender: UIButton) {
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(count), userInfo: nil, repeats: true)
+    }
+    
+    
+    @IBAction func stop(_ sender: UIButton) {
+    }
+    @IBAction func reset(_ sender: UIButton) {
+    }
+    @IBAction func lap(_ sender: UIButton) {
+    }
+    
+    @objc fileprivate func count() {
+        seconds += 1
+        print(seconds)
+    }
 }
 
 extension StopwatchViewController: UITableViewDelegate, UITableViewDataSource {
