@@ -175,7 +175,7 @@ class RPS {
         else if you == .paper && computer == .rock { return true}
         else if you == .scissors && computer == .paper { return true }
         else {
-            return playRPS(you: you, computer: RPS.randomComputerChoice())
+            return false
         }
     }
     

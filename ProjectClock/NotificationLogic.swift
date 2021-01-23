@@ -15,10 +15,12 @@ func walkAction() {
 }
 
 func jumpAction() {
-    let rps = RPS()
+    
 }
 
-func rpsAction() {
+func rpsAction(choice: RPS.Choice) -> Bool? {
+    let rps = RPS()
+    return rps.playRPS(you: choice, computer: RPS.randomComputerChoice())
     
 }
 
