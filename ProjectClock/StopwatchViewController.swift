@@ -9,6 +9,15 @@ import UIKit
 
 class StopwatchViewController: UIViewController {
 
+    @IBOutlet weak var hourLabel: UILabel!
+    @IBOutlet weak var minuteLabel: UILabel!
+    @IBOutlet weak var secondLabel: UILabel!
+    
+    @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var stopButton: UIButton!
+    @IBOutlet weak var resetButton: UIButton!
+    @IBOutlet weak var lapButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
