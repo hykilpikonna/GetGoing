@@ -87,6 +87,7 @@ class LoginVC: UIViewController
         let errors = ["409 - [\"A0111\"]": "Account already exists, please login instead.",
                       "401 -": "Incorrect username/password",
                       "404 -": "Username does not exist in the database",
+                      "406 - [\"A0101\"]": "Username invalid."
         ]
         
         // Send register request
