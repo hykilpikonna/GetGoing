@@ -198,7 +198,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="240.57971014492756" y="868.52678571428567"/>
+            <point key="canvasLocation" x="897" y="869"/>
         </scene>
         <!--Debug-->
         <scene sceneID="x23-kV-b5u">
@@ -268,7 +268,23 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mZu-oh-Lmb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="952" y="869"/>
+            <point key="canvasLocation" x="1652" y="869"/>
+        </scene>
+        <!--Stopwatch-->
+        <scene sceneID="HUO-7o-NzS">
+            <objects>
+                <viewController id="PYt-Lf-JNp" customClass="StopwatchViewController" customModule="ProjectClock" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wac-VZ-OTJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="0Lp-Fy-R0s"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Stopwatch" image="clock.arrow.circlepath" catalog="system" selectedImage="clock.arrow.circlepath" id="hNc-UI-vIQ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZlX-5W-Pjn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="194" y="869"/>
         </scene>
         <!--Add Alarm View Controller-->
         <scene sceneID="sJi-AZ-FUw">
@@ -615,7 +631,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="78q-sr-CNz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1700.0000000000002" y="1101.5625"/>
+            <point key="canvasLocation" x="2391" y="1102"/>
         </scene>
         <!--Alarm Activator-->
         <scene sceneID="c7a-VN-D68">
@@ -632,6 +648,7 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" destinationCreationSelector="Account" id="NN6-JO-Hmi"/>
                         <segue destination="r8W-6e-Hn2" kind="relationship" relationship="viewControllers" destinationCreationSelector="Testing" id="SLn-vq-UnH"/>
                         <segue destination="hDW-11-g9U" kind="showDetail" identifier="activate-alarm" destinationCreationSelector="sendAlarm:" id="z9o-Jh-fnM"/>
+                        <segue destination="PYt-Lf-JNp" kind="relationship" relationship="viewControllers" id="uMq-nh-i7c"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S6R-Xr-Nfe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -724,7 +741,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M0T-zq-vZ0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="267" y="1325"/>
+            <point key="canvasLocation" x="949" y="1342"/>
         </scene>
         <!--ManageVC-->
         <scene sceneID="jRZ-qD-YDj">
@@ -809,12 +826,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pLc-eQ-yBW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="267" y="1687"/>
+            <point key="canvasLocation" x="948" y="1676"/>
         </scene>
     </scenes>
     <resources>
         <image name="alarm.fill" catalog="system" width="124" height="128"/>
         <image name="checkmark" catalog="system" width="128" height="114"/>
+        <image name="clock.arrow.circlepath" catalog="system" width="128" height="110"/>
         <image name="hammer.fill" catalog="system" width="128" height="117"/>
         <image name="person.crop.circle" catalog="system" width="128" height="121"/>
         <image name="person.crop.circle.badge.checkmark" catalog="system" width="128" height="113"/>
