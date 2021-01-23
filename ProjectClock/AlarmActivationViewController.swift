@@ -13,11 +13,16 @@ class AlarmActivationViewController: UIViewController
     var timer: Timer?
     var currentAlarm: Alarm?
     
-    //Outlets
+    //Puzzle outlets
     @IBOutlet weak var puzzleView: UIView!
     @IBOutlet weak var puzzleQuestionLabel: UILabel!
     @IBOutlet weak var puzzleAnswerInput: UITextField!
     var puzzleAnswers: [Int] = []
+    
+    //RPS Outlets
+    @IBOutlet weak var rpsView: UIView!
+    @IBOutlet weak var rpsResult: UILabel!
+    
     
     init?(coder: NSCoder, currentAlarm: Alarm)
     {
@@ -35,6 +40,7 @@ class AlarmActivationViewController: UIViewController
         super.viewDidLoad()
         //Hide all inactive wakemethods
         puzzleView.isHidden = true
+        rpsView.isHidden = true
         
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(AlarmActivationViewController.playSound), userInfo: nil, repeats: true)
         setAlarmType()
@@ -61,6 +67,10 @@ class AlarmActivationViewController: UIViewController
                 puzzleView.isHidden = false
             case "Smash":
                 print("")
+            case "RPS":
+                rpsView.isHidden = false
+                //Get Choice here
+                //rpsAction(choice: choice)
             default:
                 print("Invalid alarm type")
             }
@@ -77,6 +87,31 @@ class AlarmActivationViewController: UIViewController
             }
         }
     }
+    
+    //Gets RPS choice
+    @IBAction func rockChoice(_ sender: Any) {
+        if rpsAction(choice: .rock)! {
+            endAlarm()
+        } else {
+            rpsResult.text = "Paper: You lost, try again"
+        }
+    }
+    @IBAction func paperChoice(_ sender: Any) {
+        if rpsAction(choice: .paper)! {
+            endAlarm()
+        } else {
+            rpsResult.text = "Scissors: You lost, try again"
+        }
+    }
+    @IBAction func scissorChoice(_ sender: Any) {
+        if rpsAction(choice: .scissors)! {
+            endAlarm()
+        } else {
+            rpsResult.text = "Rock: You lost, try again"
+        }
+    }
+    
+    
     
     //Standard way to turn off and close the alarm
     func endAlarm() {
