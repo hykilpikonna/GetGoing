@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreMotion
 
 /**
  Math element for problem generation (Credit: https://stackoverflow.com/a/43132311/7346633)
@@ -195,4 +196,18 @@ class RPS {
         resultsLabel.text = playRPS(you: .scissors, computer: computerChoice)
     }
      */
+}
+
+class Shake {
+    var motionManager = CMMotionManager()
+    
+    func viewDidAppear(_ animated: Bool) {
+        motionManager.accelerometerUpdateInterval = 0.2
+        
+        motionManager.startAccelerometerUpdates(to: OperationQueue.current!) { (data,error) in
+            if let myData = data {
+                print(myData)
+            }
+        }
+    }
 }
