@@ -48,9 +48,16 @@ class AddAlarmViewController: UIViewController
     /**
      Called when the user clicks Add Alarm
      */
-    @IBAction func addAlarmButton(_ sender: Any) {
-        
+    @IBAction func addAlarmButton(_ sender: Any)
+    {
         let (h, m, _) = timePicker.date.getHMS()
+     
+        // Check for existing alarm
+        if (Alarms.fromLocal().list.contains { $0.hour == h && $0.minute == m })
+        {
+            msg("Nope", "You already have an alarm at " + String(format: "%i:%02i", h, m))
+            return
+        }
         
         // Create the alarm
         let alarm = Alarm(hour: h, minute: m,
