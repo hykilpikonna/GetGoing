@@ -96,6 +96,7 @@ class AlarmActivationViewController: UIViewController
             rpsResult.text = "Paper: You lost, try again"
         }
     }
+    
     @IBAction func paperChoice(_ sender: Any) {
         if rpsAction(choice: .paper)! {
             endAlarm()
