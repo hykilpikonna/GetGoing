@@ -198,6 +198,7 @@ class RPS {
      */
 }
 
+//Reference: https://youtu.be/XDuchXYiWuE
 class Shake {
     var motionManager = CMMotionManager()
     
@@ -206,7 +207,9 @@ class Shake {
         
         motionManager.startAccelerometerUpdates(to: OperationQueue.current!) { (data,error) in
             if let myData = data {
-                print(myData)
+                if myData.acceleration.x > 5 {
+                    print("DO SOMETHING SPECIAL")
+                }
             }
         }
     }
