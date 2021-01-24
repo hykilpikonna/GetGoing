@@ -86,7 +86,15 @@ class AlarmTableCell: UITableViewCell
                     daysActive.append(daysDict[index])
                 }
             }
-            repeatText.text = daysActive.joined(separator: ", ")
+            if daysDict == daysActive {
+                repeatText.text = "Repeats: Daily"
+            } else if daysActive == ["Sun", "Sat"] {
+                repeatText.text = "Repeats: Weekends"
+            } else if daysActive == ["Mon", "Tues", "Wed", "Thurs", "Fri"] {
+                repeatText.text = "Repeats: Weekdays"
+            } else {
+                repeatText.text = daysActive.joined(separator: ", ")
+            }
         }
         
         // Show next activation date
