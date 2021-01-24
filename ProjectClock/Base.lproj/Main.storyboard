@@ -291,6 +291,9 @@
                                                 <state key="normal" title="Start">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="start:" destination="PYt-Lf-JNp" eventType="touchUpInside" id="ucf-fN-SgP"/>
                                                 </connections>
@@ -301,6 +304,9 @@
                                                 <state key="normal" title="Reset">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="lapOrReset:" destination="PYt-Lf-JNp" eventType="touchUpInside" id="3ff-of-rJl"/>
                                                 </connections>
