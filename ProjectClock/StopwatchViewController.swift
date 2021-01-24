@@ -127,3 +127,26 @@ extension StopwatchViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
 }
+
+/**
+ Class to set relative font size for the stopwatch
+ */
+class StopwatchText: UILabel
+{
+    @IBInspectable var iPhoneFontSize: CGFloat = 0
+    {
+        didSet
+        {
+            overrideFontSize(iPhoneFontSize)
+        }
+    }
+
+    func overrideFontSize(_ fontSize: CGFloat)
+    {
+        let size = UIScreen.main.bounds.size
+        let width = UIDevice.current.orientation.isPortrait ? size.width : size.height
+        
+        // ViewWidth-based font size
+        font = font.withSize(0.22 * width)
+    }
+}
