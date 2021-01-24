@@ -13,7 +13,6 @@ class StopwatchViewController: UIViewController {
     
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var resetButton: UIButton!
-    @IBOutlet weak var lapButton: UIButton!
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -36,6 +35,7 @@ class StopwatchViewController: UIViewController {
             timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(count), userInfo: nil, repeats: true)
             started = true
             startButton.setTitle("Stop", for: .normal)
+            resetButton.setTitle("Lap", for: .normal)
         }
         else
         {
@@ -43,48 +43,50 @@ class StopwatchViewController: UIViewController {
             timer.invalidate()
             started = false
             startButton.setTitle("Start", for: .normal)
+            resetButton.setTitle("Reset", for: .normal)
         }
     }
     
-    @objc fileprivate func count() {
+    @objc fileprivate func count()
+    {
+        // Add time (If it goes longer than 24 hours, the hour count should go to 25)
         seconds += 1
         
-        if seconds == 60 {
+        if seconds == 60
+        {
             minutes += 1
             seconds = 0
         }
-        if minutes == 60 {
+        if minutes == 60
+        {
             hours += 1
             minutes = 0
-        }
-        if hours == 24 {
-            resetTimes()
         }
         
         timeLabel.text = String(format: "%02i:%02i:%02i", hours, minutes, seconds)
     }
     
-    @IBAction func reset(_ sender: UIButton) {
-        resetTimes()
-    }
-    
-    func resetTimes() {
-        seconds = 0
-        minutes = 0
-        seconds = 0
-        lappedTimes = []
-        timer.invalidate()
-        timeLabel.text = "00:00:00"
-        tableView.reloadData()
-        //startButton.isHidden = false
-        //lapButton.isHidden = true
-    }
-    
-    @IBAction func lap(_ sender: UIButton) {
-        lappedTimes.append(String(format: "%02i:%02i:%02i", hours, minutes, seconds))
-        
-        let indexPath = IndexPath(row: lappedTimes.count - 1, section: 0)
-        tableView.insertRows(at: [indexPath], with: .automatic)
+    /**
+     Lap/reset button
+     */
+    @IBAction func lapOrReset(_ sender: UIButton)
+    {
+        if started
+        {
+            // Insert lap
+            lappedTimes.insert(timeLabel.text!, at: 0)
+            tableView.reloadData()
+        }
+        else
+        {
+            // Reset
+            seconds = 0
+            minutes = 0
+            seconds = 0
+            lappedTimes = []
+            timeLabel.text = "00:00:00"
+            tableView.reloadData()
+        }
     }
 }
 

@@ -283,7 +283,7 @@
                                 <rect key="frame" x="20" y="224.5" width="374" height="588.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="4j4-zF-LWF">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="150"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="70"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jse-AL-cOs">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
@@ -295,40 +295,20 @@
                                                     <action selector="start:" destination="PYt-Lf-JNp" eventType="touchUpInside" id="ucf-fN-SgP"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O4A-eq-kEz">
-                                                <rect key="frame" x="0.0" y="40" width="374" height="30"/>
-                                                <color key="backgroundColor" name="AccentColor"/>
-                                                <state key="normal" title="Stop">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="stop:" destination="PYt-Lf-JNp" eventType="touchUpInside" id="ncg-GB-bAj"/>
-                                                </connections>
-                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q7i-3U-NbI">
-                                                <rect key="frame" x="0.0" y="80" width="374" height="30"/>
+                                                <rect key="frame" x="0.0" y="40" width="374" height="30"/>
                                                 <color key="backgroundColor" name="AccentColor"/>
                                                 <state key="normal" title="Reset">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="reset:" destination="PYt-Lf-JNp" eventType="touchUpInside" id="3ff-of-rJl"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="794-VN-m96">
-                                                <rect key="frame" x="0.0" y="120" width="374" height="30"/>
-                                                <color key="backgroundColor" name="AccentColor"/>
-                                                <state key="normal" title="Lap">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="lap:" destination="PYt-Lf-JNp" eventType="touchUpInside" id="UT9-pP-BWA"/>
+                                                    <action selector="lapOrReset:" destination="PYt-Lf-JNp" eventType="touchUpInside" id="3ff-of-rJl"/>
                                                 </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="O7B-Tj-vT0">
-                                        <rect key="frame" x="0.0" y="158" width="374" height="430.5"/>
+                                        <rect key="frame" x="0.0" y="78" width="374" height="510.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="lapCell" id="2Je-Lw-ZAb">
@@ -385,10 +365,8 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Stopwatch" image="clock.arrow.circlepath" catalog="system" selectedImage="clock.arrow.circlepath" id="hNc-UI-vIQ"/>
                     <connections>
-                        <outlet property="lapButton" destination="794-VN-m96" id="1aX-pS-Cjr"/>
                         <outlet property="resetButton" destination="Q7i-3U-NbI" id="gYT-DB-XpP"/>
                         <outlet property="startButton" destination="Jse-AL-cOs" id="iq2-xE-Nir"/>
-                        <outlet property="stopButton" destination="O4A-eq-kEz" id="dd7-v0-fqc"/>
                         <outlet property="tableView" destination="O7B-Tj-vT0" id="kfu-vG-sgE"/>
                         <outlet property="timeLabel" destination="55a-Ig-Fri" id="8eb-Ow-UF1"/>
                     </connections>
