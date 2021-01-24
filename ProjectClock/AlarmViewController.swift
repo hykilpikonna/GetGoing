@@ -73,13 +73,13 @@ class AlarmTableCell: UITableViewCell
         time.text = alarm.minute < 10 ? "\(hour):0\(alarm.minute)" : "\(hour):\(alarm.minute)"
        
         // displays the specific days alarm is activated
-        let daysDict = [0: "Mon", 1: "Tues", 2: "Wed", 3: "Thurs", 4: "Fri", 5: "Sat", 6: "Sun"]
+        let daysDict = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"]
         var daysActive : [String] = []
         if alarm.oneTime {repeatText.text = "No Repeat"}
         else {
             for (index, element) in alarm.repeats.enumerated() {
                 if element {
-                    daysActive.append(daysDict[index] ?? "")
+                    daysActive.append(daysDict[index])
                 }
             }
             repeatText.text = daysActive.joined(separator: ", ")

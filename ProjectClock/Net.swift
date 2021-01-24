@@ -7,7 +7,7 @@
 import Foundation
 
 /// Base URL of the HTTP server
-let baseUrl = "http://localhost:8080" // TODO: Production settings
+let baseUrl = "https://alarm-clock-api.hydev.org"
 
 /// Json class
 class JSON
