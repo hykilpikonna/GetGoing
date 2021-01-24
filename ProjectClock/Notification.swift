@@ -28,6 +28,7 @@ class Notification {
         content.title = alarm.text
         content.subtitle = formatter1.string(from: today)
         content.body = "Wake method: \(alarm.wakeMethod.name)"
+        content.sound = UNNotificationSound.defaultCriticalSound(withAudioVolume: 1.0)
         
         // Notification image content
         let imageName = "clock"
