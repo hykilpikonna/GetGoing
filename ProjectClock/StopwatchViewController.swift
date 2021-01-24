@@ -90,24 +90,39 @@ class StopwatchViewController: UIViewController {
     }
 }
 
-extension StopwatchViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+/**
+ Table data source
+ */
+extension StopwatchViewController: UITableViewDelegate, UITableViewDataSource
+{
+    /**
+     Define row count
+     */
+    func tableView(_ _: UITableView, numberOfRowsInSection _: Int) -> Int
+    {
         return lappedTimes.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "lapCell", for: indexPath)
-        cell.textLabel?.text = lappedTimes[indexPath.row]
+    /**
+     Set cell at i
+     */
+    func tableView(_ view: UITableView, cellForRowAt i: IndexPath) -> UITableViewCell
+    {
+        let cell = view.dequeueReusableCell(withIdentifier: "lapCell", for: i)
+        cell.textLabel?.text = lappedTimes[i.row]
         cell.selectionStyle = .none
         return cell
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            lappedTimes.remove(at: indexPath.row)
-            
-            tableView.deleteRows(at: [indexPath], with: .automatic)
+    /**
+     Swipe left to delete cells at i
+     */
+    func tableView(_ view: UITableView, commit: UITableViewCell.EditingStyle, forRowAt i: IndexPath)
+    {
+        if commit == .delete
+        {
+            lappedTimes.remove(at: i.row)
+            view.deleteRows(at: [i], with: .automatic)
         }
     }
 }
