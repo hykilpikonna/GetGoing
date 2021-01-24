@@ -7,15 +7,18 @@
 
 import UIKit
 
-class StopwatchViewController: UIViewController {
-
+/**
+ Stopwatch feature
+ */
+class StopwatchViewController: UIViewController
+{
+    // UI Components
     @IBOutlet weak var timeLabel: UILabel!
-    
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var resetButton: UIButton!
-    
     @IBOutlet weak var tableView: UITableView!
     
+    // Time Components
     var hours = 0
     var minutes = 0
     var seconds = 0
@@ -63,6 +66,7 @@ class StopwatchViewController: UIViewController {
             minutes = 0
         }
         
+        // Set label text
         timeLabel.text = String(format: "%02i:%02i:%02i", hours, minutes, seconds)
     }
     
