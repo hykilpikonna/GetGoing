@@ -30,11 +30,13 @@ class StopwatchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        //lapButton.isHidden = true
     }
     
     @IBAction func start(_ sender: UIButton) {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(count), userInfo: nil, repeats: true)
+        //startButton.isHidden = true
+        //lapButton.isHidden = false
     }
     
     @objc fileprivate func count() {
@@ -49,7 +51,7 @@ class StopwatchViewController: UIViewController {
             minutes = 0
         }
         if hours == 24 {
-            timer.invalidate()
+            resetTimes()
         }
         
         if seconds >= 10 { secondLabel.text = "\(seconds)" }
@@ -62,9 +64,25 @@ class StopwatchViewController: UIViewController {
     
     @IBAction func stop(_ sender: UIButton) {
         timer.invalidate()
+        //startButton.isHidden = false
     }
     
     @IBAction func reset(_ sender: UIButton) {
+        resetTimes()
+    }
+    
+    func resetTimes() {
+        seconds = 0
+        minutes = 0
+        seconds = 0
+        lappedTimes = []
+        timer.invalidate()
+        secondLabel.text = "00"
+        minuteLabel.text = "00"
+        hourLabel.text = "00"
+        tableView.reloadData()
+        //startButton.isHidden = false
+        //lapButton.isHidden = true
     }
     
     @IBAction func lap(_ sender: UIButton) {
