@@ -185,18 +185,46 @@ class ManageVC: UIViewController
  */
 class FamilyVC: UIViewController
 {
+    var createMode: Bool!
+    
     @IBAction func btnCreate(_ sender: Any)
     {
+        createMode = true
+        performSegue(withIdentifier: "family-create-join", sender: nil)
     }
     
     @IBAction func btnJoin(_ sender: Any)
     {
+        createMode = false
+        performSegue(withIdentifier: "family-create-join", sender: nil)
+    }
+    
+    @IBSegueAction func sendAlarm(_ c: NSCoder) -> FamilyCreateJoinVC?
+    {
+        return FamilyCreateJoinVC(coder: c, create: createMode)
     }
 }
 
 
 class FamilyCreateJoinVC: UIViewController
 {
+    let createMode: Bool
     @IBOutlet weak var lFamilyNameOrId: UILabel!
+    
+    init?(coder: NSCoder, create: Bool)
+    {
+        createMode = create
+        super.init(coder: coder)
+    }
+    
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+    
+    /**
+     On load
+     */
+    override func viewDidLoad()
+    {
+        lFamilyNameOrId.text = createMode ? "Family Name" : "Family ID"
+    }
 }
 
