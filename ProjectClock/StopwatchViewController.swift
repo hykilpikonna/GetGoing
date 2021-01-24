@@ -12,7 +12,6 @@ class StopwatchViewController: UIViewController {
     @IBOutlet weak var timeLabel: UILabel!
     
     @IBOutlet weak var startButton: UIButton!
-    @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var lapButton: UIButton!
     
@@ -21,20 +20,30 @@ class StopwatchViewController: UIViewController {
     var hours = 0
     var minutes = 0
     var seconds = 0
+    var started = false
     
     var lappedTimes: [String] = []
     var timer = Timer()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        //lapButton.isHidden = true
-    }
-    
-    @IBAction func start(_ sender: UIButton) {
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(count), userInfo: nil, repeats: true)
-        //startButton.isHidden = true
-        //lapButton.isHidden = false
+    /**
+     Start/stop stopwatch
+     */
+    @IBAction func start(_ sender: UIButton)
+    {
+        if !started
+        {
+            // Start timer
+            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(count), userInfo: nil, repeats: true)
+            started = true
+            startButton.setTitle("Stop", for: .normal)
+        }
+        else
+        {
+            // Stop timer
+            timer.invalidate()
+            started = false
+            startButton.setTitle("Start", for: .normal)
+        }
     }
     
     @objc fileprivate func count() {
@@ -53,11 +62,6 @@ class StopwatchViewController: UIViewController {
         }
         
         timeLabel.text = String(format: "%02i:%02i:%02i", hours, minutes, seconds)
-    }
-    
-    @IBAction func stop(_ sender: UIButton) {
-        timer.invalidate()
-        //startButton.isHidden = false
     }
     
     @IBAction func reset(_ sender: UIButton) {
