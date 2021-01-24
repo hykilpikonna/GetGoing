@@ -66,11 +66,12 @@ class AlarmTableCell: UITableViewCell
     func setData(_ alarm: Alarm)
     {
         descriptionText.text = "- " + alarm.text
+        enable.isOn = alarm.enabled
         
         // Display Hour, Minute, and AM or PM
         ampm.text = alarm.hour < 12 || alarm.hour == 24 ? "AM" : "PM"
         let hour = alarm.hour <= 12 ? alarm.hour : alarm.hour - 12
-        time.text = alarm.minute < 10 ? "\(hour):0\(alarm.minute)" : "\(hour):\(alarm.minute)"
+        time.text = String(format: "%i:%02i", hour, alarm.minute)
        
         // displays the specific days alarm is activated
         let daysDict = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"]
