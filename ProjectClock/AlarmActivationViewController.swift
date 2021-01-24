@@ -23,6 +23,9 @@ class AlarmActivationViewController: UIViewController
     @IBOutlet weak var rpsView: UIView!
     @IBOutlet weak var rpsResult: UILabel!
     
+    //Other Outlets
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     
     init?(coder: NSCoder, currentAlarm: Alarm)
     {
@@ -38,6 +41,17 @@ class AlarmActivationViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        //Set the time and date
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM d, Y"
+        
+        dateLabel.text = dateFormatter.string(from: date)
+        
+        dateFormatter.dateFormat = "hh:mm"
+        timeLabel.text = dateFormatter.string(from: date)
+        
+        
         //Hide all inactive wakemethods
         puzzleView.isHidden = true
         rpsView.isHidden = true

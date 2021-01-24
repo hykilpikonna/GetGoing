@@ -716,11 +716,13 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="dateLabel" destination="42Q-0v-ZS3" id="t7y-cH-391"/>
                         <outlet property="puzzleAnswerInput" destination="eTb-g7-8x3" id="xIh-TJ-vhq"/>
                         <outlet property="puzzleQuestionLabel" destination="CZ0-R6-FDq" id="gon-N6-XTD"/>
                         <outlet property="puzzleView" destination="OMQ-qK-fej" id="KLT-oe-RJX"/>
                         <outlet property="rpsResult" destination="HEP-oh-VSY" id="W2G-eZ-mzI"/>
                         <outlet property="rpsView" destination="NmX-iJ-1D0" id="Rhg-Hm-2Xx"/>
+                        <outlet property="timeLabel" destination="vmg-Oj-8tB" id="FJJ-No-dwF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="78q-sr-CNz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
