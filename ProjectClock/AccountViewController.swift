@@ -136,6 +136,8 @@ class ManageVC: UIViewController
     @IBOutlet weak var lUsername: UILabel!
     @IBOutlet weak var lJoinDate: UILabel!
     
+    @IBOutlet weak var lCurrentFamily: UILabel!
+    
     /**
      Called when the user switched to the account tab (whether the view container is hidden or not)
      */
@@ -177,3 +179,52 @@ class ManageVC: UIViewController
         }
     }
 }
+
+/**
+ Family view controller that displays family info or create/join family buttons
+ */
+class FamilyVC: UIViewController
+{
+    var createMode: Bool!
+    
+    @IBAction func btnCreate(_ sender: Any)
+    {
+        createMode = true
+        performSegue(withIdentifier: "family-create-join", sender: nil)
+    }
+    
+    @IBAction func btnJoin(_ sender: Any)
+    {
+        createMode = false
+        performSegue(withIdentifier: "family-create-join", sender: nil)
+    }
+    
+    @IBSegueAction func sendAlarm(_ c: NSCoder) -> FamilyCreateJoinVC?
+    {
+        return FamilyCreateJoinVC(coder: c, create: createMode)
+    }
+}
+
+
+class FamilyCreateJoinVC: UIViewController
+{
+    let createMode: Bool
+    @IBOutlet weak var lFamilyNameOrId: UILabel!
+    
+    init?(coder: NSCoder, create: Bool)
+    {
+        createMode = create
+        super.init(coder: coder)
+    }
+    
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+    
+    /**
+     On load
+     */
+    override func viewDidLoad()
+    {
+        lFamilyNameOrId.text = createMode ? "Family Name" : "Family ID"
+    }
+}
+
