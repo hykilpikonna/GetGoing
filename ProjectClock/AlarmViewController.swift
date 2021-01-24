@@ -9,6 +9,15 @@ class AlarmViewController: UIViewController
     {
         super.viewDidLoad()
         
+        //Get notification permissions from user
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
+            if success {
+                print("All set!")
+            } else if let error = error {
+                print(error.localizedDescription)
+            }
+        }
+            
         // Assign table delegate and data source
         AlarmViewController.staticTable = table
         table.delegate = self
