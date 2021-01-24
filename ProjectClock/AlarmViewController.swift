@@ -75,7 +75,7 @@ class AlarmTableCell: UITableViewCell
         // displays the specific days alarm is activated
         let daysDict = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"]
         var daysActive : [String] = []
-        if alarm.oneTime {repeatText.text = "No Repeat"}
+        if alarm.oneTime {repeatText.text = "One-time Alarm"}
         else {
             for (index, element) in alarm.repeats.enumerated() {
                 if element {
