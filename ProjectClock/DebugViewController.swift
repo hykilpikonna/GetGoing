@@ -33,7 +33,10 @@ class DebugViewController: UIViewController
     @IBAction func addAlarm(_ sender: Any)
     {
         let (h, m, _) = Date().getHMS()
-        Alarms.fromLocal().apply { $0.list.append(Alarm(hour: h, minute: m, text: "Test alarm - \(h * m)", wakeMethod: wvms[1], repeats: [true, true, true, true, true, true, true], lastActivate: Date().added(.minute, -1))) }.localSave()
+        let alarm = Alarm(hour: h, minute: m, text: "Test alarm - \(h * m)", wakeMethod: wvms[1], repeats: [true, true, true, true, true, true, true], lastActivate: Date().added(.minute, -1))
+        
+        Alarms.fromLocal().apply { $0.list.append(alarm) }.localSave()
+        Notification(alarm: alarm).scheduleNotification()
     }
     
     @IBAction func deleteAlarm(_ sender: Any)
