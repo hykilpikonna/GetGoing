@@ -82,7 +82,10 @@ class AddAlarmViewController: UIViewController
         
         // Add the alarm to the list and save the list
         Alarms.fromLocal().apply { $0.list.append(alarm) }.localSave();
-
+        
+        //Schedules notification for the alarm
+        Notification(alarm: alarm).scheduleNotification()
+        
         // Dismiss this view
         self.dismiss(animated: true, completion: nil)
     }

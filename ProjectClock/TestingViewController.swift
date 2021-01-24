@@ -27,7 +27,7 @@ class DebugViewController: UIViewController
     //Sends a test notification
     @IBAction func sendNotification(_ sender: Any)
     {
-        Notification(alarm: Alarms.fromLocal().listEnabled[0]).sendNotification()
+        Notification(alarm: Alarms.fromLocal().listEnabled[0]).scheduleNotification()
     }
     
     @IBAction func addAlarm(_ sender: Any)
