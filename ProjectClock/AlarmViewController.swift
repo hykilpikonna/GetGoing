@@ -60,11 +60,14 @@ class AlarmTableCell: UITableViewCell
     @IBOutlet weak var repeatText: UILabel!
     @IBOutlet weak var goingOffText: UILabel!
     
-    /// Update information on the cell to information in the alarm object
-    //WARNING:Terrible code lies ahead! You WILL be dissapointed! But it works, and that is all that matters.
-
+    var alarm: Alarm!
+    
+    /**
+     Update information on the cell to information in the alarm object
+     */
     func setData(_ alarm: Alarm)
     {
+        self.alarm = alarm
         descriptionText.text = "- " + alarm.text
         enable.isOn = alarm.enabled
         
@@ -90,5 +93,18 @@ class AlarmTableCell: UITableViewCell
         if alarm.enabled, let n = alarm.nextActivate {
             goingOffText.text = "(Going off in \(n.timeIntervalSince(Date()).str()))"
         }
+        else {
+            goingOffText.text = ""
+        }
+    }
+    
+    /**
+     Called when the user switches the switch
+     */
+    @IBAction func switchChange(_ sender: Any)
+    {
+        Alarms.fromLocal().apply {
+            $0.list.first { $0.hour == self.alarm.hour && $0.minute == self.alarm.minute }?.enabled = enable.isOn
+        }.localSave()
     }
 }
