@@ -136,6 +136,8 @@ class ManageVC: UIViewController
     @IBOutlet weak var lUsername: UILabel!
     @IBOutlet weak var lJoinDate: UILabel!
     
+    @IBOutlet weak var lCurrentFamily: UILabel!
+    
     /**
      Called when the user switched to the account tab (whether the view container is hidden or not)
      */
@@ -177,3 +179,24 @@ class ManageVC: UIViewController
         }
     }
 }
+
+/**
+ Family view controller that displays family info or create/join family buttons
+ */
+class FamilyVC: UIViewController
+{
+    @IBAction func btnCreate(_ sender: Any)
+    {
+    }
+    
+    @IBAction func btnJoin(_ sender: Any)
+    {
+    }
+}
+
+
+class FamilyCreateJoinVC: UIViewController
+{
+    @IBOutlet weak var lFamilyNameOrId: UILabel!
+}
+
