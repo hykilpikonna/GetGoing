@@ -9,7 +9,7 @@ import Foundation
 
 struct User: Codable
 {
-    var id: Int
+    var id: String
     var name: String
     var email: String
     var pass: String
@@ -48,9 +48,6 @@ class Alarm: Codable
     /// What days does it repeat (Sun, Mon, Tue, Wed, Thu, Fri, Sat)
     var repeats: [Bool]
     
-    /// Does it automatically disable after activating once
-    var oneTime: Bool
-    
     /// When is the last time that the alarm went off
     var lastActivate: Date
     
@@ -58,7 +55,7 @@ class Alarm: Codable
     init(enabled: Bool = true,
          hour: Int, minute: Int, text: String, wakeMethod: WVM,
          repeats: [Bool] = [false, true, true, true, true, true, false],
-         oneTime: Bool = false, lastActivate: Date = Date()
+         lastActivate: Date = Date()
     )
     {
         self.enabled = enabled
@@ -67,9 +64,11 @@ class Alarm: Codable
         self.text = text
         self.wakeMethod = wakeMethod
         self.repeats = repeats
-        self.oneTime = oneTime
         self.lastActivate = lastActivate
     }
+    
+    /// Does it automatically disable after activating once
+    var oneTime: Bool { repeats.allSatisfy { !$0 } }
     
     /// When should the alarm activate next since lastActivate?
     var nextActivate: Date?

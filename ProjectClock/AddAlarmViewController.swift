@@ -62,7 +62,6 @@ class AddAlarmViewController: UIViewController
         (0...6).forEach { alarm.repeats[$0] = false }
         if repeatWeekdaysSwitch.isOn { (1...5).forEach { alarm.repeats[$0] = true } }
         if repeatWeekendsSwitch.isOn { [0, 6].forEach { alarm.repeats[$0] = true } }
-        if (alarm.repeats.allSatisfy { !$0 }) { alarm.oneTime = true }
         
         // Add the alarm to the list and save the list
         Alarms.fromLocal().apply { $0.list.append(alarm) }.localSave();
