@@ -360,8 +360,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="55a-Ig-Fri" customClass="StopwatchText" customModule="ProjectClock" customModuleProvider="target">
-                                <rect key="frame" x="52.5" y="109" width="309" height="95.5"/>
-                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="80"/>
+                                <rect key="frame" x="51" y="109" width="312.5" height="95.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="80"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -390,6 +390,7 @@
                         <outlet property="startButton" destination="Jse-AL-cOs" id="iq2-xE-Nir"/>
                         <outlet property="stopButton" destination="O4A-eq-kEz" id="dd7-v0-fqc"/>
                         <outlet property="tableView" destination="O7B-Tj-vT0" id="kfu-vG-sgE"/>
+                        <outlet property="timeLabel" destination="55a-Ig-Fri" id="8eb-Ow-UF1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZlX-5W-Pjn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -9,9 +9,7 @@ import UIKit
 
 class StopwatchViewController: UIViewController {
 
-    @IBOutlet weak var hourLabel: UILabel!
-    @IBOutlet weak var minuteLabel: UILabel!
-    @IBOutlet weak var secondLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
     
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
@@ -54,12 +52,7 @@ class StopwatchViewController: UIViewController {
             resetTimes()
         }
         
-        if seconds >= 10 { secondLabel.text = "\(seconds)" }
-        else { secondLabel.text = "0\(seconds)" }
-        if minutes >= 10 { minuteLabel.text = "\(minutes)" }
-        else { minuteLabel.text = "0\(minutes)" }
-        if hours >= 10 { hourLabel.text = "\(hours)" }
-        else { hourLabel.text = "0\(hours)" }
+        timeLabel.text = String(format: "%02i:%02i:%02i", hours, minutes, seconds)
     }
     
     @IBAction func stop(_ sender: UIButton) {
@@ -77,29 +70,14 @@ class StopwatchViewController: UIViewController {
         seconds = 0
         lappedTimes = []
         timer.invalidate()
-        secondLabel.text = "00"
-        minuteLabel.text = "00"
-        hourLabel.text = "00"
+        timeLabel.text = "00:00:00"
         tableView.reloadData()
         //startButton.isHidden = false
         //lapButton.isHidden = true
     }
     
     @IBAction func lap(_ sender: UIButton) {
-        var currentSec = ""
-        if seconds >= 10 { currentSec = "\(seconds)" }
-        else { currentSec = "0\(seconds)" }
-        
-        var currentMin = ""
-        if minutes >= 10 { currentMin = "\(minutes)" }
-        else { currentMin = "0\(minutes)" }
-        
-        var currentHour = ""
-        if hours >= 10 { currentHour = "\(hours)" }
-        else { currentHour = "0\(hours)" }
-        
-        let currentTime = "\(currentHour):\(currentMin):\(currentSec)" //CHECK THIS
-        lappedTimes.append(currentTime)
+        lappedTimes.append(String(format: "%02i:%02i:%02i", hours, minutes, seconds))
         
         let indexPath = IndexPath(row: lappedTimes.count - 1, section: 0)
         tableView.insertRows(at: [indexPath], with: .automatic)
