@@ -438,6 +438,9 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="220" id="VCm-rY-H4H"/>
                                                 </constraints>
+                                                <connections>
+                                                    <action selector="alarmTimeUpdated:" destination="Mki-dC-5Kc" eventType="valueChanged" id="4e5-2Z-7gj"/>
+                                                </connections>
                                             </datePicker>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alarm Ringtone" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O5c-Ga-0xh">
                                                 <rect key="frame" x="0.0" y="228" width="374" height="20.5"/>
@@ -596,6 +599,7 @@
                         <outlet property="scrollView" destination="ybc-8d-6pJ" id="m1B-ff-zeC"/>
                         <outlet property="scrollViewInner" destination="N7f-vi-SFU" id="LQW-6T-f6x"/>
                         <outlet property="timePicker" destination="qSt-1V-2DQ" id="aDM-jE-0OP"/>
+                        <outlet property="timeTillAlarmLabel" destination="Xqs-n0-H9G" id="fg6-18-oAG"/>
                         <outlet property="wvmPicker" destination="oae-b2-SoF" id="ADd-1r-iNM"/>
                     </connections>
                 </viewController>

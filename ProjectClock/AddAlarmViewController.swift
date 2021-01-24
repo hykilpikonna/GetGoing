@@ -26,6 +26,7 @@ class AddAlarmViewController: UIViewController
     @IBOutlet weak var repeatWeekdaysSwitch: UISwitch!
     @IBOutlet weak var repeatWeekendsSwitch: UISwitch!
     @IBOutlet weak var alarmNameTextField: UITextField!
+    @IBOutlet weak var timeTillAlarmLabel: UILabel!
     
     @IBAction func defaultRingtonesButton(_ sender: Any)
     {
@@ -35,6 +36,24 @@ class AddAlarmViewController: UIViewController
     @IBAction func soundLibraryButton(_ sender: Any)
     {
         
+    }
+    
+    /**
+    Called when the time for the alarm is changed.
+        Sets the time away at the top of the View.
+     */
+    @IBAction func alarmTimeUpdated(_ sender: Any) {
+        //Create alarm without adding it to the queue.
+        let (h, m, _) = timePicker.date.getHMS()
+     
+        // Create the alarm
+        let a = Alarm(hour: h, minute: m,
+                          text: alarmNameTextField.text ?? "Alarm",
+                          wakeMethod: wvms[wvmPicker.selectedRow(inComponent: 0)],
+                          lastActivate: Date())
+        var timeTill = a.nextActivate!.timeIntervalSince(Date()).str()
+        print(timeTill)
+        timeTillAlarmLabel.text = "Going off in \(timeTill)"
     }
     
     /**
