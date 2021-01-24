@@ -76,6 +76,7 @@ extension TimeInterval
     {
         if days != 0 { return "\(days)d \(hours)h \(minutes)m \(seconds)s" }
         else if hours != 0 { return "\(hours)h \(minutes)m \(seconds)s" }
+        else if days != 0 && hours == 0 { return "\(days)d \(minutes)m \(seconds)s"}
         else if minutes != 0 { return "\(minutes)m \(seconds)s" }
         else { return "\(seconds)s" }
     }
