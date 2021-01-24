@@ -63,7 +63,7 @@ class AlarmActivationViewController: UIViewController
     
     @objc func playSound()
     {
-        AudioServicesPlayAlertSound(SystemSoundID(1005))
+        AudioServicesPlayAlertSound(currentAlarm!.alarmTone)
         AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
     }
     

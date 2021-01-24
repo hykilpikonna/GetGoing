@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AVFoundation
 
 struct User: Codable
 {
@@ -44,6 +45,7 @@ class Alarm: Codable
     var minute: Int
     var text: String
     var wakeMethod: WVM
+    var alarmTone: SystemSoundID
     
     /// What days does it repeat (Sun, Mon, Tue, Wed, Thu, Fri, Sat)
     var repeats: [Bool]
@@ -55,7 +57,8 @@ class Alarm: Codable
     init(enabled: Bool = true,
          hour: Int, minute: Int, text: String, wakeMethod: WVM,
          repeats: [Bool] = [false, true, true, true, true, true, false],
-         lastActivate: Date = Date()
+         lastActivate: Date = Date(),
+         alarmTone: SystemSoundID = SystemSoundID(1005)
     )
     {
         self.enabled = enabled
@@ -65,6 +68,7 @@ class Alarm: Codable
         self.wakeMethod = wakeMethod
         self.repeats = repeats
         self.lastActivate = lastActivate
+        self.alarmTone = alarmTone
     }
     
     /// Does it automatically disable after activating once
