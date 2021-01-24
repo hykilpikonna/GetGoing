@@ -199,9 +199,9 @@ class FamilyVC: UIViewController
         performSegue(withIdentifier: "family-create-join", sender: nil)
     }
     
-    @IBSegueAction func sendAlarm(_ c: NSCoder) -> FamilyCreateJoinVC?
+    @IBSegueAction func segueCreateJoin(_ coder: NSCoder) -> FamilyCreateJoinVC?
     {
-        return FamilyCreateJoinVC(coder: c, create: createMode)
+        return FamilyCreateJoinVC(coder: coder, create: createMode)
     }
 }
 
@@ -210,6 +210,7 @@ class FamilyCreateJoinVC: UIViewController
 {
     let createMode: Bool
     @IBOutlet weak var lFamilyNameOrId: UILabel!
+    @IBOutlet weak var bCreateJoin: UIButton!
     
     init?(coder: NSCoder, create: Bool)
     {
@@ -225,6 +226,7 @@ class FamilyCreateJoinVC: UIViewController
     override func viewDidLoad()
     {
         lFamilyNameOrId.text = createMode ? "Family Name" : "Family ID"
+        bCreateJoin.setTitle(createMode ? "Create" : "Join", for: .normal)
     }
 }
 
