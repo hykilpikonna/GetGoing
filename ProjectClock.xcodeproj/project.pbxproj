@@ -23,6 +23,7 @@
 		7C83963625AF375B0027A94C /* NotificationLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C83963525AF375B0027A94C /* NotificationLogic.swift */; };
 		7C83963925AF68980027A94C /* TestingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C83963825AF68980027A94C /* TestingViewController.swift */; };
 		C7E638E825B88F8B00799512 /* MathExpressions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E638E725B88F8B00799512 /* MathExpressions.swift */; };
+		F0DF7C0725BCD9FC0064A26B /* StopwatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DF7C0625BCD9FC0064A26B /* StopwatchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		7C83963525AF375B0027A94C /* NotificationLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationLogic.swift; sourceTree = "<group>"; };
 		7C83963825AF68980027A94C /* TestingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingViewController.swift; sourceTree = "<group>"; };
 		C7E638E725B88F8B00799512 /* MathExpressions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathExpressions.swift; sourceTree = "<group>"; };
+		F0DF7C0625BCD9FC0064A26B /* StopwatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 				4FD642DF25B4D5F30069171E /* AlarmActivationViewController.swift */,
 				4FD642D225B48C380069171E /* AlarmActivator.swift */,
 				4FF0684425A5F18700304E6B /* Main.storyboard */,
+				F0DF7C0625BCD9FC0064A26B /* StopwatchViewController.swift */,
 				7C83963525AF375B0027A94C /* NotificationLogic.swift */,
 				4F98955125A9260400F51321 /* Net.swift */,
 				4F509BD125AE22D100726227 /* Models.swift */,
@@ -187,6 +190,7 @@
 				4F98955225A9260400F51321 /* Net.swift in Sources */,
 				7C83963925AF68980027A94C /* TestingViewController.swift in Sources */,
 				4FF0684325A5F18700304E6B /* AccountViewController.swift in Sources */,
+				F0DF7C0725BCD9FC0064A26B /* StopwatchViewController.swift in Sources */,
 				4FF0683F25A5F18700304E6B /* AppDelegate.swift in Sources */,
 				4FD642D325B48C380069171E /* AlarmActivator.swift in Sources */,
 				4FD642DB25B4B7F60069171E /* Utils.swift in Sources */,

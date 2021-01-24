@@ -58,7 +58,7 @@ class TestingViewController: UIViewController
     @IBAction func addAlarm(_ sender: Any)
     {
         let (h, m, _) = Date().getHMS()
-        Alarms.fromLocal().apply { $0.list.append(Alarm(hour: h, minute: m, text: "Test alarm - \(h * m)", wakeMethod: wvms[0], repeats: [true, true, true, true, true, true, true], oneTime: true, lastActivate: Date().added(.minute, -1))) }.localSave()
+        Alarms.fromLocal().apply { $0.list.append(Alarm(hour: h, minute: m, text: "Test alarm - \(h * m)", wakeMethod: wvms[1], repeats: [true, true, true, true, true, true, true], oneTime: true, lastActivate: Date().added(.minute, -1))) }.localSave()
     }
     
     @IBAction func deleteAlarm(_ sender: Any)

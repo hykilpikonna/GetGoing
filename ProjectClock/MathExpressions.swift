@@ -163,10 +163,19 @@ class RPS {
         case rock = "ROCK"
         case paper = "PAPER"
         case scissors = "SCISSORS"
-        
-        static func randomComputerChoice() -> Choice {
-            let choices: [Choice] = [.rock, .paper, .scissors]
-            return choices[Int.random(in: 0...2)]
+    }
+    
+    static func randomComputerChoice() -> Choice {
+        let choices: [Choice] = [.rock, .paper, .scissors]
+        return choices[Int.random(in: 0...2)]
+    }
+    
+    func playRPS(you: Choice, computer: Choice) -> Bool? {
+        if you == .rock && computer == .scissors { return true }
+        else if you == .paper && computer == .rock { return true}
+        else if you == .scissors && computer == .paper { return true }
+        else {
+            return false
         }
     }
     
@@ -186,18 +195,4 @@ class RPS {
         resultsLabel.text = playRPS(you: .scissors, computer: computerChoice)
     }
      */
-    
-    func playRPS(you: Choice, computer: Choice) -> Bool? {
-        if you == computer { return nil }
-        else if you == .rock && computer == .scissors { return true }
-        else if you == .paper && computer == .rock { return false}
-        else if you == .scissors && computer == .paper { return true }
-        else {
-            let randomNum = Int.random(in: 0...2)
-            if randomNum == 0 { return false }
-            // DO THESE RETURN THE RIGHT THING?
-            else if randomNum == 1 { return false}
-            else { return false }
-        }
-    }
 }
