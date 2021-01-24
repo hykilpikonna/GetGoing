@@ -8,18 +8,10 @@
 import Foundation
 import AVFoundation
 
-struct User: Codable
-{
-    var id: String
-    var name: String
-    var email: String
-    var pass: String
-}
-
 struct Family: Codable
 {
     var fid: Int
-    var fname: String
+    var name: String
     var members: [String]
     // And a hidden field: admin pin
 }
