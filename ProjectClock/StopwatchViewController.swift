@@ -39,6 +39,7 @@ class StopwatchViewController: UIViewController {
     
     @objc fileprivate func count() {
         seconds += 1
+        
         if seconds == 60 {
             minutes += 1
             seconds = 0
@@ -50,9 +51,13 @@ class StopwatchViewController: UIViewController {
         if hours == 24 {
             timer.invalidate()
         }
-        secondLabel.text = "\(seconds)" //if time, make it display 01, 02...
-        minuteLabel.text = minutes == 0 ? "00" : "\(minutes)"
-        hourLabel.text = hours == 0 ? "00" : "\(hours)"
+        
+        if seconds >= 10 { secondLabel.text = "\(seconds)" }
+        else { secondLabel.text = "0\(seconds)" }
+        if minutes >= 10 { minuteLabel.text = "\(minutes)" }
+        else { minuteLabel.text = "0\(minutes)" }
+        if hours >= 10 { hourLabel.text = "\(hours)" }
+        else { hourLabel.text = "0\(hours)" }
     }
     
     @IBAction func stop(_ sender: UIButton) {
@@ -63,7 +68,19 @@ class StopwatchViewController: UIViewController {
     }
     
     @IBAction func lap(_ sender: UIButton) {
-        let currentTime = "\(hours):\(minutes):\(seconds)"
+        var currentSec = ""
+        if seconds >= 10 { currentSec = "\(seconds)" }
+        else { currentSec = "0\(seconds)" }
+        
+        var currentMin = ""
+        if minutes >= 10 { currentMin = "\(minutes)" }
+        else { currentMin = "0\(minutes)" }
+        
+        var currentHour = ""
+        if hours >= 10 { currentHour = "\(hours)" }
+        else { currentHour = "0\(hours)" }
+        
+        let currentTime = "\(currentHour):\(currentMin):\(currentSec)" //CHECK THIS
         lappedTimes.append(currentTime)
         
         let indexPath = IndexPath(row: lappedTimes.count - 1, section: 0)
