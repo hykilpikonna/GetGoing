@@ -43,18 +43,9 @@ class AddAlarmViewController: UIViewController
         Sets the time away at the top of the View.
      */
     @IBAction func alarmTimeUpdated(_ sender: Any) {
-        //Create alarm without adding it to the queue.
-        let (h, m, _) = timePicker.date.getHMS()
-     
-        // Create the alarm
-        let a = Alarm(hour: h, minute: m,
-                          text: alarmNameTextField.text ?? "Alarm",
-                          wakeMethod: wvms[wvmPicker.selectedRow(inComponent: 0)],
-                          lastActivate: Date())
-        var timeTill = a.nextActivate!.timeIntervalSince(Date()).str()
-        print(timeTill)
-        timeTillAlarmLabel.text = "Going off in \(timeTill)"
+        updateETA()
     }
+    
     
     /**
      Called when the user clicks the remove button and brings them back to the home page
@@ -94,6 +85,26 @@ class AddAlarmViewController: UIViewController
 
         // Dismiss this view
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    // Dynamically the ETA label for the alarm
+    func updateETA() {
+        //Create alarm without adding it to the queue.
+        let (h, m, _) = timePicker.date.getHMS()
+     
+        // Create the alarm
+        let a = Alarm(hour: h, minute: m,
+                          text: alarmNameTextField.text ?? "Alarm",
+                          wakeMethod: wvms[wvmPicker.selectedRow(inComponent: 0)],
+                          lastActivate: Date())
+        // Set alarm.repeats to correspond with what the user selects
+        (0...6).forEach { a.repeats[$0] = false }
+        if repeatWeekdaysSwitch.isOn { (1...5).forEach { a.repeats[$0] = true } }
+        if repeatWeekendsSwitch.isOn { [0, 6].forEach { a.repeats[$0] = true } }
+        
+        let timeTill = a.nextActivate!.timeIntervalSince(Date()).str()
+        //print(timeTill)
+        timeTillAlarmLabel.text = "Going off in \(timeTill)"
     }
 }
 
