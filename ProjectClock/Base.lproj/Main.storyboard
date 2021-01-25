@@ -1016,7 +1016,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UGD-ka-LPo">
                                                 <rect key="frame" x="120" y="0.0" width="254" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="one-time-code"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -1024,6 +1024,7 @@
                                         <rect key="frame" x="0.0" y="108" width="374" height="34"/>
                                         <state key="normal" title="Create/Join"/>
                                         <connections>
+                                            <action selector="btnCreateOrJoin:" destination="MJK-PM-TUJ" eventType="touchUpInside" id="wqB-ir-1be"/>
                                             <action selector="register:" destination="ZAC-hn-zGl" eventType="touchUpInside" id="fbN-Jr-RKv"/>
                                         </connections>
                                     </button>
@@ -1042,6 +1043,8 @@
                     <connections>
                         <outlet property="bCreateJoin" destination="KSB-S7-kAX" id="aeU-Yk-wmh"/>
                         <outlet property="lFamilyNameOrId" destination="YfO-H5-olP" id="OXM-3N-ZVV"/>
+                        <outlet property="tNameOrId" destination="aPT-13-Az4" id="6Cw-ur-FBF"/>
+                        <outlet property="tPin" destination="UGD-ka-LPo" id="aNg-6j-ipe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kMK-Pp-v1l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
