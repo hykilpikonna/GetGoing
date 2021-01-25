@@ -23,6 +23,7 @@
 		7C5DAE9C25AF812200E44C52 /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C5DAE9B25AF812200E44C52 /* clock.png */; };
 		7C83963625AF375B0027A94C /* NotificationLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C83963525AF375B0027A94C /* NotificationLogic.swift */; };
 		7C83963925AF68980027A94C /* DebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C83963825AF68980027A94C /* DebugViewController.swift */; };
+		7CD385A625BE4649007E9890 /* notif.caf in Resources */ = {isa = PBXBuildFile; fileRef = 7CD385A525BE4649007E9890 /* notif.caf */; };
 		C7E638E825B88F8B00799512 /* MathExpressions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E638E725B88F8B00799512 /* MathExpressions.swift */; };
 		F0DF7C0725BCD9FC0064A26B /* StopwatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DF7C0625BCD9FC0064A26B /* StopwatchViewController.swift */; };
 /* End PBXBuildFile section */
@@ -48,6 +49,7 @@
 		7C83962F25AF34F10027A94C /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		7C83963525AF375B0027A94C /* NotificationLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationLogic.swift; sourceTree = "<group>"; };
 		7C83963825AF68980027A94C /* DebugViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugViewController.swift; sourceTree = "<group>"; };
+		7CD385A525BE4649007E9890 /* notif.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = notif.caf; sourceTree = "<group>"; };
 		C7E638E725B88F8B00799512 /* MathExpressions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathExpressions.swift; sourceTree = "<group>"; };
 		F0DF7C0625BCD9FC0064A26B /* StopwatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,6 +85,7 @@
 		4FF0683D25A5F18700304E6B /* ProjectClock */ = {
 			isa = PBXGroup;
 			children = (
+				7CD385A425BE4639007E9890 /* Sounds */,
 				4FF0684225A5F18700304E6B /* AccountViewController.swift */,
 				4F8A607025A9160400D88DC3 /* AddAlarmViewController.swift */,
 				4FD642DF25B4D5F30069171E /* AlarmActivationViewController.swift */,
@@ -113,6 +116,14 @@
 				7C83962F25AF34F10027A94C /* HealthKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7CD385A425BE4639007E9890 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				7CD385A525BE4649007E9890 /* notif.caf */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,6 +190,7 @@
 				7C5DAE9C25AF812200E44C52 /* clock.png in Resources */,
 				4FF0684825A5F18800304E6B /* Assets.xcassets in Resources */,
 				4FF0684625A5F18700304E6B /* Main.storyboard in Resources */,
+				7CD385A625BE4649007E9890 /* notif.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
