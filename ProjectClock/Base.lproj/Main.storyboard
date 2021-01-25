@@ -1111,7 +1111,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
                                                 <state key="normal" title="Refresh"/>
                                                 <connections>
-                                                    <action selector="btnChangePin:" destination="4ss-Ye-Da4" eventType="touchUpInside" id="iZl-b9-AhU"/>
+                                                    <action selector="btnRefresh:" destination="4ss-Ye-Da4" eventType="touchUpInside" id="t7G-Ur-JIH"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R2H-k5-27v">

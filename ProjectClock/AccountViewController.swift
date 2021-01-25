@@ -256,6 +256,18 @@ class FamilyVC: UIViewController
     }
     
     /**
+     Called when the user clicks the refresh button
+     */
+    @IBAction func btnRefresh(_ sender: Any)
+    {
+        sendReq(APIs.familyGet, title: "Updating family...")
+        {
+            $0.localSave()
+            self.table.reloadData()
+        }
+    }
+    
+    /**
      Called when the user clicks the change pin button
      */
     @IBAction func btnChangePin(_ sender: Any)
