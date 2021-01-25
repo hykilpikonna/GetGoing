@@ -224,6 +224,23 @@ class FamilyVC: UIViewController
     {
         return FamilyCreateJoinVC(coder: coder, create: createMode)
     }
+    
+    // Family view - Display family information and controls
+    @IBOutlet weak var familyView: UIView!
+    
+    override func viewDidLoad()
+    {
+        if let _ = Family.fromLocal()
+        {
+            noFamilyView.isHidden = true
+            familyView.isHidden = false
+        }
+        else
+        {
+            noFamilyView.isHidden = false
+            familyView.isHidden = true
+        }
+    }
 }
 
 /**

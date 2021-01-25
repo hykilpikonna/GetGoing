@@ -1071,6 +1071,35 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fGb-4v-e2b">
+                                <rect key="frame" x="20" y="75" width="374" height="575"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="vpv-oC-dfU">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="70"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R2H-k5-27v">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
+                                                <state key="normal" title="Change Pin"/>
+                                                <connections>
+                                                    <action selector="btnChangePin:" destination="4ss-Ye-Da4" eventType="touchUpInside" id="0g1-r0-3Fn"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="De7-dU-p8j">
+                                                <rect key="frame" x="0.0" y="40" width="374" height="30"/>
+                                                <state key="normal" title="Delete Family">
+                                                    <color key="titleColor" systemColor="systemRedColor"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="vpv-oC-dfU" firstAttribute="top" secondItem="fGb-4v-e2b" secondAttribute="top" id="L3g-D4-8a3"/>
+                                    <constraint firstItem="vpv-oC-dfU" firstAttribute="leading" secondItem="fGb-4v-e2b" secondAttribute="leading" id="ZS1-h8-ljQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="vpv-oC-dfU" secondAttribute="trailing" id="oPm-FV-t2A"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yB2-sF-tqs">
                                 <rect key="frame" x="20" y="75" width="374" height="107.5"/>
                                 <subviews>
@@ -1118,19 +1147,29 @@
                         <viewLayoutGuide key="safeArea" id="ZHP-aO-cBk"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="fGb-4v-e2b" firstAttribute="leading" secondItem="ZHP-aO-cBk" secondAttribute="leading" constant="20" id="5MG-Gy-w4D"/>
+                            <constraint firstItem="fGb-4v-e2b" firstAttribute="bottom" secondItem="ZHP-aO-cBk" secondAttribute="bottom" id="8I1-Nv-8fQ"/>
                             <constraint firstItem="4kN-8K-gM9" firstAttribute="top" secondItem="ZHP-aO-cBk" secondAttribute="top" constant="20" id="99M-Lo-GoC"/>
+                            <constraint firstItem="ZHP-aO-cBk" firstAttribute="trailing" secondItem="fGb-4v-e2b" secondAttribute="trailing" constant="20" id="9b4-mg-jdt"/>
                             <constraint firstItem="ZHP-aO-cBk" firstAttribute="trailing" secondItem="yB2-sF-tqs" secondAttribute="trailing" constant="20" id="EoR-1a-gX9"/>
                             <constraint firstItem="4kN-8K-gM9" firstAttribute="trailing" secondItem="4JV-r6-luC" secondAttribute="trailing" id="Idr-0Z-Irc"/>
                             <constraint firstItem="4kN-8K-gM9" firstAttribute="leading" secondItem="ZHP-aO-cBk" secondAttribute="leading" constant="20" id="QHJ-i3-Z9o"/>
                             <constraint firstItem="ZHP-aO-cBk" firstAttribute="trailing" secondItem="4kN-8K-gM9" secondAttribute="trailing" constant="20" id="egO-zB-efN"/>
                             <constraint firstItem="yB2-sF-tqs" firstAttribute="top" secondItem="4JV-r6-luC" secondAttribute="bottom" constant="20" id="hAD-jQ-eLo"/>
                             <constraint firstItem="4kN-8K-gM9" firstAttribute="leading" secondItem="4JV-r6-luC" secondAttribute="leading" id="hyU-dP-Zcc"/>
+                            <constraint firstItem="fGb-4v-e2b" firstAttribute="top" secondItem="4JV-r6-luC" secondAttribute="bottom" constant="20" id="iVl-Mf-5MX"/>
                             <constraint firstItem="yB2-sF-tqs" firstAttribute="leading" secondItem="ZHP-aO-cBk" secondAttribute="leading" constant="20" id="rMF-jX-a4l"/>
                             <constraint firstItem="4JV-r6-luC" firstAttribute="top" secondItem="4kN-8K-gM9" secondAttribute="bottom" id="xRb-1q-Gad"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="yB2-sF-tqs"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="6by-4V-XuW"/>
                     <connections>
+                        <outlet property="familyView" destination="fGb-4v-e2b" id="kJI-xP-J5H"/>
                         <outlet property="noFamilyView" destination="yB2-sF-tqs" id="dp1-fy-2tU"/>
                         <segue destination="MJK-PM-TUJ" kind="show" identifier="family-create-join" destinationCreationSelector="segueCreateJoin:" id="Abf-zv-CJ0"/>
                     </connections>
