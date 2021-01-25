@@ -347,6 +347,24 @@ class FamilyCreateJoinVC: UIViewController
                 }
             }
         }
+        else
+        {
+            guard let idString = tNameOrId.text, !idString.isEmpty, let id = Int(idString) else
+            { msg("ID Incorrect", "Please make sure your ID is an positive integer."); return }
+            
+            // Join family
+            sendReq(APIs.familyAction, title: "Joining...", params: ["pin": pin, "action": "join"])
+            {
+                // Save
+                $0.localSave()
+                
+                // Send success message
+                self.msg("Joined!", "Your family ID is \($0.fid)")
+                {
+                    self.dismiss()
+                }
+            }
+        }
     }
 }
 
