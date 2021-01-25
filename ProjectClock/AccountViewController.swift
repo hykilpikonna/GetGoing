@@ -48,7 +48,7 @@ class AccountViewController: UIViewController
     func logout()
     {
         // Remove login info
-        ["id", "user", "pass"].forEach { localStorage.removeObject(forKey: $0) }
+        ["id", "user", "pass", "family"].forEach { localStorage.removeObject(forKey: $0) }
         
         // Switch UI
         vLogin.isHidden = false
@@ -100,6 +100,19 @@ class LoginVC: UIViewController
             localStorage["pass"] = pass.sha256
             localStorage["id"] = $0
             
+            send(APIs.familyGet)
+            {
+                localStorage["family"] = $0
+                self.loginSuccess(login)
+            }
+            err: { it in self.loginSuccess(login) }
+        }
+    }
+    
+    private func loginSuccess(_ login: Bool)
+    {
+        ui
+        {
             // Send feedback
             if login { self.msg("Login success!", "Now you can use account features, yay!") }
             else { self.msg("Registration success!", "Now you have an account, yay!") }

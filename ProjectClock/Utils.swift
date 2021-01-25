@@ -148,13 +148,16 @@ extension UIViewController
     /**
      Send a http request even more conveniently
      */
-    func sendReq<T: Decodable>(_ api: API<T>, title: String, errors: [String: String] = [:], params: [String: String]? = [:], _ success: @escaping (T) -> Void, err: @escaping (String) -> Void = {it in})
+    func sendReq<T: Decodable>(_ api: API<T>, title: String, errors: [String: String] = [:], params: [String: String]? = [:], _ success: @escaping (T) -> Void, err: ((String) -> Void)? = nil)
     {
         // Send request
         let a = alert(title, "Please Wait")
         send(api, params) { it in a.dismiss { success(it) } }
         err:
         {
+            // Call callback error function
+            if let err = err { err($0); return }
+            
             // Display error message
             print("===== Error: \($0) =====")
             let message = errors[$0.trimmingCharacters(in: .whitespaces)]
