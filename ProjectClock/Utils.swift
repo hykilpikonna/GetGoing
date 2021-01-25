@@ -165,6 +165,30 @@ extension UIViewController
             a.dismiss { self.msg("An error occurred", message) }
         }
     }
+    
+    /**
+     Asks the user to enter a pin
+     */
+    func enterPin(_ title: String = "Enter Pin", _ message: String = "Please enter your family pin.", _ then: @escaping (String) -> Void)
+    {
+        // Create alert
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        
+        // Add next button
+        alert.addAction(UIAlertAction(title: "Next", style: UIAlertAction.Style.default) { it in
+            let t = alert.textFields![0] as UITextField
+            then(t.text!)
+        })
+        
+        // Add pin text field
+        alert.addTextField(configurationHandler: { (t: UITextField!) in
+            t.placeholder = "Enter Pin"
+            t.isSecureTextEntry = true
+        })
+        
+        // Present alert
+        self.present(alert, animated: true, completion: nil)
+    }
 }
 
 
