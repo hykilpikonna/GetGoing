@@ -258,6 +258,10 @@ class FamilyCreateJoinVC: UIViewController
             // Create family
             sendReq(APIs.familyCreate, title: "Creating...", params: ["name": name, "pin": pin])
             {
+                // Save
+                localStorage["family"] = $0
+                
+                // Send success message
                 self.msg("Created!", "Your family ID is \($0.fid)")
                 {
                     self.dismiss()
