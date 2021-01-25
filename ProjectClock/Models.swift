@@ -14,6 +14,19 @@ struct Family: Codable
     var name: String
     var members: String
     // And a hidden field: admin pin
+    
+    /// Save family to local storage
+    func localSave()
+    {
+        localStorage.setValue(JSON.stringify(self)!, forKey: "family")
+    }
+    
+    /// Read family object from local storage
+    static func fromLocal() -> Family?
+    {
+        guard let f = localStorage.string(forKey: "family") else { return nil }
+        return JSON.parse(Family.self, f)
+    }
 }
 
 struct WVM: Codable
