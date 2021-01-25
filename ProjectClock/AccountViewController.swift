@@ -167,8 +167,14 @@ class ManageVC: UIViewController
     func display()
     {
         lUsername.text = localStorage.string(forKey: "name")
-        // TODO: Correct join date
+        // TODO: Implement join date (not important)
         lJoinDate.text = localStorage.string(forKey: "id")
+        
+        // Display family name
+        if let family = localStorage.object(forKey: "family") as? Family
+        {
+            lCurrentFamily.text = family.name
+        }
     }
     
     /**
@@ -198,6 +204,8 @@ class ManageVC: UIViewController
  */
 class FamilyVC: UIViewController
 {
+    // No family view - prompt to create/join a family
+    @IBOutlet weak var noFamilyView: UIView!
     var createMode: Bool!
     
     @IBAction func btnCreate(_ sender: Any)
