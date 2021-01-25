@@ -137,8 +137,8 @@ class APIs
      
      ## Parameters (Besides from username and password)
      - fid: Family ID
-     - orig_pin: Original admin pin
-     - new_pin: New admin pin
+     - oldPin: Original admin pin
+     - newPin: New admin pin
      
      ## Returns
      Success or not
@@ -208,6 +208,7 @@ func send<T: Decodable>(_ api: API<T>, _ params: [String: String]? = [:], _ succ
     {
         if params!["username"] == nil { params!["username"] = localStorage.string(forKey: "name") }
         if params!["password"] == nil { params!["password"] = localStorage.string(forKey: "pass") }
+        if params!["fid"] == nil, let f = Family.fromLocal() { params!["fid"] = String(f.fid) }
     }
     
     // Create task
