@@ -101,7 +101,7 @@ class APIs
      Create a family
      
      ## Parameters (Besides from username and password)
-     - fname: Family name
+     - name: Family name
      - pin: Admin pin
      
      ## Returns

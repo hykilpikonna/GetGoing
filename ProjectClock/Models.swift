@@ -12,7 +12,7 @@ struct Family: Codable
 {
     var fid: Int
     var name: String
-    var members: [String]
+    var members: String
     // And a hidden field: admin pin
 }
 

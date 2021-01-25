@@ -155,7 +155,7 @@ extension UIViewController
             // Display error message
             print("===== Error: \($0) =====")
             let message = errors[$0.trimmingCharacters(in: .whitespaces)]
-                ?? "Maybe the server is on fire, just wait a few hours."
+                ?? "Maybe the server is on fire, just wait a few hours. (Error: \($0))"
             a.dismiss { self.msg("An error occurred", message) }
         }
     }

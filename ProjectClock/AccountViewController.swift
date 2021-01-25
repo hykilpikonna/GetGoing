@@ -250,6 +250,17 @@ class FamilyCreateJoinVC: UIViewController
     {
         // Check pin
         guard let pin = tPin.text, pin.count >= 4 else { msg("Pin Too Weak", "Your family pin must be 4 numbers or more."); return }
+        
+        if createMode
+        {
+            guard let name = tNameOrId.text, !name.isEmpty else { msg("Name Empty", "You must enter a family name"); return }
+            
+            // Create family
+            sendReq(APIs.familyCreate, title: "Creating...", params: ["name": name, "pin": pin])
+            {
+                self.msg("Created!", "Your family ID is \($0.fid)")
+            }
+        }
     }
 }
 
