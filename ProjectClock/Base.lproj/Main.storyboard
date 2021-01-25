@@ -1032,7 +1032,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UGD-ka-LPo">
                                                 <rect key="frame" x="120" y="0.0" width="254" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="one-time-code"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" secureTextEntry="YES" textContentType="one-time-code"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -1128,7 +1128,7 @@
                                     <constraint firstAttribute="trailing" secondItem="vpv-oC-dfU" secondAttribute="trailing" id="oPm-FV-t2A"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yB2-sF-tqs">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yB2-sF-tqs">
                                 <rect key="frame" x="20" y="75" width="374" height="107.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Afe-5l-IkF">
@@ -1189,11 +1189,6 @@
                             <constraint firstItem="yB2-sF-tqs" firstAttribute="leading" secondItem="ZHP-aO-cBk" secondAttribute="leading" constant="20" id="rMF-jX-a4l"/>
                             <constraint firstItem="4JV-r6-luC" firstAttribute="top" secondItem="4kN-8K-gM9" secondAttribute="bottom" id="xRb-1q-Gad"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="yB2-sF-tqs"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="6by-4V-XuW"/>
                     <connections>

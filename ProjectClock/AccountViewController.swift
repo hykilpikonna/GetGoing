@@ -314,6 +314,7 @@ class FamilyCreateJoinVC: UIViewController
         // Set UI according to createMode
         lFamilyNameOrId.text = createMode ? "Family Name" : "Family ID"
         bCreateJoin.setTitle(createMode ? "Create" : "Join", for: .normal)
+        tNameOrId.keyboardType = createMode ? .default : .numberPad
         
         // Default name
         if createMode
