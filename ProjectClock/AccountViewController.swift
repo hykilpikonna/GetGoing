@@ -251,6 +251,8 @@ class FamilyVC: UIViewController
             
             self.enterPin("Change Pin", "Enter your NEW pin:") { newPin in
                 
+                guard newPin.count >= 4 else { self.msg("Pin Too Weak", "Your family pin must be 4 numbers or more."); return }
+                
                 self.sendReq(APIs.familyChangePin, title: "Updating Pin...", params: ["oldPin": oldPin, "newPin": newPin]) { it in
                     
                     self.msg("Update Success!", "Your family pin is updated.")
