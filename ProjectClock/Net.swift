@@ -121,18 +121,6 @@ class APIs
     static let familyCreate = API<Family>(loc: "/family/create")
     
     /**
-     Delete a family
-     
-     ## Parameters (Besides from username and password)
-     - fid: Family ID
-     - pin: Admin pin
-     
-     ## Returns
-     Success or not
-     */
-    static let familyDelete = API<String>(loc: "/family/delete")
-    
-    /**
      Change a family's admin pin
      
      ## Parameters (Besides from username and password)
@@ -146,28 +134,17 @@ class APIs
     static let familyChangePin = API<String>(loc: "/family/update_pin")
     
     /**
-     Join family
+     Family-related action
      
      ## Parameters (Besides from username and password)
      - fid: Family ID
      - pin: Admin pin
+     - action: Join / Leave / Delete
      
      ## Returns
-     Family object
+     Family object or success message
      */
-    static let familyJoin = API<Family>(loc: "/family/join")
-    
-    /**
-     Leave family
-     
-     ## Parameters (Besides from username and password)
-     - fid: Family ID
-     - pin: Admin pin
-     
-     ## Returns
-     Success or not
-     */
-    static let familyLeave = API<String>(loc: "/family/leave")
+    static let familyAction = API<Family>(loc: "/family/action")
     
     private init() {}
 }
