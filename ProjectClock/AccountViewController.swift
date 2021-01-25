@@ -241,6 +241,17 @@ class FamilyVC: UIViewController
             familyView.isHidden = true
         }
     }
+    
+    /**
+     Called when the user clicks the change pin button
+     */
+    @IBAction func btnChangePin(_ sender: Any)
+    {
+        enterPin("Change Pin", "Enter your OLD pin:")
+        {
+            print($0)
+        }
+    }
 }
 
 /**
