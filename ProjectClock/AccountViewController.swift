@@ -232,8 +232,15 @@ class FamilyCreateJoinVC: UIViewController
      */
     override func viewDidLoad()
     {
+        // Set UI according to createMode
         lFamilyNameOrId.text = createMode ? "Family Name" : "Family ID"
         bCreateJoin.setTitle(createMode ? "Create" : "Join", for: .normal)
+        
+        // Default name
+        if createMode
+        {
+            tNameOrId.text = "\(localStorage.string(forKey: "name")!)'s Family"
+        }
     }
     
     /**
