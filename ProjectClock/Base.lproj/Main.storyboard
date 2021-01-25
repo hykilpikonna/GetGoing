@@ -373,7 +373,7 @@
                             <constraint firstItem="8n2-Ve-Po9" firstAttribute="top" secondItem="Tq0-EC-Sco" secondAttribute="bottom" id="zMA-9E-p8y"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Stopwatch" image="clock.arrow.circlepath" catalog="system" selectedImage="clock.arrow.circlepath" id="hNc-UI-vIQ"/>
+                    <tabBarItem key="tabBarItem" title="Stopwatch" image="stopwatch" catalog="system" selectedImage="stopwatch" id="hNc-UI-vIQ"/>
                     <connections>
                         <outlet property="resetButton" destination="Q7i-3U-NbI" id="gYT-DB-XpP"/>
                         <outlet property="startButton" destination="Jse-AL-cOs" id="iq2-xE-Nir"/>
@@ -1213,10 +1213,10 @@
     <resources>
         <image name="alarm.fill" catalog="system" width="124" height="128"/>
         <image name="checkmark" catalog="system" width="128" height="114"/>
-        <image name="clock.arrow.circlepath" catalog="system" width="128" height="110"/>
         <image name="hammer.fill" catalog="system" width="128" height="117"/>
         <image name="person.crop.circle" catalog="system" width="128" height="121"/>
         <image name="person.crop.circle.badge.checkmark" catalog="system" width="128" height="113"/>
+        <image name="stopwatch" catalog="system" width="121" height="128"/>
         <image name="trash.fill" catalog="system" width="121" height="128"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

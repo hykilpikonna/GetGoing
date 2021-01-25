@@ -7,7 +7,8 @@
 import Foundation
 
 /// Base URL of the HTTP server
-let baseUrl = "https://alarm-clock-api.hydev.org"
+//let baseUrl = "https://alarm-clock-api.hydev.org"
+let baseUrl = "http://192.168.0.12:8080"
 
 /// Json class
 class JSON
