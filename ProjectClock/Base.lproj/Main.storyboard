@@ -1086,9 +1086,12 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="De7-dU-p8j">
                                                 <rect key="frame" x="0.0" y="40" width="374" height="30"/>
-                                                <state key="normal" title="Delete Family">
+                                                <state key="normal" title="Leave Family">
                                                     <color key="titleColor" systemColor="systemRedColor"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="btnLeave:" destination="4ss-Ye-Da4" eventType="touchUpInside" id="YMe-ri-xkZ"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>

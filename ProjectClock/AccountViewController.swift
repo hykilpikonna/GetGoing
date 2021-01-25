@@ -260,6 +260,21 @@ class FamilyVC: UIViewController
             }
         }
     }
+    
+    /**
+     Called when the user clicks the leave family button
+     */
+    @IBAction func btnLeave(_ sender: Any)
+    {
+        enterPin()
+        {
+            self.sendReq(APIs.familyChangePin, title: "Leaving...", params: ["pin": $0]) { it in
+                
+                localStorage.removeObject(forKey: "family")
+                self.msg("Leave Success!", "You left the family.")
+            }
+        }
+    }
 }
 
 /**
