@@ -353,7 +353,7 @@ class FamilyCreateJoinVC: UIViewController
             { msg("ID Incorrect", "Please make sure your ID is an positive integer."); return }
             
             // Join family
-            sendReq(APIs.familyAction, title: "Joining...", params: ["pin": pin, "action": "join"])
+            sendReq(APIs.familyAction, title: "Joining...", params: ["fid": String(id), "pin": pin, "action": "join"])
             {
                 // Save
                 $0.localSave()
