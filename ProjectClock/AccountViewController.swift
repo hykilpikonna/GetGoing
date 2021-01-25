@@ -199,18 +199,26 @@ class FamilyVC: UIViewController
         performSegue(withIdentifier: "family-create-join", sender: nil)
     }
     
-    @IBSegueAction func sendAlarm(_ c: NSCoder) -> FamilyCreateJoinVC?
+    @IBSegueAction func segueCreateJoin(_ coder: NSCoder) -> FamilyCreateJoinVC?
     {
-        return FamilyCreateJoinVC(coder: c, create: createMode)
+        return FamilyCreateJoinVC(coder: coder, create: createMode)
     }
 }
 
-
+/**
+ Create or join a family
+ */
 class FamilyCreateJoinVC: UIViewController
 {
     let createMode: Bool
     @IBOutlet weak var lFamilyNameOrId: UILabel!
+    @IBOutlet weak var bCreateJoin: UIButton!
+    @IBOutlet weak var tNameOrId: UITextField!
+    @IBOutlet weak var tPin: UITextField!
     
+    /**
+     Pass in create mode from FamilyVC
+     */
     init?(coder: NSCoder, create: Bool)
     {
         createMode = create
@@ -225,6 +233,16 @@ class FamilyCreateJoinVC: UIViewController
     override func viewDidLoad()
     {
         lFamilyNameOrId.text = createMode ? "Family Name" : "Family ID"
+        bCreateJoin.setTitle(createMode ? "Create" : "Join", for: .normal)
+    }
+    
+    /**
+     Called when the user clicks create or join button
+     */
+    @IBAction func btnCreateOrJoin(_ sender: Any)
+    {
+        // Check pin
+        guard let pin = tPin.text, pin.count >= 4 else { msg("Pin Too Weak", "Your family pin must be 4 numbers or more."); return }
     }
 }
 
