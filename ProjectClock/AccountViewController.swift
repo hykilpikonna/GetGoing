@@ -259,6 +259,9 @@ class FamilyCreateJoinVC: UIViewController
             sendReq(APIs.familyCreate, title: "Creating...", params: ["name": name, "pin": pin])
             {
                 self.msg("Created!", "Your family ID is \($0.fid)")
+                {
+                    self.dismiss()
+                }
             }
         }
     }

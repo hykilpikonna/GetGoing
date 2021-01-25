@@ -122,13 +122,13 @@ extension UIViewController
      - Parameter okayable: Whether the alert can be okayed
      */
     @discardableResult
-    func alert(_ title: String, _ message: String, okayable: Bool = false) -> UIAlertController
+    func alert(_ title: String, _ message: String, okayable: Bool = false, _ completion: (() -> Void)? = nil) -> UIAlertController
     {
         // Create alert
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         // Add okay button if it's okayable
-        if okayable { alert.addAction(UIAlertAction(title: "OK", style: .default)) }
+        if okayable { alert.addAction(UIAlertAction(title: "OK", style: .default) { it in if let c = completion { c() } }) }
         
         // Display alert
         self.present(alert, animated: true, completion: nil)
@@ -137,7 +137,10 @@ extension UIViewController
     
     /// A message is an okayable alert
     @discardableResult
-    func msg(_ title: String, _ message: String) -> UIAlertController { alert(title, message, okayable: true) }
+    func msg(_ title: String, _ message: String, _ completion: (() -> Void)? = nil) -> UIAlertController
+    {
+        alert(title, message, okayable: true, completion)
+    }
     
     /// More convenient dismiss function
     func dismiss(_ completion: (() -> Void)? = nil) { ui { self.dismiss(animated: false, completion: completion) } }
