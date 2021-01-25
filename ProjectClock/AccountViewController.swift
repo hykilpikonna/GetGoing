@@ -171,7 +171,7 @@ class ManageVC: UIViewController
         lJoinDate.text = localStorage.string(forKey: "id")
         
         // Display family name
-        if let family = localStorage.object(forKey: "family") as? Family
+        if let family = Family.fromLocal()
         {
             lCurrentFamily.text = family.name
         }
