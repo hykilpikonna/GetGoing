@@ -105,7 +105,7 @@ class LoginVC: UIViewController
                 $0.localSave()
                 self.loginSuccess(login)
             }
-            err: { it in self.loginSuccess(login) }
+            err: { it in print(it); self.loginSuccess(login) }
         }
     }
     
@@ -247,9 +247,15 @@ class FamilyVC: UIViewController
      */
     @IBAction func btnChangePin(_ sender: Any)
     {
-        enterPin("Change Pin", "Enter your OLD pin:")
-        {
-            print($0)
+        self.enterPin("Change Pin", "Enter your OLD pin:") { oldPin in
+            
+            self.enterPin("Change Pin", "Enter your NEW pin:") { newPin in
+                
+                self.sendReq(APIs.familyChangePin, title: "Updating Pin...", params: ["oldPin": oldPin, "newPin": newPin]) { it in
+                    
+                    self.msg("Update Success!", "Your family pin is updated.")
+                }
+            }
         }
     }
 }
