@@ -229,6 +229,7 @@ class FamilyVC: UIViewController
     
     // Family view - Display family information and controls
     @IBOutlet weak var familyView: UIView!
+    @IBOutlet weak var table: UITableView!
     
     /**
      Called when information is updated
@@ -236,13 +237,19 @@ class FamilyVC: UIViewController
     override func viewDidLoad()
     {
         FamilyVC.this = self
+        
         if let _ = Family.fromLocal()
         {
+            // Family exists
             noFamilyView.isHidden = true
             familyView.isHidden = false
+            
+            table.dataSource = self
+            table.delegate = self
         }
         else
         {
+            // Family doesn't exist
             noFamilyView.isHidden = false
             familyView.isHidden = true
         }
@@ -291,6 +298,39 @@ class FamilyVC: UIViewController
                 }
             }
         }
+    }
+}
+
+/**
+ Table data source
+ */
+extension FamilyVC: UITableViewDelegate, UITableViewDataSource
+{
+    /**
+     Define row count
+     */
+    func tableView(_ _: UITableView, numberOfRowsInSection _: Int) -> Int
+    {
+        guard let family = Family.fromLocal() else { return 0 }
+        return family.membersList.count
+    }
+    
+    /**
+     Set cell at i
+     */
+    func tableView(_ view: UITableView, cellForRowAt i: IndexPath) -> UITableViewCell
+    {
+        let cell = view.dequeueReusableCell(withIdentifier: "cell", for: i)
+        cell.textLabel?.text = Family.fromLocal()!.membersList[i.row]
+        return cell
+    }
+    
+    /**
+     Called when the user clicks on the cell at i
+     */
+    func tableView(_ view: UITableView, didSelectRowAt i: IndexPath)
+    {
+        print(i.row)
     }
 }
 

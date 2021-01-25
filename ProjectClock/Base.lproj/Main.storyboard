@@ -1090,18 +1090,39 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fGb-4v-e2b">
                                 <rect key="frame" x="20" y="75" width="374" height="575"/>
                                 <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rDD-Q4-4BN">
+                                        <rect key="frame" x="0.0" y="30.5" width="374" height="354.5"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="66" id="PpM-BI-Arz">
+                                                <rect key="frame" x="0.0" y="28" width="374" height="66"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PpM-BI-Arz" id="zXh-kT-4wz">
+                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="66"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="vpv-oC-dfU">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="110"/>
+                                        <rect key="frame" x="0.0" y="405" width="374" height="150"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R2H-k5-27v">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jA1-s3-6ml">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
+                                                <state key="normal" title="Refresh"/>
+                                                <connections>
+                                                    <action selector="btnChangePin:" destination="4ss-Ye-Da4" eventType="touchUpInside" id="iZl-b9-AhU"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R2H-k5-27v">
+                                                <rect key="frame" x="0.0" y="40" width="374" height="30"/>
                                                 <state key="normal" title="Change Pin"/>
                                                 <connections>
                                                     <action selector="btnChangePin:" destination="4ss-Ye-Da4" eventType="touchUpInside" id="0g1-r0-3Fn"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="De7-dU-p8j">
-                                                <rect key="frame" x="0.0" y="40" width="374" height="30"/>
+                                                <rect key="frame" x="0.0" y="80" width="374" height="30"/>
                                                 <state key="normal" title="Leave Family">
                                                     <color key="titleColor" systemColor="systemOrangeColor"/>
                                                 </state>
@@ -1110,7 +1131,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mA7-bI-2hr">
-                                                <rect key="frame" x="0.0" y="80" width="374" height="30"/>
+                                                <rect key="frame" x="0.0" y="120" width="374" height="30"/>
                                                 <state key="normal" title="Delete Family">
                                                     <color key="titleColor" systemColor="systemRedColor"/>
                                                 </state>
@@ -1120,12 +1141,25 @@
                                             </button>
                                         </subviews>
                                     </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Members" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BH2-a6-zBn">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="vpv-oC-dfU" firstAttribute="top" secondItem="fGb-4v-e2b" secondAttribute="top" id="L3g-D4-8a3"/>
+                                    <constraint firstItem="vpv-oC-dfU" firstAttribute="top" secondItem="rDD-Q4-4BN" secondAttribute="bottom" constant="20" id="0QU-6L-lAV"/>
+                                    <constraint firstItem="BH2-a6-zBn" firstAttribute="top" secondItem="fGb-4v-e2b" secondAttribute="top" id="AY9-6n-dG4"/>
+                                    <constraint firstAttribute="trailing" secondItem="rDD-Q4-4BN" secondAttribute="trailing" id="MHy-JS-4ch"/>
+                                    <constraint firstItem="rDD-Q4-4BN" firstAttribute="top" secondItem="BH2-a6-zBn" secondAttribute="bottom" constant="10" id="Soh-Ay-8S8"/>
                                     <constraint firstItem="vpv-oC-dfU" firstAttribute="leading" secondItem="fGb-4v-e2b" secondAttribute="leading" id="ZS1-h8-ljQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="vpv-oC-dfU" secondAttribute="bottom" constant="20" id="bKP-SZ-aXH"/>
+                                    <constraint firstAttribute="trailing" secondItem="BH2-a6-zBn" secondAttribute="trailing" id="chx-DC-ILr"/>
+                                    <constraint firstItem="rDD-Q4-4BN" firstAttribute="leading" secondItem="fGb-4v-e2b" secondAttribute="leading" id="lBl-wW-7fM"/>
                                     <constraint firstAttribute="trailing" secondItem="vpv-oC-dfU" secondAttribute="trailing" id="oPm-FV-t2A"/>
+                                    <constraint firstItem="BH2-a6-zBn" firstAttribute="leading" secondItem="fGb-4v-e2b" secondAttribute="leading" id="wdL-Bi-3iu"/>
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yB2-sF-tqs">
@@ -1189,11 +1223,17 @@
                             <constraint firstItem="yB2-sF-tqs" firstAttribute="leading" secondItem="ZHP-aO-cBk" secondAttribute="leading" constant="20" id="rMF-jX-a4l"/>
                             <constraint firstItem="4JV-r6-luC" firstAttribute="top" secondItem="4kN-8K-gM9" secondAttribute="bottom" id="xRb-1q-Gad"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="yB2-sF-tqs"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="6by-4V-XuW"/>
                     <connections>
                         <outlet property="familyView" destination="fGb-4v-e2b" id="kJI-xP-J5H"/>
                         <outlet property="noFamilyView" destination="yB2-sF-tqs" id="dp1-fy-2tU"/>
+                        <outlet property="table" destination="rDD-Q4-4BN" id="64A-WA-DQx"/>
                         <segue destination="MJK-PM-TUJ" kind="show" identifier="family-create-join" destinationCreationSelector="segueCreateJoin:" id="Abf-zv-CJ0"/>
                     </connections>
                 </viewController>
