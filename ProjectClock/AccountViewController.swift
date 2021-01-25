@@ -204,6 +204,8 @@ class ManageVC: UIViewController
  */
 class FamilyVC: UIViewController
 {
+    static var this: FamilyVC!
+    
     // No family view - prompt to create/join a family
     @IBOutlet weak var noFamilyView: UIView!
     var createMode: Bool!
@@ -228,8 +230,12 @@ class FamilyVC: UIViewController
     // Family view - Display family information and controls
     @IBOutlet weak var familyView: UIView!
     
+    /**
+     Called when information is updated
+     */
     override func viewDidLoad()
     {
+        FamilyVC.this = self
         if let _ = Family.fromLocal()
         {
             noFamilyView.isHidden = true
@@ -324,6 +330,16 @@ class FamilyCreateJoinVC: UIViewController
     }
     
     /**
+     Called after successfully joining or creating a family.
+     */
+    func afterFamilyChange()
+    {
+        self.dismiss()
+        FamilyVC.this.viewDidLoad()
+        AccountViewController.this.login()
+    }
+    
+    /**
      Called when the user clicks create or join button
      */
     @IBAction func btnCreateOrJoin(_ sender: Any)
@@ -342,10 +358,7 @@ class FamilyCreateJoinVC: UIViewController
                 $0.localSave()
                 
                 // Send success message
-                self.msg("Created!", "Your family ID is \($0.fid)")
-                {
-                    self.dismiss()
-                }
+                self.msg("Created!", "Your family ID is \($0.fid)") { self.afterFamilyChange() }
             }
         }
         else
@@ -360,10 +373,7 @@ class FamilyCreateJoinVC: UIViewController
                 $0.localSave()
                 
                 // Send success message
-                self.msg("Joined!", "Your family ID is \($0.fid)")
-                {
-                    self.dismiss()
-                }
+                self.msg("Joined!", "Your family ID is \($0.fid)") { self.afterFamilyChange() }
             }
         }
     }
