@@ -285,6 +285,10 @@ class FamilyVC: UIViewController
                 if i == 0 || i == 1 { localStorage.removeObject(forKey: "family") }
                 
                 self.msg("\(action) Success!", msg)
+                {
+                    self.viewDidLoad()
+                    AccountViewController.this.login()
+                }
             }
         }
     }
