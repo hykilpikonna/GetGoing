@@ -51,6 +51,7 @@ class Alarm: Codable
     var text: String
     var wakeMethod: WVM
     var alarmTone: SystemSoundID
+    var notificationID: String
     
     /// What days does it repeat (Sun, Mon, Tue, Wed, Thu, Fri, Sat)
     var repeats: [Bool]
@@ -74,6 +75,7 @@ class Alarm: Codable
         self.repeats = repeats
         self.lastActivate = lastActivate
         self.alarmTone = alarmTone
+        self.notificationID = "notification.id.\(Int.random(in: 1...Int.max))"
     }
     
     /// Does it automatically disable after activating once

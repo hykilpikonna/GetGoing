@@ -38,7 +38,7 @@ class Notification {
         
         // Scheduels alarm notification for proper time
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: alarm.nextActivate!.timeIntervalSince(Date()), repeats: false)
-        let request = UNNotificationRequest(identifier: "notification.id.01", content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: alarm.notificationID, content: content, trigger: trigger)
         
         // Sends notification
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
