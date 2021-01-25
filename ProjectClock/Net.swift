@@ -98,6 +98,17 @@ class APIs
     static let downloadConfig = API<String>(loc: "/backup/download")
     
     /**
+     Get family info for this account
+     
+     ## Parameters (Besides from username and password)
+     None
+     
+     ## Returns
+     Family object
+     */
+    static let familyGet = API<Family>(loc: "/family/get")
+    
+    /**
      Create a family
      
      ## Parameters (Besides from username and password)
