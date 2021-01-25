@@ -37,6 +37,8 @@ class Notification {
         content.attachments = [attachment]
         
         // Scheduels alarm notification for proper time
+        let interval = alarm.nextActivate!.timeIntervalSince(Date())
+        guard interval > 0 else { return }
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: alarm.nextActivate!.timeIntervalSince(Date()), repeats: false)
         let request = UNNotificationRequest(identifier: alarm.notificationID, content: content, trigger: trigger)
         
