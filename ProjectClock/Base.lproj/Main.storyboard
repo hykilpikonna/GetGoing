@@ -99,6 +99,7 @@
                                             <outlet property="goingOffText" destination="EPJ-eL-Kek" id="QNo-WD-AyS"/>
                                             <outlet property="repeatText" destination="YhV-X3-y1v" id="Alj-Ko-6y6"/>
                                             <outlet property="time" destination="mjO-SX-f31" id="OQC-eJ-Qjc"/>
+                                            <segue destination="Mki-dC-5Kc" kind="show" id="WYD-ju-WX0"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1206,6 +1207,9 @@
             <point key="canvasLocation" x="895.6521739130435" y="2270.7589285714284"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Qim-4Q-43N"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="alarm.fill" catalog="system" width="124" height="128"/>
         <image name="checkmark" catalog="system" width="128" height="114"/>
