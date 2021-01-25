@@ -262,16 +262,23 @@ class FamilyVC: UIViewController
     }
     
     /**
-     Called when the user clicks the leave family button
+     Called when the user clicks the leave or delete family button
      */
-    @IBAction func btnLeave(_ sender: Any)
+    @IBAction func btnLeave(_ sender: UIButton)
     {
+        let i = sender.tag
+        let action = ["Leave", "Delete"][i]
+        let title = ["Leaving...", "Deleting..."][i]
+        let msg = ["You left the family.", "You deleted the family."][i]
+        
         enterPin()
         {
-            self.sendReq(APIs.familyChangePin, title: "Leaving...", params: ["pin": $0]) { it in
+            self.sendReq(APIs.familyAction, title: title, params: ["pin": $0, "action": action]) { it in
                 
-                localStorage.removeObject(forKey: "family")
-                self.msg("Leave Success!", "You left the family.")
+                // Leave or delete, clear local storage's family section
+                if i == 0 || i == 1 { localStorage.removeObject(forKey: "family") }
+                
+                self.msg("\(action) Success!", msg)
             }
         }
     }
