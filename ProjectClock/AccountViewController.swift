@@ -178,6 +178,32 @@ class ManageVC: UIViewController
     }
     
     /**
+     Called when the user clicks the upload backup button
+     */
+    @IBAction func uploadBackup(_ sender: Any)
+    {
+        sendReq(APIs.uploadConfig, title: "Uploading...", params: ["config": localStorage.string(forKey: "alarms")!])
+            { it in self.msg("Success!", "You're backed up.") }
+    }
+    
+    /**
+     Called when the user clicks the download backup button
+     */
+    @IBAction func downloadBackup(_ sender: Any)
+    {
+        sendReq(APIs.downloadConfig, title: "Downloading...")
+        {
+            // Save backup
+            localStorage.setValue($0, forKey: "alarms")
+            
+            // Update UI
+            AlarmViewController.staticTable?.reloadData()
+            
+            self.msg("Success!", "You're restored your backup.")
+        }
+    }
+    
+    /**
      Called when the user clicks the logout button
      */
     @IBAction func logout(_ sender: Any)

@@ -85,7 +85,7 @@ class APIs
      ## Returns
      Success or error
      */
-    static let uploadConfig = API<String>(loc: "/backup/upload")
+    static let uploadConfig = API<String>(loc: "/user/backup/upload")
     
     /**
      Download the config from the cloud.
@@ -96,7 +96,7 @@ class APIs
      ## Returns
      Config Json
      */
-    static let downloadConfig = API<String>(loc: "/backup/download")
+    static let downloadConfig = API<String>(loc: "/user/backup/download")
     
     /**
      Get family info for this account

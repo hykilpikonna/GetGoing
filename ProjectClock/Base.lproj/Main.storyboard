@@ -874,7 +874,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="gYR-mG-zfS">
-                                <rect key="frame" x="20" y="0.0" width="374" height="441.5"/>
+                                <rect key="frame" x="20" y="0.0" width="374" height="541.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gUf-g1-1af">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="170"/>
@@ -948,8 +948,22 @@
                                         <color key="textColor" systemColor="secondaryLabelColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3pG-br-PVl">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ae0-Ce-3T1">
                                         <rect key="frame" x="0.0" y="361.5" width="374" height="30"/>
+                                        <state key="normal" title="Download Alarm Backup"/>
+                                        <connections>
+                                            <action selector="downloadBackup:" destination="3gV-kF-UbK" eventType="touchUpInside" id="3GI-T3-9E4"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PJQ-Rs-7jD">
+                                        <rect key="frame" x="0.0" y="411.5" width="374" height="30"/>
+                                        <state key="normal" title="Upload Alarm Backup"/>
+                                        <connections>
+                                            <action selector="uploadBackup:" destination="3gV-kF-UbK" eventType="touchUpInside" id="TXd-5k-cdI"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3pG-br-PVl">
+                                        <rect key="frame" x="0.0" y="461.5" width="374" height="30"/>
                                         <state key="normal" title="Log Out">
                                             <color key="titleColor" systemColor="systemOrangeColor"/>
                                         </state>
@@ -958,7 +972,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="awy-Du-cqu">
-                                        <rect key="frame" x="0.0" y="411.5" width="374" height="30"/>
+                                        <rect key="frame" x="0.0" y="511.5" width="374" height="30"/>
                                         <state key="normal" title="Delete Account">
                                             <color key="titleColor" systemColor="systemRedColor"/>
                                         </state>
