@@ -22,6 +22,9 @@ class AlarmActivator: UITabBarController
     var timer: Timer?
     var alarm: Alarm?
     
+    /// Timer for getting family alarm updates
+    var familyTimer: Timer?
+    
     override func viewDidLoad()
     {
         start()
@@ -34,6 +37,7 @@ class AlarmActivator: UITabBarController
     {
         if timer != nil { return }
         timer = Timer.scheduledTimer(timeInterval: AlarmActivator.interval, target: self, selector: #selector(AlarmActivator.check), userInfo: nil, repeats: true)
+        familyTimer = Timer.scheduledTimer(timeInterval: 30.0, target: self, selector: #selector(AlarmActivator.checkFamily), userInfo: nil, repeats: true)
     }
     
     /**
@@ -69,7 +73,28 @@ class AlarmActivator: UITabBarController
         performSegue(withIdentifier: "activate-alarm", sender: alarm)
     }
     
-    @IBSegueAction func sendAlarm(_ coder: NSCoder) -> AlarmActivationViewController? {
+    @IBSegueAction func sendAlarm(_ coder: NSCoder) -> AlarmActivationViewController?
+    {
         return AlarmActivationViewController(coder: coder, currentAlarm: alarm!)
+    }
+    
+    /**
+     Check family alarm updates
+     */
+    @objc func checkFamily()
+    {
+        send(APIs.familyAlarmUpdates)
+        {
+            let alarms = Alarms.fromLocal()
+            $0.components(separatedBy: ",").forEach
+            {
+                guard let alarm = JSON.parse(Alarm.self, $0) else { return }
+                if (!alarms.list.contains { $0.timeText == alarm.timeText })
+                {
+                    alarms.list.append(alarm)
+                }
+            }
+            alarms.localSave()
+        }
     }
 }
