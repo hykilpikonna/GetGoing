@@ -279,6 +279,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Debug" image="hammer.fill" catalog="system" selectedImage="hammer.fill" id="QZ2-fJ-hLg"/>
+                    <connections>
+                        <outlet property="userModeButton" destination="Zrg-H8-O73" id="9sz-f3-9pJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mZu-oh-Lmb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
