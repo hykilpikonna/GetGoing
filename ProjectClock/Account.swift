@@ -344,6 +344,8 @@ class FamilyVC: UIViewController
  */
 extension FamilyVC: UITableViewDelegate, UITableViewDataSource
 {
+    static var selectedUser: String = ""
+    
     /**
      Define row count
      */
@@ -368,7 +370,7 @@ extension FamilyVC: UITableViewDelegate, UITableViewDataSource
      */
     func tableView(_ view: UITableView, didSelectRowAt i: IndexPath)
     {
-        print(i.row)
+        FamilyVC.selectedUser = Family.fromLocal()!.membersList[i.row]
         view.deselectRow(at: i, animated: true)
     }
 }
@@ -465,7 +467,7 @@ class FamilyCreateJoinVC: UIViewController
 /**
  View controller for adding an alarm to a fmaily member
  */
-class FamilyAddAlarmVC: UIViewController
+class FamilyAddAlarmVC: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
     @IBOutlet weak var table: UITableView!
     
@@ -476,13 +478,7 @@ class FamilyAddAlarmVC: UIViewController
         table.delegate = self
         table.dataSource = self
     }
-}
-
-/**
- Table data source
- */
-extension FamilyAddAlarmVC: UITableViewDelegate, UITableViewDataSource
-{
+    
     /**
      Define row count
      */
@@ -507,5 +503,16 @@ extension FamilyAddAlarmVC: UITableViewDelegate, UITableViewDataSource
     func tableView(_ view: UITableView, didSelectRowAt i: IndexPath)
     {
         view.deselectRow(at: i, animated: true)
+        enterPin()
+        {
+            self.sendReq(APIs.familyAddAlarm, title: "Adding...", params: ["to": FamilyVC.selectedUser, "pin": $0, "alarm": JSON.stringify(Alarms.fromLocal().list[i.row])!])
+            {
+                print($0)
+                self.msg("Added!", "The member will receive the alarm after opening the app.")
+                {
+                    self.dismiss()
+                }
+            }
+        }
     }
 }
