@@ -148,6 +148,19 @@ class APIs
     static let familyAction = API<Family>(loc: "/family/action")
     
     /**
+     Get updates about alarms that other family members added
+     
+     ## Parameters (Besides from username and password)
+     - fid: Family ID
+     - pin: Admin pin
+     - action: get_alarm_updates
+     
+     ## Returns
+     Alarm updates
+     */
+    static let familyAlarmUpdates = API<String>(loc: "/family/action")
+    
+    /**
      Add alarm to a family member
      
      ## Parameters (Besides from username and password)
