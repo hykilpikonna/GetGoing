@@ -198,7 +198,7 @@ class RPS {
      */
 }
 
-
+/**
 //Reference: https://youtu.be/XDuchXYiWuE
 class Shake {
     var motionManager = CMMotionManager()
@@ -215,4 +215,4 @@ class Shake {
         }
     }
 }
-
+*/

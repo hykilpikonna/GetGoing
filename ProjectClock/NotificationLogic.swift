@@ -10,6 +10,9 @@ import CoreMotion
 import UserNotifications
 import UIKit
 
+var motionManager = CMMotionManager()
+var regulate = true
+
 func walkAction() {
     
 }
@@ -19,7 +22,20 @@ func jumpAction() {
 }
 
 func shakeAction() {
+    regulate = true
     
+    while regulate {
+        motionManager.accelerometerUpdateInterval = 0.2
+        
+        motionManager.startAccelerometerUpdates(to: OperationQueue.current!) { (data,error) in
+            if let myData = data {
+                if myData.acceleration.x > 5 {
+                    print("DO SOMETHING SPECIAL")
+                    regulate = false
+                }
+            }
+        }
+    }
 }
 
 func rpsAction(choice: RPS.Choice) -> Bool? {

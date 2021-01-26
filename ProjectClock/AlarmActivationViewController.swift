@@ -92,6 +92,9 @@ class AlarmActivationViewController: UIViewController
             case "Shake":
                 shakeView.isHidden = false
                 shakeAction()
+                if regulate {
+                    endAlarm()
+                }
             default:
                 print("Invalid alarm type")
             }
