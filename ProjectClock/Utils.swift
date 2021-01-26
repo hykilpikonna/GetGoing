@@ -216,6 +216,19 @@ extension String
         let range = NSRange(location: 0, length: lhs.utf16.count)
         return regex.firstMatch(in: lhs, options: [], range: range) != nil
     }
+    
+    //Better subscripting from: https://stackoverflow.com/a/46627527
+    subscript (bounds: CountableClosedRange<Int>) -> String {
+            let start = index(startIndex, offsetBy: bounds.lowerBound)
+            let end = index(startIndex, offsetBy: bounds.upperBound)
+            return String(self[start...end])
+        }
+
+    subscript (bounds: CountableRange<Int>) -> String {
+            let start = index(startIndex, offsetBy: bounds.lowerBound)
+            let end = index(startIndex, offsetBy: bounds.upperBound)
+            return String(self[start..<end])
+        }
 }
 
 /// More convenient ui update closure
