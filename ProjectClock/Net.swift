@@ -130,9 +130,9 @@ class APIs
      - newPin: New admin pin
      
      ## Returns
-     Success or not
+     Updated family object
      */
-    static let familyChangePin = API<String>(loc: "/family/update_pin")
+    static let familyChangePin = API<Family>(loc: "/family/update_pin")
     
     /**
      Family-related action
@@ -143,9 +143,23 @@ class APIs
      - action: Join / Leave / Delete
      
      ## Returns
-     Family object or success message
+     Family object
      */
     static let familyAction = API<Family>(loc: "/family/action")
+    
+    /**
+     Add alarm to a family member
+     
+     ## Parameters (Besides from username and password)
+     - fid: Family ID
+     - pin: Admin pin
+     - to: Family member's username
+     - alarm: Alarm json
+     
+     ## Returns
+     Success message
+     */
+    static let familyAddAlarm = API<String>(loc: "/family/add_alarm")
     
     private init() {}
 }
