@@ -72,5 +72,4 @@ class AlarmActivator: UITabBarController
     @IBSegueAction func sendAlarm(_ coder: NSCoder) -> AlarmActivationViewController? {
         return AlarmActivationViewController(coder: coder, currentAlarm: alarm!)
     }
-    
 }

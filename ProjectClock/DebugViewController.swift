@@ -10,6 +10,9 @@ import UserNotifications
 
 class DebugViewController: UIViewController
 {
+    @IBOutlet weak var userModeButton: UIButton!
+    var darkMode = false
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -42,5 +45,17 @@ class DebugViewController: UIViewController
     @IBAction func deleteAlarm(_ sender: Any)
     {
         Alarms.fromLocal().apply { $0.list.removeAll() }.localSave()
+    }
+    
+    @IBAction func switchViewingMode(_ sender: Any) {
+        if !darkMode {
+            view.window?.overrideUserInterfaceStyle = .dark
+            userModeButton.setTitle("Switch to Light Mode", for: .normal)
+            darkMode = true
+        } else {
+            view.window?.overrideUserInterfaceStyle = .light
+            userModeButton.setTitle("Switch to Dark Mode", for: .normal)
+            darkMode = false
+        }
     }
 }
