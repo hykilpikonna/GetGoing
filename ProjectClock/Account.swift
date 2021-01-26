@@ -358,7 +358,7 @@ extension FamilyVC: UITableViewDelegate, UITableViewDataSource
      */
     func tableView(_ view: UITableView, cellForRowAt i: IndexPath) -> UITableViewCell
     {
-        let cell = view.dequeueReusableCell(withIdentifier: "cell", for: i)
+        let cell = view.dequeueReusableCell(withIdentifier: "family-member-cell", for: i)
         cell.textLabel?.text = Family.fromLocal()!.membersList[i.row]
         return cell
     }
@@ -369,6 +369,7 @@ extension FamilyVC: UITableViewDelegate, UITableViewDataSource
     func tableView(_ view: UITableView, didSelectRowAt i: IndexPath)
     {
         print(i.row)
+        view.deselectRow(at: i, animated: true)
     }
 }
 
@@ -461,3 +462,51 @@ class FamilyCreateJoinVC: UIViewController
     }
 }
 
+/**
+ View controller for adding an alarm to a fmaily member
+ */
+class FamilyAddAlarmVC: UIViewController
+{
+    @IBOutlet weak var table: UITableView!
+    
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        
+        table.delegate = self
+        table.dataSource = self
+    }
+}
+
+/**
+ Table data source
+ */
+extension FamilyAddAlarmVC: UITableViewDelegate, UITableViewDataSource
+{
+    /**
+     Define row count
+     */
+    func tableView(_ _: UITableView, numberOfRowsInSection _: Int) -> Int
+    {
+        return Alarms.fromLocal().list.count
+    }
+    
+    /**
+     Set cell at i
+     */
+    func tableView(_ view: UITableView, cellForRowAt i: IndexPath) -> UITableViewCell
+    {
+        let cell = view.dequeueReusableCell(withIdentifier: "family-alarm-cell", for: i)
+        let alarm = Alarms.fromLocal().list[i.row]
+        cell.textLabel?.text = String(format: "%i:%02i", alarm.hour, alarm.minute)
+        return cell
+    }
+    
+    /**
+     Called when the user clicks on the cell at i
+     */
+    func tableView(_ view: UITableView, didSelectRowAt i: IndexPath)
+    {
+        view.deselectRow(at: i, animated: true)
+    }
+}
