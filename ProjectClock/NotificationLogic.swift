@@ -18,6 +18,10 @@ func jumpAction() {
     
 }
 
+func shakeAction() {
+    
+}
+
 func rpsAction(choice: RPS.Choice) -> Bool? {
     let rps = RPS()
     return rps.playRPS(you: choice, computer: RPS.randomComputerChoice())

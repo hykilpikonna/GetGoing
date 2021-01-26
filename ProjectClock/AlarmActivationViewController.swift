@@ -23,6 +23,9 @@ class AlarmActivationViewController: UIViewController
     @IBOutlet weak var rpsView: UIView!
     @IBOutlet weak var rpsResult: UILabel!
     
+    //Shake Outlets
+    @IBOutlet weak var shakeView: UIView!
+    
     //Other Outlets
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -55,6 +58,7 @@ class AlarmActivationViewController: UIViewController
         //Hide all inactive wakemethods
         puzzleView.isHidden = true
         rpsView.isHidden = true
+        shakeView.isHidden = true
         
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(AlarmActivationViewController.playSound), userInfo: nil, repeats: true)
         setAlarmType()
@@ -85,6 +89,9 @@ class AlarmActivationViewController: UIViewController
                 rpsView.isHidden = false
                 //Get Choice here
                 //rpsAction(choice: choice)
+            case "Shake":
+                shakeView.isHidden = false
+                shakeAction()
             default:
                 print("Invalid alarm type")
             }
