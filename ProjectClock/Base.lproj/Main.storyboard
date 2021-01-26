@@ -665,6 +665,20 @@
                                     <constraint firstItem="eTb-g7-8x3" firstAttribute="top" secondItem="CZ0-R6-FDq" secondAttribute="bottom" constant="20" id="yME-j6-vSk"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zph-rd-rPI" userLabel="shakeView">
+                                <rect key="frame" x="87" y="357" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nK2-jK-GsP">
+                                        <rect key="frame" x="99" y="53" width="42" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NmX-iJ-1D0" userLabel="rpsView">
                                 <rect key="frame" x="20" y="338.5" width="374" height="165"/>
                                 <subviews>
@@ -748,6 +762,7 @@
                         <outlet property="puzzleView" destination="OMQ-qK-fej" id="KLT-oe-RJX"/>
                         <outlet property="rpsResult" destination="HEP-oh-VSY" id="W2G-eZ-mzI"/>
                         <outlet property="rpsView" destination="NmX-iJ-1D0" id="Rhg-Hm-2Xx"/>
+                        <outlet property="shakeView" destination="Zph-rd-rPI" id="aJ0-W7-cAV"/>
                         <outlet property="timeLabel" destination="vmg-Oj-8tB" id="FJJ-No-dwF"/>
                     </connections>
                 </viewController>
@@ -880,7 +895,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="170"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.crop.circle.badge.checkmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="yVW-fL-SIQ">
-                                                <rect key="frame" x="130.5" y="0.0" width="111.5" height="109.5"/>
+                                                <rect key="frame" x="132" y="0.0" width="110" height="109.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="110" id="So8-k5-nLS"/>
                                                     <constraint firstAttribute="height" constant="110" id="inA-vb-CrL"/>
