@@ -497,8 +497,7 @@ extension FamilyAddAlarmVC: UITableViewDelegate, UITableViewDataSource
     func tableView(_ view: UITableView, cellForRowAt i: IndexPath) -> UITableViewCell
     {
         let cell = view.dequeueReusableCell(withIdentifier: "family-alarm-cell", for: i)
-        let alarm = Alarms.fromLocal().list[i.row]
-        cell.textLabel?.text = String(format: "%i:%02i", alarm.hour, alarm.minute)
+        cell.textLabel?.text = Alarms.fromLocal().list[i.row].timeText
         return cell
     }
     

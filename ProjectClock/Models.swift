@@ -90,6 +90,9 @@ class Alarm: Codable, Equatable
     /// Does it automatically disable after activating once
     var oneTime: Bool { repeats.allSatisfy { !$0 } }
     
+    /// Get time in h:mm format
+    var timeText: String { String(format: "%i:%02i", hour, minute) }
+    
     /// When should the alarm activate next since lastActivate?
     var nextActivate: Date?
     {
