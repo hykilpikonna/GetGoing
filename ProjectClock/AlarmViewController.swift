@@ -55,6 +55,14 @@ extension AlarmViewController: UITableViewDelegate, UITableViewDataSource
     
     /// IDK what this does (TODO: Find out what this does)
     func tableView(_ v: UITableView, didSelectRowAt i: IndexPath) { v.deselectRow(at: i, animated: true) }
+    
+    /// Sends the selected alarm to be edited
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "edit-alarm" {
+            let vc = segue.destination as! AddAlarmViewController
+            vc.alarmCell = (sender as! AlarmTableCell)
+        }
+    }
 }
 
 /**
@@ -68,6 +76,8 @@ class AlarmTableCell: UITableViewCell
     @IBOutlet weak var enable: UISwitch!
     @IBOutlet weak var repeatText: UILabel!
     @IBOutlet weak var goingOffText: UILabel!
+    @IBOutlet weak var wvmText: UILabel!
+    
     
     var alarm: Alarm!
     
@@ -79,6 +89,7 @@ class AlarmTableCell: UITableViewCell
         self.alarm = alarm
         descriptionText.text = "- " + alarm.text
         enable.isOn = alarm.enabled
+        wvmText.text = alarm.wakeMethod.name
         
         // Display Hour, Minute, and AM or PM
         ampm.text = alarm.hour < 12 || alarm.hour == 24 ? "AM" : "PM"

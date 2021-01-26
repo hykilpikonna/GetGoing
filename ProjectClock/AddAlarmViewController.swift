@@ -9,6 +9,56 @@ import UIKit
 
 class AddAlarmViewController: UIViewController
 {
+    // Editing variables
+    var alarmCell: AlarmTableCell? = nil
+    var editFlag: Bool = false
+    var originalTime: String = ""
+    
+    override func viewDidLoad() {
+        if let alarmCell = alarmCell {
+            
+            //Toggle editing mode
+            editFlag = true
+            
+            //Convert string to Date
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "h:mma"
+            let date = dateFormatter.date(from: "\(alarmCell.time.text!)\(alarmCell.ampm.text!)")
+            
+            // Set all the original values to be edited
+            timePicker.date = date!
+            originalTime = String(dateFormatter.string(from: date!).dropLast(2))
+            
+            //Toggle proper repeats
+            if let repeats = alarmCell.repeatText.text {
+                if repeats == "Repeats: Weekdays" {
+                    repeatWeekdaysSwitch.isOn = true
+                    repeatWeekendsSwitch.isOn = false
+                } else if repeats == "Repeats: Weekends" {
+                    repeatWeekendsSwitch.isOn = true
+                    repeatWeekdaysSwitch.isOn = false
+                } else if repeats == "Repeats: Daily" {
+                    repeatWeekdaysSwitch.isOn = true
+                    repeatWeekendsSwitch.isOn = true
+                } else {
+                    repeatWeekendsSwitch.isOn = false
+                    repeatWeekdaysSwitch.isOn = false
+                }
+            }
+            
+            alarmNameTextField.text = String(alarmCell.descriptionText.text!.dropFirst(2))
+            updateETA()
+            
+            // Sets the WVM
+            if let wvm = alarmCell.wvmText.text {
+                for index in 0...wvms.count-1 {
+                    if wvm == wvms[index].name {
+                        wvmPicker.selectRow(index, inComponent: 0, animated: true)
+                    }
+                }
+            }
+        }
+    }
     // UI: Make scroll view scrollable
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var scrollViewInner: UIView!
@@ -61,9 +111,24 @@ class AddAlarmViewController: UIViewController
     @IBAction func addAlarmButton(_ sender: Any)
     {
         let (h, m, _) = timePicker.date.getHMS()
-     
-        // Check for existing alarm
-        if (Alarms.fromLocal().list.contains { $0.hour == h && $0.minute == m })
+        
+        // Check if editing alarm
+        if (editFlag)
+        {
+            let hours = Int(String(originalTime[...originalTime.index(originalTime.endIndex, offsetBy: -4 )]))!
+            let minutes = Int(String(originalTime.suffix(2)))!
+            
+            // TODO : REWRITE the am/pm check, pretty sure this could work on two alarms at once
+            let alarm = Alarms.fromLocal().list.first(where: {($0.hour == hours || $0.hour == (hours + 12)) && $0.minute == minutes})
+            
+            // Removes the alarm from stored alarms
+            let alarmsObj = Alarms.fromLocal()
+            alarmsObj.list = Alarms.fromLocal().list.filter { $0 != alarm }
+            alarmsObj.localSave()
+            
+            
+        } // Check for existing alarm
+        else if ((Alarms.fromLocal().list.contains { $0.hour == h && $0.minute == m }))
         {
             msg("Nope", "You already have an alarm at " + String(format: "%i:%02i", h, m))
             return
@@ -90,7 +155,9 @@ class AddAlarmViewController: UIViewController
         self.dismiss(animated: true, completion: nil)
     }
     
-    // Dynamically the ETA label for the alarm
+    /**
+    Dynamically the ETA label for the alarm
+    */
     func updateETA() {
         //Create alarm without adding it to the queue.
         let (h, m, _) = timePicker.date.getHMS()
@@ -109,6 +176,8 @@ class AddAlarmViewController: UIViewController
         //print(timeTill)
         timeTillAlarmLabel.text = "Going off in \(timeTill)"
     }
+    
+    
 }
 
 class WVMDataSource: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource
