@@ -43,4 +43,8 @@ class DebugViewController: UIViewController
     {
         Alarms.fromLocal().apply { $0.list.removeAll() }.localSave()
     }
+    
+    @IBAction func switchViewingMode(_ sender: Any) {
+        view.window?.overrideUserInterfaceStyle = .dark
+    }
 }

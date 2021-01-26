@@ -226,7 +226,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="oTa-Ok-U9h">
-                                <rect key="frame" x="20" y="109" width="374" height="128"/>
+                                <rect key="frame" x="20" y="109" width="374" height="174"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8o4-jF-mCC">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="36"/>
@@ -250,6 +250,15 @@
                                         <state key="normal" title="Delete All Alarms"/>
                                         <connections>
                                             <action selector="deleteAlarm:" destination="r8W-6e-Hn2" eventType="touchUpInside" id="gqI-7A-W9C"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zrg-H8-O73">
+                                        <rect key="frame" x="0.0" y="138" width="374" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Switch to Dark Mode"/>
+                                        <connections>
+                                            <action selector="deleteAlarm:" destination="r8W-6e-Hn2" eventType="touchUpInside" id="gSj-DC-XvL"/>
+                                            <action selector="switchViewingMode:" destination="r8W-6e-Hn2" eventType="touchUpInside" id="GFd-hP-L8n"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -898,7 +907,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="170"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.crop.circle.badge.checkmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="yVW-fL-SIQ">
-                                                <rect key="frame" x="130.5" y="0.0" width="111.5" height="109.5"/>
+                                                <rect key="frame" x="132" y="0.0" width="110" height="109.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="110" id="So8-k5-nLS"/>
                                                     <constraint firstAttribute="height" constant="110" id="inA-vb-CrL"/>
