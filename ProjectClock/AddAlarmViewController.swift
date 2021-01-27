@@ -68,7 +68,7 @@ class AddAlarmViewController: UIViewController
         scrollView.addSubview(scrollViewInner)
         scrollView.contentSize = scrollViewInner.frame.size
     }
-
+    
     // Pickers
     @IBOutlet weak var timePicker: UIDatePicker!
     @IBOutlet weak var wvmPicker: UIPickerView!
@@ -82,10 +82,11 @@ class AddAlarmViewController: UIViewController
     @IBOutlet weak var viewTitle: UILabel!
     
     /**
-        Removes the currently selcted alarm.
-        Returns the removed Alarm object.
+     Removes the currently selcted alarm.
+     Returns the removed Alarm object.
      */
-     func removeCurrentAlarm() -> Alarm? {
+    @discardableResult
+    func removeCurrentAlarm() -> Alarm? {
         let hours = Int(String(originalTime[...originalTime.index(originalTime.endIndex, offsetBy: -4 )]))!
         let minutes = Int(String(originalTime.suffix(2)))!
         
@@ -101,8 +102,8 @@ class AddAlarmViewController: UIViewController
     }
     
     /**
-    Called when the time for the alarm is changed.
-        Sets the time away at the top of the View.
+     Called when the time for the alarm is changed.
+     Sets the time away at the top of the View.
      */
     @IBAction func alarmTimeUpdated(_ sender: Any) {
         updateETA()
@@ -165,17 +166,17 @@ class AddAlarmViewController: UIViewController
     }
     
     /**
-    Dynamically the ETA label for the alarm
-    */
+     Dynamically the ETA label for the alarm
+     */
     func updateETA() {
         //Create alarm without adding it to the queue.
         let (h, m, _) = timePicker.date.getHMS()
-     
+        
         // Create the alarm
         let a = Alarm(hour: h, minute: m,
-                          text: alarmNameTextField.text ?? "Alarm",
-                          wakeMethod: wvms[wvmPicker.selectedRow(inComponent: 0)],
-                          lastActivate: Date(), alarmTone: ringtones[ringtonePicker.selectedRow(inComponent: 0)].tone)
+                      text: alarmNameTextField.text ?? "Alarm",
+                      wakeMethod: wvms[wvmPicker.selectedRow(inComponent: 0)],
+                      lastActivate: Date(), alarmTone: ringtones[ringtonePicker.selectedRow(inComponent: 0)].tone)
         // Set alarm.repeats to correspond with what the user selects
         (0...6).forEach { a.repeats[$0] = false }
         if repeatWeekdaysSwitch.isOn { (1...5).forEach { a.repeats[$0] = true } }
