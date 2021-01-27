@@ -130,17 +130,6 @@ class AddAlarmViewController: UIViewController
         let (h, m, _) = timePicker.date.getHMS()
         var oldAlarm: Alarm? = nil
         
-        // Check if editing alarm
-        if (editFlag)
-        {
-            oldAlarm = removeCurrentAlarm()
-        } // Check for existing alarm
-        else if ((Alarms.fromLocal().list.contains { $0.hour == h && $0.minute == m }))
-        {
-            msg("Nope", "You already have an alarm at " + String(format: "%i:%02i", h, m))
-            return
-        }
-        
         // Create the alarm
         let alarm = Alarm(hour: h, minute: m,
                           text: alarmNameTextField.text ?? "Alarm",
@@ -151,6 +140,21 @@ class AddAlarmViewController: UIViewController
         (0...6).forEach { alarm.repeats[$0] = false }
         if repeatWeekdaysSwitch.isOn { (1...5).forEach { alarm.repeats[$0] = true } }
         if repeatWeekendsSwitch.isOn { [0, 6].forEach { alarm.repeats[$0] = true } }
+        
+        // Check if editing alarm
+        if (editFlag)
+        {
+            oldAlarm = removeCurrentAlarm()
+        } // Check for existing alarm
+        else
+        {
+            for a in Alarms.fromLocal().list {
+                if a == alarm {
+                    msg("Sorry", "An identical or similar alarm already exists, please try again")
+                    return
+                }
+            }
+        }
         
         // Add the alarm to the list and save the list
         Alarms.fromLocal().apply { $0.list.append(alarm) }.localSave();

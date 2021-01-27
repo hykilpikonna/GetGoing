@@ -64,8 +64,7 @@ class Alarm: Codable, Equatable
 {
     static func == (lhs: Alarm, rhs: Alarm) -> Bool {
         return lhs.hour == rhs.hour && lhs.minute == rhs.minute && lhs.text == rhs.text &&
-            lhs.alarmTone == rhs.alarmTone && lhs.notificationID == rhs.notificationID &&
-            lhs.repeats == rhs.repeats
+            lhs.alarmTone == rhs.alarmTone && lhs.repeats == rhs.repeats
     }
     
     var enabled: Bool
