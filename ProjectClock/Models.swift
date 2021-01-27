@@ -56,7 +56,7 @@ struct Tone{
 }
 let ringtones : [Tone] = [Tone(name: "Item One", tone: SystemSoundID(1005)), Tone(name: "Item Two", tone: SystemSoundID(1254))] //SystemSoundID(1255),SystemSoundID(1256),SystemSoundID(1257)]
 
-class Alarm: Codable
+class Alarm: Codable, Equatable
 {
     static func == (lhs: Alarm, rhs: Alarm) -> Bool {
         return lhs.hour == rhs.hour && lhs.minute == rhs.minute && lhs.text == rhs.text &&
