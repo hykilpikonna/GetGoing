@@ -19,6 +19,7 @@ class DebugViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        wvmStepper.maximumValue = Double(wvms.count - 1)
         
         // Request notification permission
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in

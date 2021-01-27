@@ -280,7 +280,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="cDZ-bm-jzY">
                                         <rect key="frame" x="0.0" y="230" width="374" height="36"/>
                                         <subviews>
-                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Em8-2h-OLJ">
+                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" wraps="YES" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Em8-2h-OLJ">
                                                 <rect key="frame" x="0.0" y="0.0" width="94" height="36"/>
                                                 <connections>
                                                     <action selector="wvmStepperChange:" destination="r8W-6e-Hn2" eventType="valueChanged" id="8FF-vP-TMD"/>
