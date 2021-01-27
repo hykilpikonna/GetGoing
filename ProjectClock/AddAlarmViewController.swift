@@ -205,23 +205,12 @@ class WVMDataSource: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource
     
     func pickerView(_ v: UIPickerView, numberOfRowsInComponent: Int) -> Int
     {
-        if v.tag == 2{
-            return ringtones.count
-        }
-        else {
-            return wvms.count
-        }
+        return wvms.count
     }
     
     func pickerView(_ v: UIPickerView, titleForRow r: Int, forComponent: Int) -> String?
     {
-        if v.tag == 2{
-            print(v.tag)
-            return ringtones[r].name
-        }
-        else {
-            return wvms[r].name + " - " + wvms[r].desc
-        }
+        return wvms[r].name + " - " + wvms[r].desc
     }
 }
 
