@@ -87,8 +87,16 @@ class AlarmActivationViewController: UIViewController
      */
     func runAlarm()
     {
+        // Check if the device has accelerometer
+        var wvm = currentAlarm.wakeMethod.name
+        if wvm == "Shake" && !motion.isAccelerometerAvailable
+        {
+            msg("Error", "Accelerometer is not available on your device, so shaking your phone wouldn't work.")
+            wvm = "Factor"
+        }
         
-        switch currentAlarm.wakeMethod.name
+        // Initialize alarm
+        switch wvm
         {
         case "Factor":
             initFactorProblem()
