@@ -1,3 +1,3 @@
-# ProjectClock
+# GetGoing
 
-TODO: Write this
+An alarm clock app that makes sure you woke up.
