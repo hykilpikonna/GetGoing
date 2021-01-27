@@ -52,7 +52,7 @@ class DebugViewController: UIViewController
     
     @IBAction func wvmStepperChange(_ sender: Any)
     {
-        wvmInput.text = String(wvmStepper.value)
+        wvmInput.text = String(Int(wvmStepper.value))
     }
     
     @IBAction func switchViewingMode(_ sender: Any) {
