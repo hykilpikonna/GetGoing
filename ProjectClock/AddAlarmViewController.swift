@@ -216,6 +216,7 @@ class WVMDataSource: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource
     func pickerView(_ v: UIPickerView, titleForRow r: Int, forComponent: Int) -> String?
     {
         if v.tag == 2{
+            print(v.tag)
             return ringtones[r].name
         }
         else {
@@ -224,28 +225,30 @@ class WVMDataSource: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource
     }
 }
 
-//class RingtonesDataSource: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource
-//{
-//    required init?(coder: NSCoder)
-//    {
-//        super.init(coder: coder)
-//        delegate = self
-//        dataSource = self
-//    }
-//    
-//    func numberOfComponents(in pickerView: UIPickerView) -> Int
-//    {
-//        return 1
-//    }
-//    
-//    func pickerView(_ v: UIPickerView, numberOfRowsInComponent: Int) -> Int
-//    {
-//        return ringtones.count
-//    }
-//    
-//    func pickerView(_ v: UIPickerView, titleForRow r: Int, forComponent: Int) -> String?
-//    {
-//        return ringtones[r].name
-//        
-//    }
-//}
+
+class RingtonesDataSource: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource
+{
+    required init?(coder: NSCoder)
+    {
+        super.init(coder: coder)
+        delegate = self
+        dataSource = self
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int
+    {
+        return 1
+    }
+    
+    func pickerView(_ v: UIPickerView, numberOfRowsInComponent: Int) -> Int
+    {
+        return ringtones.count
+    }
+
+    func pickerView(_ v: UIPickerView, titleForRow r: Int, forComponent: Int) -> String?
+    {
+        return ringtones[r].name
+        
+    }
+}
+ 
