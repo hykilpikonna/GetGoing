@@ -106,11 +106,13 @@ class AlarmActivationViewController: UIViewController
         case "Shake":
             shakeView.show()
             
+            // Start motion detection
             motion.accelerometerUpdateInterval = 0.2
             motion.startAccelerometerUpdates(to: OperationQueue.current!) { data, error in
                 if data!.acceleration.x > 5
                 {
                     ui { self.endAlarm() }
+                    motion.stopAccelerometerUpdates()
                 }
             }
         default:
