@@ -56,9 +56,16 @@ struct Tone: Codable{
 }
 
 let ringtones = [
-    Tone(name: "Item One", tone: SystemSoundID(1005)),
-    Tone(name: "Item Two", tone: SystemSoundID(1254))
-]   //SystemSoundID(1255),SystemSoundID(1256),SystemSoundID(1257)]
+    Tone(name: "News Flash", tone: SystemSoundID(1028)),
+    Tone(name: "Sherwood Forest", tone: SystemSoundID(1030)),
+    Tone(name: "Ladder", tone: SystemSoundID(1326)),
+    Tone(name: "Minuet", tone: SystemSoundID(1327)),
+    Tone(name: "Tock", tone: SystemSoundID(1306)),
+    Tone(name: "Bloom", tone: SystemSoundID(1321)),
+    Tone(name: "Calypso", tone: SystemSoundID(1322)),
+    Tone(name: "Train", tone: SystemSoundID(1323)),
+    Tone(name: "Fanfare", tone: SystemSoundID(1325))
+]
 
 class Alarm: Codable, Equatable
 {
