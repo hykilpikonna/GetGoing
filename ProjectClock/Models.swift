@@ -140,6 +140,7 @@ class Alarms: Codable
     /// Save alarms to local storage
     func localSave()
     {
+        list.sort { ($0.hour * 60 + $0.minute) < ($1.hour * 60 + $1.minute) }
         localStorage.setValue(JSON.stringify(list)!, forKey: "alarms")
         
         // Reload table view
