@@ -48,13 +48,17 @@ let wvms = [
 ]
 
 
-struct Tone{
+struct Tone: Codable{
     
     let name: String
     let tone: SystemSoundID
     
 }
-let ringtones : [Tone] = [Tone(name: "Item One", tone: SystemSoundID(1005)), Tone(name: "Item Two", tone: SystemSoundID(1254))] //SystemSoundID(1255),SystemSoundID(1256),SystemSoundID(1257)]
+
+let ringtones = [
+    Tone(name: "Item One", tone: SystemSoundID(1005)),
+    Tone(name: "Item Two", tone: SystemSoundID(1254))
+]   //SystemSoundID(1255),SystemSoundID(1256),SystemSoundID(1257)]
 
 class Alarm: Codable, Equatable
 {
