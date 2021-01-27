@@ -37,7 +37,7 @@
 		4FD642D225B48C380069171E /* AlarmActivator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmActivator.swift; sourceTree = "<group>"; };
 		4FD642DA25B4B7F60069171E /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		4FD642DF25B4D5F30069171E /* AlarmActivationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmActivationViewController.swift; sourceTree = "<group>"; };
-		4FF0683B25A5F18700304E6B /* ProjectClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FF0683B25A5F18700304E6B /* GetGoing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GetGoing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FF0683E25A5F18700304E6B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4FF0684225A5F18700304E6B /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		4FF0684525A5F18700304E6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -79,7 +79,7 @@
 		4FF0683C25A5F18700304E6B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4FF0683B25A5F18700304E6B /* ProjectClock.app */,
+				4FF0683B25A5F18700304E6B /* GetGoing.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -132,9 +132,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4FF0683A25A5F18700304E6B /* ProjectClock */ = {
+		4FF0683A25A5F18700304E6B /* GetGoing */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4FF0684F25A5F18800304E6B /* Build configuration list for PBXNativeTarget "ProjectClock" */;
+			buildConfigurationList = 4FF0684F25A5F18800304E6B /* Build configuration list for PBXNativeTarget "GetGoing" */;
 			buildPhases = (
 				4FF0683725A5F18700304E6B /* Sources */,
 				4FF0683825A5F18700304E6B /* Frameworks */,
@@ -144,9 +144,9 @@
 			);
 			dependencies = (
 			);
-			name = ProjectClock;
+			name = GetGoing;
 			productName = ProjectClock;
-			productReference = 4FF0683B25A5F18700304E6B /* ProjectClock.app */;
+			productReference = 4FF0683B25A5F18700304E6B /* GetGoing.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -166,7 +166,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 4FF0683625A5F18700304E6B /* Build configuration list for PBXProject "ProjectClock" */;
+			buildConfigurationList = 4FF0683625A5F18700304E6B /* Build configuration list for PBXProject "GetGoing" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -179,7 +179,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4FF0683A25A5F18700304E6B /* ProjectClock */,
+				4FF0683A25A5F18700304E6B /* GetGoing */,
 			);
 		};
 /* End PBXProject section */
@@ -373,7 +373,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.hydev.ProjectClock;
+				PRODUCT_BUNDLE_IDENTIFIER = org.hydev.GetGoing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -393,7 +393,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.hydev.ProjectClock;
+				PRODUCT_BUNDLE_IDENTIFIER = org.hydev.GetGoing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -403,7 +403,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4FF0683625A5F18700304E6B /* Build configuration list for PBXProject "ProjectClock" */ = {
+		4FF0683625A5F18700304E6B /* Build configuration list for PBXProject "GetGoing" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4FF0684D25A5F18800304E6B /* Debug */,
@@ -412,7 +412,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4FF0684F25A5F18800304E6B /* Build configuration list for PBXNativeTarget "ProjectClock" */ = {
+		4FF0684F25A5F18800304E6B /* Build configuration list for PBXNativeTarget "GetGoing" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4FF0685025A5F18800304E6B /* Debug */,
