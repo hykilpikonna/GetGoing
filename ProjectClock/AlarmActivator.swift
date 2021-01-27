@@ -37,7 +37,7 @@ class AlarmActivator: UITabBarController
     {
         if timer != nil { return }
         timer = Timer.scheduledTimer(timeInterval: AlarmActivator.interval, target: self, selector: #selector(AlarmActivator.check), userInfo: nil, repeats: true)
-        familyTimer = Timer.scheduledTimer(timeInterval: 30.0, target: self, selector: #selector(AlarmActivator.checkFamily), userInfo: nil, repeats: true)
+        familyTimer = Timer.scheduledTimer(timeInterval: 20.0, target: self, selector: #selector(AlarmActivator.checkFamily), userInfo: nil, repeats: true)
     }
     
     /**
@@ -89,6 +89,7 @@ class AlarmActivator: UITabBarController
         {
             guard $0 != "" else { return }
             
+            // Update alarms list
             var changed = false
             let alarms = Alarms.fromLocal()
             $0.csv.forEach
@@ -102,10 +103,14 @@ class AlarmActivator: UITabBarController
             }
             alarms.localSave()
             
+            // Update UI
             guard changed else { return }
-            self.msg("New alarm!", "A family member added an alarm for you!")
+            ui
             {
-                AlarmViewController.staticTable?.reloadData()
+                self.msg("New alarm!", "A family member added an alarm for you!")
+                {
+                    AlarmViewController.staticTable?.reloadData()
+                }
             }
         }
     }
