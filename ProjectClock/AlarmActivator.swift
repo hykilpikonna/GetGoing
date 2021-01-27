@@ -64,6 +64,9 @@ class AlarmActivator: UITabBarController
         alarm.apply {
             $0.lastActivate = Date()
             if $0.oneTime { $0.enabled = false }
+            else {
+                Notification.scheduleNotification(alarm: alarm)
+            }
         }
         
         alarms.localSave()
