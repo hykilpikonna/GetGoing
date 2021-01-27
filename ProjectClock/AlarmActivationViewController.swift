@@ -60,9 +60,9 @@ class AlarmActivationViewController: UIViewController
         timeLabel.text = currentAlarm?.timeText
         
         // Hide all inactive wakemethods
-        puzzleView.isHidden = true
-        rpsView.isHidden = true
-        shakeView.isHidden = true
+        puzzleView.hide()
+        rpsView.hide()
+        shakeView.hide()
         
         // Play sound
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(AlarmActivationViewController.playSound), userInfo: nil, repeats: true)
@@ -91,11 +91,11 @@ class AlarmActivationViewController: UIViewController
             {
             case "Factor":
                 self.puzzleAnswers = factorAction(puzzleQuestionLabel: puzzleQuestionLabel)
-                puzzleView.isHidden = false
+                puzzleView.show()
             case "RPS":
-                rpsView.isHidden = false
+                rpsView.show()
             case "Shake":
-                shakeView.isHidden = false
+                shakeView.show()
                 shakeAction()
                 if regulate {
                     endAlarm()

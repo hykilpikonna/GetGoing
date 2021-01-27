@@ -37,8 +37,8 @@ class AccountViewController: UIViewController
      */
     func login()
     {
-        vLogin.isHidden = true
-        vManage.isHidden = false
+        vLogin.hide()
+        vManage.show()
         ManageVC.this.display()
     }
     
@@ -51,8 +51,8 @@ class AccountViewController: UIViewController
         ["id", "user", "pass", "family"].forEach { localStorage.removeObject(forKey: $0) }
         
         // Switch UI
-        vLogin.isHidden = false
-        vManage.isHidden = true
+        vLogin.show()
+        vManage.hide()
     }
 }
 
@@ -275,8 +275,8 @@ class FamilyVC: UIViewController
         if let _ = Family.fromLocal()
         {
             // Family exists
-            noFamilyView.isHidden = true
-            familyView.isHidden = false
+            noFamilyView.hide()
+            familyView.show()
             
             table.dataSource = self
             table.delegate = self
@@ -284,8 +284,8 @@ class FamilyVC: UIViewController
         else
         {
             // Family doesn't exist
-            noFamilyView.isHidden = false
-            familyView.isHidden = true
+            noFamilyView.show()
+            familyView.hide()
         }
     }
     
