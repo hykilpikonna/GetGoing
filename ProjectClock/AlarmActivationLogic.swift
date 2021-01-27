@@ -24,16 +24,13 @@ func jumpAction() {
 func shakeAction() {
     regulate = true
     
-    while regulate {
-        motionManager.accelerometerUpdateInterval = 0.2
-        
-        motionManager.startAccelerometerUpdates(to: OperationQueue.current!) { (data,error) in
-            if let myData = data {
-                if myData.acceleration.x > 5 {
-                    print("DO SOMETHING SPECIAL")
-                    regulate = false
-                }
-            }
+    
+    
+    motionManager.accelerometerUpdateInterval = 0.2
+    motionManager.startAccelerometerUpdates(to: OperationQueue.current!) { data, error in
+        if data!.acceleration.x > 5 {
+            print("DO SOMETHING SPECIAL")
+            regulate = false
         }
     }
 }
@@ -41,7 +38,6 @@ func shakeAction() {
 func rpsAction(choice: RPS.Choice) -> Bool? {
     let rps = RPS()
     return rps.playRPS(you: choice, computer: RPS.randomComputerChoice())
-    
 }
 
 // Handles the core logic behind the factoring alarm
