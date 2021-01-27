@@ -13,14 +13,6 @@ import UIKit
 var motionManager = CMMotionManager()
 var regulate = true
 
-func walkAction() {
-    
-}
-
-func jumpAction() {
-    
-}
-
 func shakeAction() {
     regulate = true
     
