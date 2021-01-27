@@ -705,19 +705,23 @@
                                     <constraint firstItem="eTb-g7-8x3" firstAttribute="top" secondItem="CZ0-R6-FDq" secondAttribute="bottom" constant="20" id="yME-j6-vSk"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zph-rd-rPI" userLabel="shakeView">
-                                <rect key="frame" x="87" y="357" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zph-rd-rPI" userLabel="shakeView">
+                                <rect key="frame" x="20" y="391" width="374" height="60.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nK2-jK-GsP">
-                                        <rect key="frame" x="99" y="53" width="42" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shake your phone to dismiss" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nK2-jK-GsP">
+                                        <rect key="frame" x="20" y="20" width="334" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="nK2-jK-GsP" secondAttribute="trailing" constant="20" id="Pao-Rp-2Y5"/>
+                                    <constraint firstAttribute="bottom" secondItem="nK2-jK-GsP" secondAttribute="bottom" constant="20" id="b7B-x1-rDl"/>
+                                    <constraint firstItem="nK2-jK-GsP" firstAttribute="leading" secondItem="Zph-rd-rPI" secondAttribute="leading" constant="20" id="ngJ-SU-kAf"/>
+                                    <constraint firstItem="nK2-jK-GsP" firstAttribute="top" secondItem="Zph-rd-rPI" secondAttribute="top" constant="20" id="yVq-ID-HNc"/>
+                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NmX-iJ-1D0" userLabel="rpsView">
                                 <rect key="frame" x="20" y="338.5" width="374" height="165"/>
@@ -784,14 +788,17 @@
                             <constraint firstItem="vmg-Oj-8tB" firstAttribute="top" secondItem="hS6-fS-yWp" secondAttribute="top" constant="20" id="5lz-9m-i9F"/>
                             <constraint firstItem="vmg-Oj-8tB" firstAttribute="leading" secondItem="hS6-fS-yWp" secondAttribute="leading" constant="20" id="7fm-Y8-FaE"/>
                             <constraint firstItem="NmX-iJ-1D0" firstAttribute="leading" secondItem="hS6-fS-yWp" secondAttribute="leading" constant="20" id="8M3-oo-Hx8"/>
+                            <constraint firstItem="hS6-fS-yWp" firstAttribute="trailing" secondItem="Zph-rd-rPI" secondAttribute="trailing" constant="20" id="9PX-vo-26Q"/>
                             <constraint firstItem="hS6-fS-yWp" firstAttribute="trailing" secondItem="NmX-iJ-1D0" secondAttribute="trailing" constant="20" id="GHr-G7-Fe4"/>
                             <constraint firstItem="42Q-0v-ZS3" firstAttribute="top" secondItem="vmg-Oj-8tB" secondAttribute="bottom" constant="-5" id="GNM-uI-sQt"/>
                             <constraint firstItem="hS6-fS-yWp" firstAttribute="trailing" secondItem="42Q-0v-ZS3" secondAttribute="trailing" constant="20" id="L1F-Bv-r5M"/>
                             <constraint firstItem="OMQ-qK-fej" firstAttribute="centerY" secondItem="BZn-UX-vps" secondAttribute="centerY" id="MvA-2F-Gdv"/>
                             <constraint firstItem="42Q-0v-ZS3" firstAttribute="leading" secondItem="hS6-fS-yWp" secondAttribute="leading" constant="20" id="Nbf-jB-Uq5"/>
                             <constraint firstItem="NmX-iJ-1D0" firstAttribute="centerY" secondItem="BZn-UX-vps" secondAttribute="centerY" id="QOI-JZ-KRZ"/>
+                            <constraint firstItem="Zph-rd-rPI" firstAttribute="leading" secondItem="hS6-fS-yWp" secondAttribute="leading" constant="20" id="b5R-HH-etH"/>
                             <constraint firstItem="OMQ-qK-fej" firstAttribute="leading" secondItem="hS6-fS-yWp" secondAttribute="leading" constant="20" id="mKi-lK-CZ3"/>
                             <constraint firstItem="hS6-fS-yWp" firstAttribute="trailing" secondItem="OMQ-qK-fej" secondAttribute="trailing" constant="20" id="stB-3o-46B"/>
+                            <constraint firstItem="Zph-rd-rPI" firstAttribute="centerY" secondItem="BZn-UX-vps" secondAttribute="centerY" id="ua1-TZ-IR3"/>
                             <constraint firstItem="hS6-fS-yWp" firstAttribute="trailing" secondItem="vmg-Oj-8tB" secondAttribute="trailing" constant="20" id="vVE-ID-dgj"/>
                         </constraints>
                     </view>
