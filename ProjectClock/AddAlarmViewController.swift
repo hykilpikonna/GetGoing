@@ -19,6 +19,7 @@ class AddAlarmViewController: UIViewController
             
             //Toggle editing mode
             editFlag = true
+            viewTitle.text = "Edit Alarm"
             
             //Convert string to Date
             let dateFormatter = DateFormatter()
@@ -78,7 +79,8 @@ class AddAlarmViewController: UIViewController
     @IBOutlet weak var repeatWeekendsSwitch: UISwitch!
     @IBOutlet weak var alarmNameTextField: UITextField!
     @IBOutlet weak var timeTillAlarmLabel: UILabel!
-
+    @IBOutlet weak var viewTitle: UILabel!
+    
     /**
     Called when the time for the alarm is changed.
         Sets the time away at the top of the View.

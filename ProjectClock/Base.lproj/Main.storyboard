@@ -625,6 +625,7 @@
                         <outlet property="scrollViewInner" destination="N7f-vi-SFU" id="LQW-6T-f6x"/>
                         <outlet property="timePicker" destination="qSt-1V-2DQ" id="aDM-jE-0OP"/>
                         <outlet property="timeTillAlarmLabel" destination="Xqs-n0-H9G" id="fg6-18-oAG"/>
+                        <outlet property="viewTitle" destination="97A-aJ-4ms" id="MZL-qA-2AV"/>
                         <outlet property="wvmPicker" destination="oae-b2-SoF" id="ADd-1r-iNM"/>
                     </connections>
                 </viewController>
