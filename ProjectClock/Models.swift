@@ -37,6 +37,7 @@ struct WVM: Codable
     let desc: String
 }
 
+
 let wvms = [
     WVM(name: "Factor", desc: "Factor a binomial"),
     WVM(name: "RPS", desc: "Win a game of rock paper scissors"),
@@ -46,7 +47,16 @@ let wvms = [
     //WVM(name: "Jump", desc: "Make a few jumps")
 ]
 
-class Alarm: Codable, Equatable
+
+struct Tone{
+    
+    let name: String
+    let tone: SystemSoundID
+    
+}
+let ringtones : [Tone] = [Tone(name: "Item One", tone: SystemSoundID(1005)), Tone(name: "Item Two", tone: SystemSoundID(1254))] //SystemSoundID(1255),SystemSoundID(1256),SystemSoundID(1257)]
+
+class Alarm: Codable
 {
     static func == (lhs: Alarm, rhs: Alarm) -> Bool {
         return lhs.hour == rhs.hour && lhs.minute == rhs.minute && lhs.text == rhs.text &&
@@ -73,7 +83,8 @@ class Alarm: Codable, Equatable
          hour: Int, minute: Int, text: String, wakeMethod: WVM,
          repeats: [Bool] = [false, true, true, true, true, true, false],
          lastActivate: Date = Date(),
-         alarmTone: SystemSoundID = SystemSoundID(1005)
+         alarmTone: SystemSoundID = ringtones[0].tone
+         
     )
     {
         self.enabled = enabled

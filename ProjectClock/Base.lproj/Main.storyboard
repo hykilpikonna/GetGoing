@@ -476,44 +476,36 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="bCI-jj-foN">
-                                                <rect key="frame" x="0.0" y="258.5" width="374" height="60"/>
+                                                <rect key="frame" x="0.0" y="258.5" width="374" height="150"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cZ8-yN-fp6">
-                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
-                                                        <state key="normal" title="Pick From iOS Default Ringtones"/>
-                                                        <connections>
-                                                            <action selector="defaultRingtonesButton:" destination="Mki-dC-5Kc" eventType="touchUpInside" id="0oM-fE-Gyh"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A3Z-Qp-XmN">
-                                                        <rect key="frame" x="0.0" y="30" width="374" height="30"/>
-                                                        <state key="normal" title="Pick From Sound Library"/>
-                                                        <connections>
-                                                            <action selector="soundLibraryButton:" destination="Mki-dC-5Kc" eventType="touchUpInside" id="5G8-FV-bDx"/>
-                                                        </connections>
-                                                    </button>
+                                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JbI-Jp-vvx">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="150"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="150" id="OgV-hH-xcq"/>
+                                                        </constraints>
+                                                    </pickerView>
                                                 </subviews>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wakeup Verification Method" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E4B-9M-iJd">
-                                                <rect key="frame" x="0.0" y="338.5" width="374" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="428.5" width="374" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" systemColor="secondaryLabelColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oae-b2-SoF" customClass="WVMDataSource" customModule="ProjectClock" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="367" width="374" height="150"/>
+                                                <rect key="frame" x="0.0" y="457" width="374" height="150"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="150" id="C0G-jE-CPx"/>
                                                 </constraints>
                                             </pickerView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Others" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eZX-HE-BKB">
-                                                <rect key="frame" x="0.0" y="525" width="374" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="615" width="374" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" systemColor="secondaryLabelColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="e8v-cM-bxf">
-                                                <rect key="frame" x="20" y="553.5" width="334" height="116"/>
+                                                <rect key="frame" x="20" y="643.5" width="334" height="116"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="gdH-Ok-RIH">
                                                         <rect key="frame" x="0.0" y="0.0" width="334" height="34"/>
@@ -632,6 +624,7 @@
                         <outlet property="alarmNameTextField" destination="bJg-zp-Aan" id="Itt-3v-GJB"/>
                         <outlet property="repeatWeekdaysSwitch" destination="5oN-BL-Xtu" id="gqb-l3-1jZ"/>
                         <outlet property="repeatWeekendsSwitch" destination="WPM-Fh-sRB" id="LB7-zW-jpC"/>
+                        <outlet property="ringtonePicker" destination="JbI-Jp-vvx" id="mPO-Ej-DNU"/>
                         <outlet property="scrollView" destination="ybc-8d-6pJ" id="m1B-ff-zeC"/>
                         <outlet property="scrollViewInner" destination="N7f-vi-SFU" id="LQW-6T-f6x"/>
                         <outlet property="timePicker" destination="qSt-1V-2DQ" id="aDM-jE-0OP"/>

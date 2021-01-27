@@ -71,23 +71,14 @@ class AddAlarmViewController: UIViewController
     // Pickers
     @IBOutlet weak var timePicker: UIDatePicker!
     @IBOutlet weak var wvmPicker: UIPickerView!
+    @IBOutlet weak var ringtonePicker: UIPickerView!
     
     // UI Elements
     @IBOutlet weak var repeatWeekdaysSwitch: UISwitch!
     @IBOutlet weak var repeatWeekendsSwitch: UISwitch!
     @IBOutlet weak var alarmNameTextField: UITextField!
     @IBOutlet weak var timeTillAlarmLabel: UILabel!
-    
-    @IBAction func defaultRingtonesButton(_ sender: Any)
-    {
-        
-    }
-    
-    @IBAction func soundLibraryButton(_ sender: Any)
-    {
-        
-    }
-    
+
     /**
     Called when the time for the alarm is changed.
         Sets the time away at the top of the View.
@@ -138,7 +129,7 @@ class AddAlarmViewController: UIViewController
         let alarm = Alarm(hour: h, minute: m,
                           text: alarmNameTextField.text ?? "Alarm",
                           wakeMethod: wvms[wvmPicker.selectedRow(inComponent: 0)],
-                          lastActivate: Date())
+                          lastActivate: Date(), alarmTone: ringtones[ringtonePicker.selectedRow(inComponent: 0)].tone)
         
         // Set alarm.repeats to correspond with what the user selects
         (0...6).forEach { alarm.repeats[$0] = false }
@@ -166,7 +157,7 @@ class AddAlarmViewController: UIViewController
         let a = Alarm(hour: h, minute: m,
                           text: alarmNameTextField.text ?? "Alarm",
                           wakeMethod: wvms[wvmPicker.selectedRow(inComponent: 0)],
-                          lastActivate: Date())
+                          lastActivate: Date(), alarmTone: ringtones[ringtonePicker.selectedRow(inComponent: 0)].tone)
         // Set alarm.repeats to correspond with what the user selects
         (0...6).forEach { a.repeats[$0] = false }
         if repeatWeekdaysSwitch.isOn { (1...5).forEach { a.repeats[$0] = true } }
@@ -202,5 +193,31 @@ class WVMDataSource: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource
     func pickerView(_ v: UIPickerView, titleForRow r: Int, forComponent: Int) -> String?
     {
         return wvms[r].name + " - " + wvms[r].desc
+    }
+}
+
+class RingtonesDataSource: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource
+{
+    required init?(coder: NSCoder)
+    {
+        super.init(coder: coder)
+        delegate = self
+        dataSource = self
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int
+    {
+        return 1
+    }
+    
+    func pickerView(_ v: UIPickerView, numberOfRowsInComponent: Int) -> Int
+    {
+        return ringtones.count
+    }
+    
+    func pickerView(_ v: UIPickerView, titleForRow r: Int, forComponent: Int) -> String?
+    {
+        return ringtones[r].name
+        
     }
 }
