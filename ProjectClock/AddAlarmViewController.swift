@@ -82,6 +82,22 @@ class AddAlarmViewController: UIViewController
     @IBOutlet weak var viewTitle: UILabel!
     
     /**
+        Removes the currently selcted alarm.
+     */
+     func removeCurrentAlarm() {
+        let hours = Int(String(originalTime[...originalTime.index(originalTime.endIndex, offsetBy: -4 )]))!
+        let minutes = Int(String(originalTime.suffix(2)))!
+        
+        // TODO : REWRITE the am/pm check, pretty sure this could work on two alarms at once
+        let alarm = Alarms.fromLocal().list.first(where: {($0.hour == hours || $0.hour == (hours + 12)) && $0.minute == minutes})
+        
+        // Removes the alarm from stored alarms
+        let alarmsObj = Alarms.fromLocal()
+        alarmsObj.list = Alarms.fromLocal().list.filter { $0 != alarm }
+        alarmsObj.localSave()
+    }
+    
+    /**
     Called when the time for the alarm is changed.
         Sets the time away at the top of the View.
      */
@@ -94,6 +110,10 @@ class AddAlarmViewController: UIViewController
      Called when the user clicks the remove button and brings them back to the home page
      */
     @IBAction func cancelAlarmButton(_ sender: Any) {
+        if editFlag {
+            removeCurrentAlarm()
+        }
+        
         self.dismiss(animated: true, completion: nil)
         //might need to reset all UI elements
     }
@@ -108,16 +128,7 @@ class AddAlarmViewController: UIViewController
         // Check if editing alarm
         if (editFlag)
         {
-            let hours = Int(String(originalTime[...originalTime.index(originalTime.endIndex, offsetBy: -4 )]))!
-            let minutes = Int(String(originalTime.suffix(2)))!
-            
-            // TODO : REWRITE the am/pm check, pretty sure this could work on two alarms at once
-            let alarm = Alarms.fromLocal().list.first(where: {($0.hour == hours || $0.hour == (hours + 12)) && $0.minute == minutes})
-            
-            // Removes the alarm from stored alarms
-            let alarmsObj = Alarms.fromLocal()
-            alarmsObj.list = Alarms.fromLocal().list.filter { $0 != alarm }
-            alarmsObj.localSave()
+            removeCurrentAlarm()
             
             
         } // Check for existing alarm
