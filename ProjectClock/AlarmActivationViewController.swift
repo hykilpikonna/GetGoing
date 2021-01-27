@@ -132,26 +132,10 @@ class AlarmActivationViewController: UIViewController
     /**
      Gets RPS choice
      */
-    @IBAction func rockChoice(_ sender: Any) {
-        if rpsAction(choice: .rock)! {
-            endAlarm()
-        } else {
-            rpsResult.text = "Paper: You lost, try again"
-        }
-    }
-    @IBAction func paperChoice(_ sender: Any) {
-        if rpsAction(choice: .paper)! {
-            endAlarm()
-        } else {
-            rpsResult.text = "Scissors: You lost, try again"
-        }
-    }
-    @IBAction func scissorChoice(_ sender: Any) {
-        if rpsAction(choice: .scissors)! {
-            endAlarm()
-        } else {
-            rpsResult.text = "Rock: You lost, try again"
-        }
+    @IBAction func rpsChoice(_ sender: UIButton)
+    {
+        if rpsAction(choice: [.rock, .paper, .scissors][sender.tag])! { endAlarm() }
+        else { rpsResult.text = "\(["Paper", "Scissors", "Rock"][sender.tag]): You lost, try again" }
     }
     
     /**

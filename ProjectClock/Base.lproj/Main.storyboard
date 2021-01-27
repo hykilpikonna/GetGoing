@@ -706,23 +706,23 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                 <state key="normal" title="✊"/>
                                                 <connections>
-                                                    <action selector="rockChoice:" destination="hDW-11-g9U" eventType="touchUpInside" id="w4O-MC-ohr"/>
+                                                    <action selector="rpsChoice:" destination="hDW-11-g9U" eventType="touchUpInside" id="w4O-MC-ohr"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iiv-Co-j8G">
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iiv-Co-j8G">
                                                 <rect key="frame" x="111.5" y="0.0" width="111" height="42"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                 <state key="normal" title="✋"/>
                                                 <connections>
-                                                    <action selector="paperChoice:" destination="hDW-11-g9U" eventType="touchUpInside" id="giR-wy-jqv"/>
+                                                    <action selector="rpsChoice:" destination="hDW-11-g9U" eventType="touchUpInside" id="9mT-0M-Taq"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U4y-ls-yuK">
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U4y-ls-yuK">
                                                 <rect key="frame" x="222.5" y="0.0" width="111.5" height="42"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                 <state key="normal" title="✌"/>
                                                 <connections>
-                                                    <action selector="scissorChoice:" destination="hDW-11-g9U" eventType="touchUpInside" id="BVu-ST-Hfr"/>
+                                                    <action selector="rpsChoice:" destination="hDW-11-g9U" eventType="touchUpInside" id="Dnx-vm-mRk"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -911,7 +911,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="170"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.crop.circle.badge.checkmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="yVW-fL-SIQ">
-                                                <rect key="frame" x="132" y="0.0" width="110" height="109.5"/>
+                                                <rect key="frame" x="130.5" y="0.0" width="111.5" height="109.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="110" id="So8-k5-nLS"/>
                                                     <constraint firstAttribute="height" constant="110" id="inA-vb-CrL"/>
