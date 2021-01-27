@@ -10,17 +10,12 @@ import UserNotifications
 
 class Notification {
     
-    init(alarm: Alarm) {
-        self.alarm = alarm
-    }
-    
-    var alarm: Alarm
-    
-    func removeNotification() {
+    //Removes the notifiation
+    static func removeNotification(alarm: Alarm) {
         UNUserNotificationCenter.current().getPendingNotificationRequests { (notificationRequests) in
            var identifiers: [String] = []
            for notification:UNNotificationRequest in notificationRequests {
-            if notification.identifier == self.alarm.notificationID {
+            if notification.identifier == alarm.notificationID {
                   identifiers.append(notification.identifier)
                }
            }
@@ -28,7 +23,23 @@ class Notification {
         }
     }
     
-    func scheduleNotification() {
+    // Check for duplicates and adds any missing notifications
+    static func bulkScheduleNotifications(alarms: [Alarm]) {
+        var ids: [String] = []
+
+        UNUserNotificationCenter.current().getPendingNotificationRequests { (notificationRequests) in
+           for notification:UNNotificationRequest in notificationRequests {
+            ids.append(notification.identifier)
+           }
+            for alarm in alarms {
+                if !ids.contains(alarm.notificationID) {
+                    scheduleNotification(alarm: alarm)
+                }
+            }
+        }
+    }
+        
+    static func scheduleNotification(alarm: Alarm) {
         let content = UNMutableNotificationContent()
         
         //Date formatting to string
