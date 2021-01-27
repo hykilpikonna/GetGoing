@@ -94,7 +94,7 @@ class AlarmTableCell: UITableViewCell
         // Display Hour, Minute, and AM or PM
         ampm.text = alarm.hour < 12 || alarm.hour == 24 ? "AM" : "PM"
         var hour = alarm.hour <= 12 ? alarm.hour : alarm.hour - 12
-        hour = alarm.hour == 0 ? 12 : alarm.hour
+        hour = alarm.hour == 0 ? 12 : hour
         time.text = String(format: "%i:%02i", hour, alarm.minute)
        
         // displays the specific days alarm is activated
