@@ -27,11 +27,6 @@ func shakeAction() {
     }
 }
 
-func rpsAction(choice: RPS.Choice) -> Bool? {
-    let rps = RPS()
-    return rps.playRPS(you: choice, computer: RPS.randomComputerChoice())
-}
-
 // Handles the core logic behind the factoring alarm
 func factorAction(puzzleQuestionLabel: UILabel) -> [Int] {
     let problem = QuadraticProb()
@@ -43,8 +38,3 @@ func factorAction(puzzleQuestionLabel: UILabel) -> [Int] {
     print("Answer: \(answer)")
     return answer
 }
-
-func smashAction() {
-    
-}
-

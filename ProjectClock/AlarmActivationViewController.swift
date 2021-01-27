@@ -85,8 +85,6 @@ class AlarmActivationViewController: UIViewController
      */
     func runAlarm()
     {
-        
-        
         if let alarm = currentAlarm
         {
             switch alarm.wakeMethod.name
@@ -94,12 +92,8 @@ class AlarmActivationViewController: UIViewController
             case "Factor":
                 self.puzzleAnswers = factorAction(puzzleQuestionLabel: puzzleQuestionLabel)
                 puzzleView.isHidden = false
-            case "Smash":
-                print("")
             case "RPS":
                 rpsView.isHidden = false
-                //Get Choice here
-                //rpsAction(choice: choice)
             case "Shake":
                 shakeView.isHidden = false
                 shakeAction()
@@ -130,8 +124,15 @@ class AlarmActivationViewController: UIViewController
      */
     @IBAction func rpsChoice(_ sender: UIButton)
     {
-        if rpsAction(choice: [.rock, .paper, .scissors][sender.tag])! { endAlarm() }
-        else { rpsResult.text = "\(["Paper", "Scissors", "Rock"][sender.tag]): You lost, try again" }
+        let rps = RPS()
+        if rps.playRPS(you: [.rock, .paper, .scissors][sender.tag], computer: RPS.choices.randomElement()!)
+        {
+            endAlarm()
+        }
+        else
+        {
+            rpsResult.text = "\(["Paper", "Scissors", "Rock"][sender.tag]): You lost, try again"
+        }
     }
     
     /**

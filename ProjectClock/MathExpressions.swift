@@ -157,45 +157,26 @@ class QuadraticProb {
     }
 }
 
-class RPS {
-    //@IBOutlet weak var resultsLabel: UILabel!
+/**
+ Rock paper scissors
+ */
+class RPS
+{
+    static let choices: [Choice] = [.rock, .paper, .scissors]
     
-    enum Choice: String {
-        case rock = "ROCK"
-        case paper = "PAPER"
-        case scissors = "SCISSORS"
-    }
-    
-    static func randomComputerChoice() -> Choice {
-        let choices: [Choice] = [.rock, .paper, .scissors]
-        return choices[Int.random(in: 0...2)]
-    }
-    
-    func playRPS(you: Choice, computer: Choice) -> Bool? {
-        if you == .rock && computer == .scissors { return true }
-        else if you == .paper && computer == .rock { return true}
-        else if you == .scissors && computer == .paper { return true }
-        else {
-            return false
-        }
+    enum Choice: String
+    {
+        case rock = "Rock"
+        case paper = "Paper"
+        case scissors = "Scissors"
     }
     
-    /*
-    @IBAction func rock(_ sender: UIButton) {
-        let computerChoice = Choice.randomComputerChoice()
-        resultsLabel.text = playRPS(you: .rock, computer: computerChoice)
+    func playRPS(you: Choice, computer: Choice) -> Bool
+    {
+        return you == .rock && computer == .scissors ||
+            you == .paper && computer == .rock ||
+            you == .scissors && computer == .paper
     }
-
-    @IBAction func paper(_ sender: UIButton) {
-        let computerChoice = Choice.randomComputerChoice()
-        resultsLabel.text = playRPS(you: .paper, computer: computerChoice)
-    }
-
-    @IBAction func scissors(_ sender: UIButton) {
-        let computerChoice = Choice.randomComputerChoice()
-        resultsLabel.text = playRPS(you: .scissors, computer: computerChoice)
-    }
-     */
 }
 
 /**
