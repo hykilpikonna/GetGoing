@@ -83,8 +83,9 @@ class AddAlarmViewController: UIViewController
     
     /**
         Removes the currently selcted alarm.
+        Returns the removed Alarm object.
      */
-     func removeCurrentAlarm() {
+     func removeCurrentAlarm() -> Alarm? {
         let hours = Int(String(originalTime[...originalTime.index(originalTime.endIndex, offsetBy: -4 )]))!
         let minutes = Int(String(originalTime.suffix(2)))!
         
@@ -95,6 +96,8 @@ class AddAlarmViewController: UIViewController
         let alarmsObj = Alarms.fromLocal()
         alarmsObj.list = Alarms.fromLocal().list.filter { $0 != alarm }
         alarmsObj.localSave()
+        
+        return alarm
     }
     
     /**
@@ -124,13 +127,12 @@ class AddAlarmViewController: UIViewController
     @IBAction func addAlarmButton(_ sender: Any)
     {
         let (h, m, _) = timePicker.date.getHMS()
+        var oldAlarm: Alarm? = nil
         
         // Check if editing alarm
         if (editFlag)
         {
-            removeCurrentAlarm()
-            
-            
+            oldAlarm = removeCurrentAlarm()
         } // Check for existing alarm
         else if ((Alarms.fromLocal().list.contains { $0.hour == h && $0.minute == m }))
         {
@@ -153,6 +155,9 @@ class AddAlarmViewController: UIViewController
         Alarms.fromLocal().apply { $0.list.append(alarm) }.localSave();
         
         //Schedules notification for the alarm
+        if editFlag{
+            Notification(alarm: oldAlarm!).removeNotification()
+        }
         Notification(alarm: alarm).scheduleNotification()
         
         // Dismiss this view
@@ -177,7 +182,6 @@ class AddAlarmViewController: UIViewController
         if repeatWeekendsSwitch.isOn { [0, 6].forEach { a.repeats[$0] = true } }
         
         let timeTill = a.nextActivate!.timeIntervalSince(Date()).str()
-        //print(timeTill)
         timeTillAlarmLabel.text = "Going off in \(timeTill)"
     }
     

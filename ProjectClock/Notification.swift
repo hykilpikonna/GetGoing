@@ -16,6 +16,18 @@ class Notification {
     
     var alarm: Alarm
     
+    func removeNotification() {
+        UNUserNotificationCenter.current().getPendingNotificationRequests { (notificationRequests) in
+           var identifiers: [String] = []
+           for notification:UNNotificationRequest in notificationRequests {
+            if notification.identifier == self.alarm.notificationID {
+                  identifiers.append(notification.identifier)
+               }
+           }
+           UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: identifiers)
+        }
+    }
+    
     func scheduleNotification() {
         let content = UNMutableNotificationContent()
         
