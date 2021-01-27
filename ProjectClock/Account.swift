@@ -216,11 +216,16 @@ class ManageVC: UIViewController
      */
     @IBAction func deleteAccount(_ sender: Any)
     {
-        sendReq(APIs.delete, title: "Deleting...")
+        enterPin("Are you sure?", "Enter 1234 to continue deleting your account, you can't undo this.")
         {
-            print("Deleted! \($0)")
-            self.msg("Deleted!", "You are erased from our database, you no longer exist.")
-            self.logout(sender)
+            guard $0 == "1234" else { return }
+            
+            self.sendReq(APIs.delete, title: "Deleting...")
+            {
+                print("Deleted! \($0)")
+                self.msg("Deleted!", "You are erased from our database, you no longer exist.")
+                self.logout(sender)
+            }
         }
     }
 }
