@@ -14,7 +14,7 @@ import AVFoundation
 class AlarmActivationViewController: UIViewController
 {
     var timer: Timer?
-    var currentAlarm: Alarm?
+    var currentAlarm: Alarm
     
     // Puzzle outlets
     @IBOutlet weak var puzzleView: UIView!
@@ -39,7 +39,6 @@ class AlarmActivationViewController: UIViewController
     init?(coder: NSCoder, currentAlarm: Alarm)
     {
         self.currentAlarm = currentAlarm
-        //print(currentAlarm.wakeMethod)
         super.init(coder: coder)
     }
     
@@ -57,7 +56,7 @@ class AlarmActivationViewController: UIViewController
         
         // Set the time and date
         dateLabel.text = Date().str("MMM d, Y")
-        timeLabel.text = currentAlarm?.timeText
+        timeLabel.text = currentAlarm.timeText
         
         // Hide all inactive wakemethods
         puzzleView.hide()
@@ -76,7 +75,7 @@ class AlarmActivationViewController: UIViewController
      */
     @objc func playSound()
     {
-        AudioServicesPlayAlertSound(currentAlarm!.alarmTone)
+        AudioServicesPlayAlertSound(currentAlarm.alarmTone)
         AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
     }
     
@@ -85,24 +84,18 @@ class AlarmActivationViewController: UIViewController
      */
     func runAlarm()
     {
-        if let alarm = currentAlarm
+        
+        switch currentAlarm.wakeMethod.name
         {
-            switch alarm.wakeMethod.name
-            {
-            case "Factor":
-                initFactorProblem()
-                puzzleView.show()
-            case "RPS":
-                rpsView.show()
-            case "Shake":
-                shakeView.show()
-                shakeAction()
-                if regulate {
-                    endAlarm()
-                }
-            default:
-                print("Invalid alarm type")
-            }
+        case "Factor":
+            initFactorProblem()
+            puzzleView.show()
+        case "RPS":
+            rpsView.show()
+        case "Shake":
+            shakeView.show()
+        default:
+            print("Invalid alarm type")
         }
     }
     
