@@ -7,6 +7,9 @@
 
 import UIKit
 import AVFoundation
+import CoreMotion
+
+var motion = CMMotionManager()
 
 /**
  View controlling alarm activation and dismissal
@@ -94,6 +97,14 @@ class AlarmActivationViewController: UIViewController
             rpsView.show()
         case "Shake":
             shakeView.show()
+            
+            motion.accelerometerUpdateInterval = 0.2
+            motion.startAccelerometerUpdates(to: OperationQueue.current!) { data, error in
+                if data!.acceleration.x > 5
+                {
+                    ui { self.endAlarm() }
+                }
+            }
         default:
             print("Invalid alarm type")
         }
