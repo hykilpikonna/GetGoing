@@ -268,7 +268,6 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="Switch to Dark Mode"/>
                                         <connections>
-                                            <action selector="deleteAlarm:" destination="r8W-6e-Hn2" eventType="touchUpInside" id="gSj-DC-XvL"/>
                                             <action selector="switchViewingMode:" destination="r8W-6e-Hn2" eventType="touchUpInside" id="GFd-hP-L8n"/>
                                         </connections>
                                     </button>
