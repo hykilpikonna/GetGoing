@@ -54,7 +54,7 @@ class Notification {
         content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: "notif.caf"))
         
         // Notification image content
-        let imageName = "clock"
+        let imageName = "AlarmLogo1"
         guard let imageURL = Bundle.main.url(forResource: imageName, withExtension: "png") else { return }
         let attachment = try! UNNotificationAttachment(identifier: imageName, url: imageURL, options: .none)
         content.attachments = [attachment]

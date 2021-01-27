@@ -21,6 +21,7 @@
 		4FF0684B25A5F18800304E6B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FF0684925A5F18800304E6B /* LaunchScreen.storyboard */; };
 		7C12BC7825BE25C000E5659C /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C12BC7725BE25C000E5659C /* Notification.swift */; };
 		7C5DAE9C25AF812200E44C52 /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C5DAE9B25AF812200E44C52 /* clock.png */; };
+		7C60741E25C11DC000B0A154 /* AlarmLogo1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C60741D25C11DC000B0A154 /* AlarmLogo1.png */; };
 		7C83963625AF375B0027A94C /* NotificationLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C83963525AF375B0027A94C /* NotificationLogic.swift */; };
 		7C83963925AF68980027A94C /* DebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C83963825AF68980027A94C /* DebugViewController.swift */; };
 		7CD385A625BE4649007E9890 /* notif.caf in Resources */ = {isa = PBXBuildFile; fileRef = 7CD385A525BE4649007E9890 /* notif.caf */; };
@@ -45,6 +46,7 @@
 		4FF0684C25A5F18800304E6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C12BC7725BE25C000E5659C /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		7C5DAE9B25AF812200E44C52 /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
+		7C60741D25C11DC000B0A154 /* AlarmLogo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AlarmLogo1.png; sourceTree = "<group>"; };
 		7C83962D25AF34F00027A94C /* ProjectClock.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ProjectClock.entitlements; sourceTree = "<group>"; };
 		7C83962F25AF34F10027A94C /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		7C83963525AF375B0027A94C /* NotificationLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationLogic.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 				4FF0683E25A5F18700304E6B /* AppDelegate.swift */,
 				4FF0684725A5F18800304E6B /* Assets.xcassets */,
 				7C5DAE9B25AF812200E44C52 /* clock.png */,
+				7C60741D25C11DC000B0A154 /* AlarmLogo1.png */,
 				7C83963825AF68980027A94C /* DebugViewController.swift */,
 				4FF0684C25A5F18800304E6B /* Info.plist */,
 				4FF0684925A5F18800304E6B /* LaunchScreen.storyboard */,
@@ -186,6 +189,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C60741E25C11DC000B0A154 /* AlarmLogo1.png in Resources */,
 				4FF0684B25A5F18800304E6B /* LaunchScreen.storyboard in Resources */,
 				7C5DAE9C25AF812200E44C52 /* clock.png in Resources */,
 				4FF0684825A5F18800304E6B /* Assets.xcassets in Resources */,
