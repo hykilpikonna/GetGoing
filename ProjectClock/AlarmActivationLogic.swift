@@ -26,15 +26,3 @@ func shakeAction() {
         }
     }
 }
-
-// Handles the core logic behind the factoring alarm
-func factorAction(puzzleQuestionLabel: UILabel) -> [Int] {
-    let problem = QuadraticProb()
-    
-    let answer = problem.getAnswer()
-    let problemString = problem.getProblem()
-    
-    puzzleQuestionLabel.text = "Solve: \(problemString)"
-    print("Answer: \(answer)")
-    return answer
-}

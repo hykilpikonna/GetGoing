@@ -90,7 +90,7 @@ class AlarmActivationViewController: UIViewController
             switch alarm.wakeMethod.name
             {
             case "Factor":
-                self.puzzleAnswers = factorAction(puzzleQuestionLabel: puzzleQuestionLabel)
+                initFactorProblem()
                 puzzleView.show()
             case "RPS":
                 rpsView.show()
@@ -105,17 +105,26 @@ class AlarmActivationViewController: UIViewController
             }
         }
     }
+    
+    func initFactorProblem()
+    {
+        let problem = QuadraticProb()
+        puzzleAnswers = problem.getAnswer()
+        
+        puzzleQuestionLabel.text = "Solve: \(problem.getProblem())"
+        print("Answer: \(puzzleAnswers)")
+    }
    
     /**
      Verfies and ends factoring WVM
      */
-    @IBAction func checkBinomialSolution(_ sender: Any) {
-        if let input = puzzleAnswerInput.text {
-            if let numericalInput = Int(input) {
-                if puzzleAnswers.contains(numericalInput) {
-                    endAlarm()
-                }
-            }
+    @IBAction func checkBinomialSolution(_ sender: Any)
+    {
+        if let input = puzzleAnswerInput.text,
+           let numericalInput = Int(input),
+           puzzleAnswers.contains(numericalInput)
+        {
+            endAlarm()
         }
     }
     
@@ -124,8 +133,7 @@ class AlarmActivationViewController: UIViewController
      */
     @IBAction func rpsChoice(_ sender: UIButton)
     {
-        let rps = RPS()
-        if rps.playRPS(you: [.rock, .paper, .scissors][sender.tag], computer: RPS.choices.randomElement()!)
+        if RPS.playRPS(you: [.rock, .paper, .scissors][sender.tag], computer: RPS.choices.randomElement()!)
         {
             endAlarm()
         }

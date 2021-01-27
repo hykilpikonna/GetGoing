@@ -171,7 +171,7 @@ class RPS
         case scissors = "Scissors"
     }
     
-    func playRPS(you: Choice, computer: Choice) -> Bool
+    static func playRPS(you: Choice, computer: Choice) -> Bool
     {
         return you == .rock && computer == .scissors ||
             you == .paper && computer == .rock ||
