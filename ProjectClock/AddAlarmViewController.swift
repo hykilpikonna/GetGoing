@@ -156,9 +156,9 @@ class AddAlarmViewController: UIViewController
         
         //Schedules notification for the alarm
         if editFlag{
-            Notification(alarm: oldAlarm!).removeNotification()
+            Notification.removeNotification(alarm: oldAlarm!)
         }
-        Notification(alarm: alarm).scheduleNotification()
+        Notification.scheduleNotification(alarm: alarm)
         
         // Dismiss this view
         self.dismiss(animated: true, completion: nil)

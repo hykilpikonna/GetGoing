@@ -199,6 +199,9 @@ class ManageVC: UIViewController
             // Update UI
             AlarmViewController.staticTable?.reloadData()
             
+            // Schedule any missing notifications
+            Notification.bulkScheduleNotifications(alarms: Alarms.fromLocal().list)
+            
             self.msg("Success!", "You're restored your backup.")
         }
     }

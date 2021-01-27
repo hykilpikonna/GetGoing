@@ -30,7 +30,7 @@ class DebugViewController: UIViewController
     //Sends a test notification
     @IBAction func sendNotification(_ sender: Any)
     {
-        Notification(alarm: Alarms.fromLocal().listEnabled[0]).scheduleNotification()
+        Notification.scheduleNotification(alarm: Alarms.fromLocal().listEnabled[0])
     }
     
     @IBAction func addAlarm(_ sender: Any)
@@ -39,7 +39,7 @@ class DebugViewController: UIViewController
         let alarm = Alarm(hour: h, minute: m, text: "Test alarm - \(h * m)", wakeMethod: wvms[1], repeats: [true, true, true, true, true, true, true], lastActivate: Date().added(.minute, -1))
         
         Alarms.fromLocal().apply { $0.list.append(alarm) }.localSave()
-        Notification(alarm: alarm).scheduleNotification()
+        Notification.scheduleNotification(alarm: alarm)
     }
     
     @IBAction func deleteAlarm(_ sender: Any)
