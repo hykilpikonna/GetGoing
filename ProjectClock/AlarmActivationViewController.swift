@@ -89,7 +89,7 @@ class AlarmActivationViewController: UIViewController
     {
         // Check if the device has accelerometer
         var wvm = currentAlarm.wakeMethod.name
-        if wvm == "Shake" && !motion.isAccelerometerAvailable
+        if wvm == "Shake" && !motion.isDeviceMotionAvailable
         {
             msg("Error", "Accelerometer is not available on your device, so shaking your phone wouldn't work.")
             wvm = "Factor"
@@ -107,12 +107,14 @@ class AlarmActivationViewController: UIViewController
             shakeView.show()
             
             // Start motion detection
-            motion.accelerometerUpdateInterval = 0.2
-            motion.startAccelerometerUpdates(to: OperationQueue.current!) { data, error in
-                if data!.acceleration.x > 5
+            let q = OperationQueue()
+            motion.deviceMotionUpdateInterval = 0.2
+            motion.startDeviceMotionUpdates(to: q) { data, error in
+                if let a = data?.userAcceleration, sqrt(pow(a.x, 2) + pow(a.y, 2) + pow(a.z, 2)) > 4
                 {
                     ui { self.endAlarm() }
-                    motion.stopAccelerometerUpdates()
+                    motion.stopDeviceMotionUpdates()
+                    q.cancelAllOperations()
                 }
             }
         default:
