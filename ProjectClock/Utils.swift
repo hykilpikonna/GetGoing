@@ -13,10 +13,10 @@ import UIKit
 extension Date
 {
     /// Add toString to Date
-    func str() -> String
+    func str(_ format: String = "yyyy-MM-dd hh:mm:ss") -> String
     {
         let f = DateFormatter()
-        f.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        f.dateFormat = format
         return f.string(from: self)
     }
     

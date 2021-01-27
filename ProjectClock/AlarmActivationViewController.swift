@@ -44,25 +44,21 @@ class AlarmActivationViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        //Set the time and date
-        let date = Date()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMM d, Y"
         
-        dateLabel.text = dateFormatter.string(from: date)
+        // Set the time and date
+        dateLabel.text = Date().str("MMM d, Y")
+        timeLabel.text = currentAlarm?.timeText
         
-        dateFormatter.dateFormat = "hh:mm"
-        timeLabel.text = dateFormatter.string(from: date)
-        
-        
-        //Hide all inactive wakemethods
+        // Hide all inactive wakemethods
         puzzleView.isHidden = true
         rpsView.isHidden = true
         shakeView.isHidden = true
         
+        // Play sound
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(AlarmActivationViewController.playSound), userInfo: nil, repeats: true)
-        setAlarmType()
-        //print(MathExpression.random())
+        
+        // Run alarm
+        runAlarm()
     }
     
     @objc func playSound()
@@ -71,8 +67,10 @@ class AlarmActivationViewController: UIViewController
         AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
     }
     
-    func setAlarmType()
+    func runAlarm()
     {
+        
+        
         if let alarm = currentAlarm
         {
             switch alarm.wakeMethod.name {
