@@ -83,18 +83,30 @@ class AlarmActivator: UITabBarController
      */
     @objc func checkFamily()
     {
+        guard localStorage.string(forKey: "family") != nil else { return }
+        
         send(APIs.familyAlarmUpdates)
         {
+            guard $0 != "" else { return }
+            
+            var changed = false
             let alarms = Alarms.fromLocal()
-            $0.components(separatedBy: ",").forEach
+            $0.csv.forEach
             {
                 guard let alarm = JSON.parse(Alarm.self, $0) else { return }
                 if (!alarms.list.contains { $0.timeText == alarm.timeText })
                 {
                     alarms.list.append(alarm)
+                    changed = true
                 }
             }
             alarms.localSave()
+            
+            guard changed else { return }
+            self.msg("New alarm!", "A family member added an alarm for you!")
+            {
+                AlarmViewController.staticTable?.reloadData()
+            }
         }
     }
 }
