@@ -108,6 +108,7 @@ extension Digest
 extension String
 {
     var sha256: String { SHA256.hash(data: self.data(using: .utf8)!).b64 }
+    var csv: [String] { components(separatedBy: ";") }
 }
 
 
@@ -191,8 +192,16 @@ extension UIViewController
     }
 }
 
+extension UIView
+{
+    func hide(_ hidden: Bool = true) { isHidden = hidden }
+    func show(_ shown: Bool = true) { hide(!shown) }
+}
 
-/// Regex Matching (Credit: https://www.hackingwithswift.com/articles/108/how-to-use-regular-expressions-in-swift)
+
+/**
+ Regex Matching (Credit: https://www.hackingwithswift.com/articles/108/how-to-use-regular-expressions-in-swift)
+ */
 extension NSRegularExpression
 {
     convenience init(_ pattern: String)
@@ -208,6 +217,9 @@ extension NSRegularExpression
     }
 }
 
+/**
+ String convenience functions
+ */
 extension String
 {
     static func ~= (lhs: String, rhs: String) -> Bool
@@ -217,24 +229,28 @@ extension String
         return regex.firstMatch(in: lhs, options: [], range: range) != nil
     }
     
-    //Better subscripting from: https://stackoverflow.com/a/46627527
-    subscript (bounds: CountableClosedRange<Int>) -> String {
-            let start = index(startIndex, offsetBy: bounds.lowerBound)
-            let end = index(startIndex, offsetBy: bounds.upperBound)
-            return String(self[start...end])
-        }
+    // Better subscripting from: https://stackoverflow.com/a/46627527
+    subscript (bounds: CountableClosedRange<Int>) -> String
+    {
+        let start = index(startIndex, offsetBy: bounds.lowerBound)
+        let end = index(startIndex, offsetBy: bounds.upperBound)
+        return String(self[start...end])
+    }
 
-    subscript (bounds: CountableRange<Int>) -> String {
-            let start = index(startIndex, offsetBy: bounds.lowerBound)
-            let end = index(startIndex, offsetBy: bounds.upperBound)
-            return String(self[start..<end])
-        }
+    subscript (bounds: CountableRange<Int>) -> String
+    {
+        let start = index(startIndex, offsetBy: bounds.lowerBound)
+        let end = index(startIndex, offsetBy: bounds.upperBound)
+        return String(self[start..<end])
+    }
 }
 
 /// More convenient ui update closure
 func ui(closure: @escaping () -> Void) { DispatchQueue.main.async { closure() } }
 
-/// More convenient UserDefaults access (Credit: https://gist.github.com/Otbivnoe/04b8bd7984fba0cb58ca7f136fd95582)
+/**
+ More convenient UserDefaults access (Credit: https://gist.github.com/Otbivnoe/04b8bd7984fba0cb58ca7f136fd95582)
+ */
 extension UserDefaults
 {
     subscript<T>(key: String) -> T?
@@ -252,10 +268,4 @@ extension UserDefaults
         }
         set { self[key] = newValue?.rawValue }
     }
-}
-
-/// String CSV
-extension String
-{
-    var csv: [String] { components(separatedBy: ";") }
 }
