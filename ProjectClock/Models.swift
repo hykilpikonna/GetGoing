@@ -15,7 +15,7 @@ struct Family: Codable
     var members: String
     // And a hidden field: admin pin
     
-    var membersList: [String] { members.components(separatedBy: ",") }
+    var membersList: [String] { members.csv }
     
     /// Save family to local storage
     func localSave()

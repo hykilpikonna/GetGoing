@@ -253,3 +253,9 @@ extension UserDefaults
         set { self[key] = newValue?.rawValue }
     }
 }
+
+/// String CSV
+extension String
+{
+    var csv: [String] { components(separatedBy: ";") }
+}
