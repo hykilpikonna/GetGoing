@@ -182,7 +182,7 @@ class AddAlarmViewController: EndEditingOnReturn
         let alarm = Alarm(hour: h, minute: m,
                           text: alarmNameTextField.text ?? "Alarm",
                           wakeMethod: wvms[wvmPicker.selectedRow(inComponent: 0)],
-                          lastActivate: Date(), alarmTone: ringtones[ringtonePicker.selectedRow(inComponent: 0)].tone)
+                          lastActivate: Date(), alarmTone: ringtones[ringtonePicker.selectedRow(inComponent: 0)].tone, toneName: ringtones[ringtonePicker.selectedRow(inComponent: 0)].name)
         
         // Set alarm.repeats to correspond with what the user selects
         (0...6).forEach { alarm.repeats[$0] = false }

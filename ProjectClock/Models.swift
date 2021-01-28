@@ -160,7 +160,7 @@ class Alarms: Codable
     }
     
     /// Read alarms from local storage
-    func localRead() { list = JSON.parse([Alarm].self, localStorage.string(forKey: "alarms")!)! }
+    func localRead() { list = JSON.parse([Alarm].self, localStorage.string(forKey: "alarms")!) ?? []}
     
     /// Read an alarm object from local storage
     static func fromLocal() -> Alarms { return Alarms().apply { $0.localRead() } }
