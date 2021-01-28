@@ -91,7 +91,7 @@ class AddAlarmViewController: UIViewController
         let minutes = Int(String(originalTime.suffix(2)))!
         
         // TODO : REWRITE the am/pm check, pretty sure this could work on two alarms at once
-        let alarm = Alarms.fromLocal().list.first(where: {($0.hour == hours || $0.hour == (hours + 12)) && $0.minute == minutes})
+        let alarm = Alarms.fromLocal().list.first { ($0.hour == hours || $0.hour == (hours + 12)) && $0.minute == minutes }
         
         // Removes the alarm from stored alarms
         let alarmsObj = Alarms.fromLocal()
@@ -105,10 +105,7 @@ class AddAlarmViewController: UIViewController
      Called when the time for the alarm is changed.
      Sets the time away at the top of the View.
      */
-    @IBAction func alarmTimeUpdated(_ sender: Any) {
-        updateETA()
-    }
-    
+    @IBAction func alarmTimeUpdated(_ sender: Any) { updateETA() }
     
     /**
      Called when the user clicks the remove button and brings them back to the home page
@@ -127,8 +124,45 @@ class AddAlarmViewController: UIViewController
      */
     @IBAction func addAlarmButton(_ sender: Any)
     {
-        let (h, m, _) = timePicker.date.getHMS()
         var oldAlarm: Alarm? = nil
+        let alarm = createAlarm()
+        let alarms = Alarms.fromLocal()
+        
+        // Check if editing alarm
+        if (editFlag)
+        {
+            oldAlarm = removeCurrentAlarm()
+        }
+        // Check for existing alarm
+        else
+        {
+            if (alarms.list.contains { $0 == alarm })
+            {
+                msg("Sorry", "An identical or similar alarm already exists, please try again")
+                return
+            }
+        }
+        
+        // Add the alarm to the list and save the list
+        Alarms.fromLocal().apply { $0.list.append(alarm) }.localSave();
+        
+        //Schedules notification for the alarm
+        if editFlag
+        {
+            Notification.removeNotification(alarm: oldAlarm!)
+        }
+        Notification.scheduleNotification(alarm: alarm)
+        
+        // Dismiss this view
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    /**
+     Create alarm, but it doesn't add the alarm to the list
+     */
+    func createAlarm() -> Alarm
+    {
+        let (h, m, _) = timePicker.date.getHMS()
         
         // Create the alarm
         let alarm = Alarm(hour: h, minute: m,
@@ -141,56 +175,16 @@ class AddAlarmViewController: UIViewController
         if repeatWeekdaysSwitch.isOn { (1...5).forEach { alarm.repeats[$0] = true } }
         if repeatWeekendsSwitch.isOn { [0, 6].forEach { alarm.repeats[$0] = true } }
         
-        // Check if editing alarm
-        if (editFlag)
-        {
-            oldAlarm = removeCurrentAlarm()
-        } // Check for existing alarm
-        else
-        {
-            for a in Alarms.fromLocal().list {
-                if a == alarm {
-                    msg("Sorry", "An identical or similar alarm already exists, please try again")
-                    return
-                }
-            }
-        }
-        
-        // Add the alarm to the list and save the list
-        Alarms.fromLocal().apply { $0.list.append(alarm) }.localSave();
-        
-        //Schedules notification for the alarm
-        if editFlag{
-            Notification.removeNotification(alarm: oldAlarm!)
-        }
-        Notification.scheduleNotification(alarm: alarm)
-        
-        // Dismiss this view
-        self.dismiss(animated: true, completion: nil)
+        return alarm
     }
     
     /**
      Dynamically the ETA label for the alarm
      */
     func updateETA() {
-        //Create alarm without adding it to the queue.
-        let (h, m, _) = timePicker.date.getHMS()
-        
-        // Create the alarm
-        let a = Alarm(hour: h, minute: m,
-                      text: alarmNameTextField.text ?? "Alarm",
-                      wakeMethod: wvms[wvmPicker.selectedRow(inComponent: 0)],
-                      lastActivate: Date(), alarmTone: ringtones[ringtonePicker.selectedRow(inComponent: 0)].tone)
-        // Set alarm.repeats to correspond with what the user selects
-        (0...6).forEach { a.repeats[$0] = false }
-        if repeatWeekdaysSwitch.isOn { (1...5).forEach { a.repeats[$0] = true } }
-        if repeatWeekendsSwitch.isOn { [0, 6].forEach { a.repeats[$0] = true } }
-        
-        let timeTill = a.nextActivate!.timeIntervalSince(Date()).str()
+        let timeTill = createAlarm().nextActivate!.timeIntervalSince(Date()).str()
         timeTillAlarmLabel.text = "Going off in \(timeTill)"
     }
-    
-    
 }
 
 class WVMDataSource: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource
