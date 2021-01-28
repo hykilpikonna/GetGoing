@@ -84,7 +84,6 @@ class Alarm: Codable, Equatable
     var wakeMethod: WVM
     var alarmTone: SystemSoundID
     var notificationID: String
-    var toneName: String
     
     /// What days does it repeat (Sun, Mon, Tue, Wed, Thu, Fri, Sat)
     var repeats: [Bool]
@@ -111,7 +110,6 @@ class Alarm: Codable, Equatable
         self.lastActivate = lastActivate
         self.alarmTone = alarmTone
         self.notificationID = "notification.id.\(Int.random(in: 1...Int.max))"
-        self.toneName = toneName
     }
     
     /// Does it automatically disable after activating once
@@ -160,7 +158,7 @@ class Alarms: Codable
     }
     
     /// Read alarms from local storage
-    func localRead() { list = JSON.parse([Alarm].self, localStorage.string(forKey: "alarms")!) ?? []}
+    func localRead() { list = JSON.parse([Alarm].self, localStorage.string(forKey: "alarms")!)! }
     
     /// Read an alarm object from local storage
     static func fromLocal() -> Alarms { return Alarms().apply { $0.localRead() } }
