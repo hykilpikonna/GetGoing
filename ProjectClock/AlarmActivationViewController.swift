@@ -17,7 +17,6 @@ var alarmStarted = false
  */
 class AlarmActivationViewController: EndEditingOnReturn
 {
-    var timer: Timer?
     var currentAlarm: Alarm
     
     // Puzzle outlets
@@ -36,6 +35,8 @@ class AlarmActivationViewController: EndEditingOnReturn
     // Other Outlets
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    
+    var solved = false
     
     /**
      Constructor to receive alarm data from segue
@@ -68,7 +69,8 @@ class AlarmActivationViewController: EndEditingOnReturn
         shakeView.hide()
         
         // Play sound
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(AlarmActivationViewController.playSound), userInfo: nil, repeats: true)
+        playSound()
+        vibrate()
         
         // Run alarm
         runAlarm()
@@ -80,10 +82,18 @@ class AlarmActivationViewController: EndEditingOnReturn
     /**
      Play alarm sound
      */
-    @objc func playSound()
+    func playSound()
     {
-        AudioServicesPlayAlertSound(currentAlarm.alarmTone)
-        AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
+        AudioServicesPlayAlertSoundWithCompletion(currentAlarm.alarmTone) {
+            if alarmStarted { self.playSound() }
+        }
+    }
+    
+    func vibrate()
+    {
+        AudioServicesPlayAlertSoundWithCompletion(kSystemSoundID_Vibrate) {
+            if alarmStarted { self.vibrate() }
+        }
     }
     
     /**
@@ -175,9 +185,8 @@ class AlarmActivationViewController: EndEditingOnReturn
      */
     func endAlarm()
     {
-        timer?.invalidate()
+        alarmStarted = false
         print("Alarm solved")
         dismiss(animated: true, completion: nil)
-        alarmStarted = false
     }
 }
