@@ -102,6 +102,11 @@ class AlarmActivationViewController: EndEditingOnReturn
         // Initialize alarm
         switch wvm
         {
+        case "Math 1", "Math 2", "Math 3":
+            let q = MathExpProblem(size: Int(wvm[5...5])!)
+            puzzleQuestionLabel.text = "Solve: \(q.prob.replacingOccurrences(of: "**", with: "^"))"
+            puzzleAnswers = [q.ans]
+            puzzleView.show()
         case "Factor":
             initFactorProblem()
             puzzleView.show()

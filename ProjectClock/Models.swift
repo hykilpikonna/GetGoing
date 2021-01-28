@@ -39,9 +39,12 @@ struct WVM: Codable
 
 
 let wvms = [
+    WVM(name: "Shake", desc: "Shake your phone... aggresively!"),
+    WVM(name: "Math 1", desc: "Easy math expression"),
+    WVM(name: "Math 2", desc: "Medium math expression"),
+    WVM(name: "Math 3", desc: "Hard math expression"),
     WVM(name: "Factor", desc: "Factor a binomial"),
     WVM(name: "RPS", desc: "Win a game of rock paper scissors"),
-    WVM(name: "Shake", desc: "Shake your phone... aggresively!"),
     //WVM(name: "Smash", desc: "It'll never turn off"),
     //WVM(name: "Walk", desc: "Walk a few steps"),
     //WVM(name: "Jump", desc: "Make a few jumps")

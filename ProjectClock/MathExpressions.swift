@@ -40,11 +40,10 @@ enum MathOperator : String {
     case plus = "+"
     case minus = "-"
     case multiply = "*"
-    case divide = "/"
     case power = "**"
     
     static func random() -> MathOperator {
-        let allMathOperators: [MathOperator] = [.plus, .minus, .multiply, .divide, .power]
+        let allMathOperators: [MathOperator] = [.plus, .minus, .multiply, .power]
         let index = Int(arc4random_uniform(UInt32(allMathOperators.count)))
         
         return allMathOperators[index]
@@ -83,50 +82,42 @@ class MathExpression : CustomStringConvertible {
         return "\(leftString) \(self.op.rawValue) \(rightString)"
     }
     
-    var result : Int? {
+    var result: Int {
         let format = "\(lhs.nsExpressionFormatString) \(op.rawValue) \(rhs.nsExpressionFormatString)"
         let expr = NSExpression(format: format)
-        return expr.expressionValue(with: nil, context: nil) as? Int
+        let result = expr.expressionValue(with: nil, context: nil)
+        return Int(round(result as! Double))
     }
     
     static func random() -> MathExpression {
+        let op: MathOperator = .random()
         let lhs = MathElement.Integer(value: Int(arc4random_uniform(10)))
-        let rhs = MathElement.Integer(value: Int(arc4random_uniform(10)))
+        let rhs = MathElement.Integer(value: Int(arc4random_uniform(op == .power ? 3 : 10)))
         
-        return MathExpression(lhs: lhs, rhs: rhs, op: .random())
+        return MathExpression(lhs: lhs, rhs: rhs, op: op)
     }
 }
 
 /**
  Generate simple problem - 2 expressions
  */
-class AlgProb2  : MathExpression {
-    let a = MathExpression.random()
-    let b = MathExpression.random()
+class MathExpProblem
+{
+    let prob: String
+    let ans: Int
     
-    func getProblem() -> String {
-        return "\(a) + \(b)"
-    }
-    
-    func getAnswer() -> String {
-        return "\(a.result! + b.result!)"
-    }
-}
-
-/**
- Generate simple problem - 3 expressions
- */
-class AlgProb3  : MathExpression {
-    let a = MathExpression.random()
-    let b = MathExpression.random()
-    let c = MathExpression.random()
-    
-    func getProblem() -> String {
-        return "\(a) + \(b) + \(c)"
-    }
-    
-    func getAnswer() -> String {
-        return "\(a.result! + b.result! + c.result!)"
+    init(size: Int)
+    {
+        var expressions: [String] = []
+        var answer = 0
+        for _ in 1...size
+        {
+            let exp = MathExpression.random()
+            expressions.append(exp.description)
+            answer += exp.result
+        }
+        prob = expressions.joined(separator: " + ")
+        ans = answer
     }
 }
 
