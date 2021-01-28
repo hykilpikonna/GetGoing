@@ -21,15 +21,6 @@ class DebugViewController: EndEditingOnReturn
         super.viewDidLoad()
         wvmStepper.maximumValue = Double(wvms.count - 1)
         
-        // Request notification permission
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
-            if success {
-                print("All set!")
-            } else if let error = error {
-                print(error.localizedDescription)
-            }
-        }
-        
         // End editing on return
         wvmInput.delegate = self
     }

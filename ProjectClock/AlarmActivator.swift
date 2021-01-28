@@ -25,9 +25,21 @@ class AlarmActivator: UITabBarController
     /// Timer for getting family alarm updates
     var familyTimer: Timer?
     
+    /**
+     Called when the app started
+     */
     override func viewDidLoad()
     {
         start()
+        
+        // Get notification permissions from user
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
+            if success {
+                print("All set!")
+            } else if let error = error {
+                print(error.localizedDescription)
+            }
+        }
     }
     
     /**
