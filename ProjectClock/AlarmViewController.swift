@@ -118,6 +118,11 @@ class AlarmTableCell: UITableViewCell
             }
         }
         
+        updateActivationTime()
+    }
+    
+    func updateActivationTime()
+    {
         // Show next activation date
         if alarm.enabled, let n = alarm.nextActivate {
             goingOffText.text = "(Going off in \(n.timeIntervalSince(Date()).str()))"
