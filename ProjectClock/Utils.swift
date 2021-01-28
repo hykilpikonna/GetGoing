@@ -269,3 +269,15 @@ extension UserDefaults
         set { self[key] = newValue?.rawValue }
     }
 }
+
+class EndEditingOnReturn: UIViewController, UITextFieldDelegate
+{
+    /**
+     End editing on return
+     */
+    func textFieldShouldReturn(_ scoreText: UITextField) -> Bool
+    {
+        self.view.endEditing(true)
+        return true
+    }
+}

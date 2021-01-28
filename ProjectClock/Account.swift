@@ -59,10 +59,16 @@ class AccountViewController: UIViewController
 /**
  View controller for registration and login
  */
-class LoginVC: UIViewController
+class LoginVC: EndEditingOnReturn
 {
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
+    
+    override func viewDidLoad()
+    {
+        username.delegate = self
+        password.delegate = self
+    }
     
     /**
      Send user login/registration request
@@ -127,6 +133,7 @@ class LoginVC: UIViewController
      */
     @IBAction func register(_ sender: Any)
     {
+        self.view.endEditing(true)
         userRequest(login: false)
     }
     
@@ -135,6 +142,7 @@ class LoginVC: UIViewController
      */
     @IBAction func login(_ sender: Any)
     {
+        self.view.endEditing(true)
         userRequest(login: true)
     }
 }
@@ -390,7 +398,7 @@ extension FamilyVC: UITableViewDelegate, UITableViewDataSource
 /**
  Create or join a family
  */
-class FamilyCreateJoinVC: UIViewController
+class FamilyCreateJoinVC: EndEditingOnReturn
 {
     let createMode: Bool
     @IBOutlet weak var lFamilyNameOrId: UILabel!
@@ -424,6 +432,10 @@ class FamilyCreateJoinVC: UIViewController
         {
             tNameOrId.text = "\(localStorage.string(forKey: "name")!)'s Family"
         }
+        
+        // End editing on return
+        tNameOrId.delegate = self
+        tPin.delegate = self
     }
     
     /**

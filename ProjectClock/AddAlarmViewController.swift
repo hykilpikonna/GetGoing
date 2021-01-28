@@ -7,21 +7,25 @@
 
 import UIKit
 
-class AddAlarmViewController: UIViewController
+class AddAlarmViewController: EndEditingOnReturn
 {
     // Editing variables
     var alarmCell: AlarmTableCell? = nil
-    var editFlag: Bool = false
+    var editMode: Bool { alarmCell != nil }
     var originalTime: String = ""
     
-    override func viewDidLoad() {
-        if let alarmCell = alarmCell {
-            
-            //Toggle editing mode
-            editFlag = true
+    override func viewDidLoad()
+    {
+        // End edit on return
+        alarmNameTextField.delegate = self
+        
+        // Load alarm to edit if in edit mode
+        if let alarmCell = alarmCell
+        {
+            // Toggle editing mode
             viewTitle.text = "Edit Alarm"
             
-            //Convert string to Date
+            // Convert string to Date
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "h:mma"
             let date = dateFormatter.date(from: "\(alarmCell.time.text!)\(alarmCell.ampm.text!)")
@@ -30,7 +34,7 @@ class AddAlarmViewController: UIViewController
             timePicker.date = date!
             originalTime = String(dateFormatter.string(from: date!).dropLast(2))
             
-            //Toggle proper repeats
+            // Toggle proper repeats
             if let repeats = alarmCell.repeatText.text {
                 if repeats == "Repeats: Weekdays" {
                     repeatWeekdaysSwitch.isOn = true
@@ -60,6 +64,7 @@ class AddAlarmViewController: UIViewController
             }
         }
     }
+    
     // UI: Make scroll view scrollable
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var scrollViewInner: UIView!
@@ -111,7 +116,7 @@ class AddAlarmViewController: UIViewController
      Called when the user clicks the remove button and brings them back to the home page
      */
     @IBAction func cancelAlarmButton(_ sender: Any) {
-        if editFlag {
+        if editMode {
             removeCurrentAlarm()
         }
         
@@ -129,7 +134,7 @@ class AddAlarmViewController: UIViewController
         let alarms = Alarms.fromLocal()
         
         // Check if editing alarm
-        if (editFlag)
+        if (editMode)
         {
             oldAlarm = removeCurrentAlarm()
         }
@@ -147,7 +152,7 @@ class AddAlarmViewController: UIViewController
         Alarms.fromLocal().apply { $0.list.append(alarm) }.localSave();
         
         //Schedules notification for the alarm
-        if editFlag
+        if editMode
         {
             Notification.removeNotification(alarm: oldAlarm!)
         }

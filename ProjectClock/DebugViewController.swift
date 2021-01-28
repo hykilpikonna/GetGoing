@@ -8,7 +8,7 @@
 import UIKit
 import UserNotifications
 
-class DebugViewController: UIViewController
+class DebugViewController: EndEditingOnReturn
 {
     @IBOutlet weak var userModeButton: UIButton!
     var darkMode = false
@@ -29,6 +29,9 @@ class DebugViewController: UIViewController
                 print(error.localizedDescription)
             }
         }
+        
+        // End editing on return
+        wvmInput.delegate = self
     }
     
     //Sends a test notification

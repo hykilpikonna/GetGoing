@@ -15,7 +15,7 @@ var alarmStarted = false
 /**
  View controlling alarm activation and dismissal
  */
-class AlarmActivationViewController: UIViewController
+class AlarmActivationViewController: EndEditingOnReturn
 {
     var timer: Timer?
     var currentAlarm: Alarm
@@ -72,6 +72,9 @@ class AlarmActivationViewController: UIViewController
         
         // Run alarm
         runAlarm()
+        
+        // End edit on return
+        puzzleAnswerInput.delegate = self
     }
     
     /**
