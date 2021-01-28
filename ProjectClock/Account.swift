@@ -193,6 +193,10 @@ class ManageVC: UIViewController
     {
         sendReq(APIs.downloadConfig, title: "Downloading...")
         {
+            // Make sure backup exists and is parseable
+            if $0.isEmpty { self.msg("Nope", "No backups found"); return }
+            guard JSON.parse([Alarms].self, $0) != nil else { self.msg("Failed", "Backup restoration failed."); return }
+            
             // Save backup
             localStorage.setValue($0, forKey: "alarms")
             
