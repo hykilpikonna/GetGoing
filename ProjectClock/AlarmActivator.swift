@@ -71,9 +71,9 @@ class AlarmActivator: UITabBarController
         
         alarms.localSave()
         self.alarm = alarm
-        // Segue
-        //NSLog(JSON.stringify(alarm)!)
-        performSegue(withIdentifier: "activate-alarm", sender: alarm)
+        
+        // Avoid starting duplicate alarms
+        if !alarmStarted { performSegue(withIdentifier: "activate-alarm", sender: alarm) }
     }
     
     @IBSegueAction func sendAlarm(_ coder: NSCoder) -> AlarmActivationViewController?

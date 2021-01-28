@@ -10,6 +10,7 @@ import AVFoundation
 import CoreMotion
 
 var motion = CMMotionManager()
+var alarmStarted = false
 
 /**
  View controlling alarm activation and dismissal
@@ -120,6 +121,8 @@ class AlarmActivationViewController: UIViewController
         default:
             print("Invalid alarm type")
         }
+        
+        alarmStarted = true
     }
     
     func initFactorProblem()
@@ -167,5 +170,6 @@ class AlarmActivationViewController: UIViewController
         timer?.invalidate()
         print("Alarm solved")
         dismiss(animated: true, completion: nil)
+        alarmStarted = false
     }
 }
