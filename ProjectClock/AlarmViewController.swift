@@ -77,7 +77,7 @@ class AlarmTableCell: UITableViewCell
     @IBOutlet weak var repeatText: UILabel!
     @IBOutlet weak var goingOffText: UILabel!
     @IBOutlet weak var wvmText: UILabel!
-    
+    @IBOutlet weak var toneLabel: UILabel!
     
     var alarm: Alarm!
     
@@ -90,6 +90,7 @@ class AlarmTableCell: UITableViewCell
         descriptionText.text = "- " + alarm.text
         enable.isOn = alarm.enabled
         wvmText.text = alarm.wakeMethod.name
+        toneLabel.text = alarm.toneName
         
         // Display Hour, Minute, and AM or PM
         ampm.text = alarm.hour < 12 || alarm.hour == 24 ? "AM" : "PM"

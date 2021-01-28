@@ -62,6 +62,15 @@ class AddAlarmViewController: EndEditingOnReturn
                     }
                 }
             }
+            
+            //Sets alarm tone
+                        if let toneName = alarmCell.toneLabel.text {
+                            for index in 0...ringtones.count-1 {
+                                if toneName == ringtones[index].name {
+                                    ringtonePicker.selectRow(index, inComponent: 0, animated: true)
+                                }
+                            }
+                        }
         }
     }
     
