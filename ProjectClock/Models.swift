@@ -33,18 +33,19 @@ struct Family: Codable
 
 struct WVM: Codable
 {
+    let index: Int
     let name: String
     let desc: String
 }
 
 
 let wvms = [
-    WVM(name: "Shake", desc: "Shake your phone... aggresively!"),
-    WVM(name: "Math 1", desc: "Easy math expression"),
-    WVM(name: "Math 2", desc: "Medium math expression"),
-    WVM(name: "Math 3", desc: "Hard math expression"),
-    WVM(name: "Factor", desc: "Factor a binomial"),
-    WVM(name: "RPS", desc: "Win a game of rock paper scissors"),
+    WVM(index: 0, name: "Shake", desc: "Shake your phone... aggresively!"),
+    WVM(index: 1, name: "Math 1", desc: "Easy math expression"),
+    WVM(index: 2, name: "Math 2", desc: "Medium math expression"),
+    WVM(index: 3, name: "Math 3", desc: "Hard math expression"),
+    WVM(index: 4, name: "Factor", desc: "Factor a binomial"),
+    WVM(index: 5, name: "RPS", desc: "Win a game of rock paper scissors"),
     //WVM(name: "Smash", desc: "It'll never turn off"),
     //WVM(name: "Walk", desc: "Walk a few steps"),
     //WVM(name: "Jump", desc: "Make a few jumps")
@@ -84,7 +85,6 @@ class Alarm: Codable, Equatable
     var wakeMethod: WVM
     var alarmTone: SystemSoundID
     var notificationID: String
-    var toneName: String
     
     /// What days does it repeat (Sun, Mon, Tue, Wed, Thu, Fri, Sat)
     var repeats: [Bool]
@@ -111,7 +111,6 @@ class Alarm: Codable, Equatable
         self.lastActivate = lastActivate
         self.alarmTone = alarmTone
         self.notificationID = "notification.id.\(Int.random(in: 1...Int.max))"
-        self.toneName = toneName
     }
     
     /// Does it automatically disable after activating once
@@ -160,7 +159,7 @@ class Alarms: Codable
     }
     
     /// Read alarms from local storage
-    func localRead() { list = JSON.parse([Alarm].self, localStorage.string(forKey: "alarms")!) ?? []}
+    func localRead() { list = JSON.parse([Alarm].self, localStorage.string(forKey: "alarms")!)! }
     
     /// Read an alarm object from local storage
     static func fromLocal() -> Alarms { return Alarms().apply { $0.localRead() } }

@@ -8,15 +8,6 @@ class AlarmViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
-        //Get notification permissions from user
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
-            if success {
-                print("All set!")
-            } else if let error = error {
-                print(error.localizedDescription)
-            }
-        }
             
         // Assign table delegate and data source
         AlarmViewController.staticTable = table
@@ -90,7 +81,7 @@ class AlarmTableCell: UITableViewCell
         descriptionText.text = "- " + alarm.text
         enable.isOn = alarm.enabled
         wvmText.text = alarm.wakeMethod.name
-        toneLabel.text = alarm.toneName
+        toneLabel.text = ringtones.first { $0.tone.description == alarm.alarmTone.description }?.name
         
         // Display Hour, Minute, and AM or PM
         ampm.text = alarm.hour < 12 || alarm.hour == 24 ? "AM" : "PM"

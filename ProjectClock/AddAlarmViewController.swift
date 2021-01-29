@@ -12,7 +12,6 @@ class AddAlarmViewController: EndEditingOnReturn
     // Editing variables
     var alarmCell: AlarmTableCell? = nil
     var editMode: Bool { alarmCell != nil }
-    var originalTime: String = ""
     
     override func viewDidLoad()
     {
@@ -20,57 +19,27 @@ class AddAlarmViewController: EndEditingOnReturn
         alarmNameTextField.delegate = self
         
         // Load alarm to edit if in edit mode
-        if let alarmCell = alarmCell
+        if let alarmCell = alarmCell, let alarm = alarmCell.alarm
         {
             // Toggle editing mode
             viewTitle.text = "Edit Alarm"
             
-            // Convert string to Date
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "h:mma"
-            let date = dateFormatter.date(from: "\(alarmCell.time.text!)\(alarmCell.ampm.text!)")
-            
             // Set all the original values to be edited
-            timePicker.date = date!
-            originalTime = String(dateFormatter.string(from: date!).dropLast(2))
+            let (y,m,d) = Date().getYMD()
+            timePicker.date = Date.create(y, m, d, alarm.hour, alarm.minute)
             
             // Toggle proper repeats
-            if let repeats = alarmCell.repeatText.text {
-                if repeats == "Repeats: Weekdays" {
-                    repeatWeekdaysSwitch.isOn = true
-                    repeatWeekendsSwitch.isOn = false
-                } else if repeats == "Repeats: Weekends" {
-                    repeatWeekendsSwitch.isOn = true
-                    repeatWeekdaysSwitch.isOn = false
-                } else if repeats == "Repeats: Daily" {
-                    repeatWeekdaysSwitch.isOn = true
-                    repeatWeekendsSwitch.isOn = true
-                } else {
-                    repeatWeekendsSwitch.isOn = false
-                    repeatWeekdaysSwitch.isOn = false
-                }
-            }
+            repeatWeekdaysSwitch.isOn = alarm.repeats[1...5].allSatisfy { $0 }
+            repeatWeekendsSwitch.isOn = alarm.repeats[0] && alarm.repeats[6]
             
-            alarmNameTextField.text = String(alarmCell.descriptionText.text!.dropFirst(2))
+            alarmNameTextField.text = alarm.text
             updateETA()
             
             // Sets the WVM
-            if let wvm = alarmCell.wvmText.text {
-                for index in 0...wvms.count-1 {
-                    if wvm == wvms[index].name {
-                        wvmPicker.selectRow(index, inComponent: 0, animated: true)
-                    }
-                }
-            }
+            wvmPicker.selectRow(alarm.wakeMethod.index, inComponent: 0, animated: true)
             
-            //Sets alarm tone
-                        if let toneName = alarmCell.toneLabel.text {
-                            for index in 0...ringtones.count-1 {
-                                if toneName == ringtones[index].name {
-                                    ringtonePicker.selectRow(index, inComponent: 0, animated: true)
-                                }
-                            }
-                        }
+            // Sets alarm tone
+            ringtonePicker.selectRow(ringtones.firstIndex { $0.tone == alarm.alarmTone }!, inComponent: 0, animated: true)
         }
     }
     
@@ -100,17 +69,14 @@ class AddAlarmViewController: EndEditingOnReturn
      Returns the removed Alarm object.
      */
     @discardableResult
-    func removeCurrentAlarm() -> Alarm? {
-        let hours = Int(String(originalTime[...originalTime.index(originalTime.endIndex, offsetBy: -4 )]))!
-        let minutes = Int(String(originalTime.suffix(2)))!
-        
-        // TODO : REWRITE the am/pm check, pretty sure this could work on two alarms at once
-        let alarm = Alarms.fromLocal().list.first { ($0.hour == hours || $0.hour == (hours + 12)) && $0.minute == minutes }
+    func removeCurrentAlarm() -> Alarm?
+    {
+        guard let alarm = alarmCell?.alarm else { return nil }
         
         // Removes the alarm from stored alarms
-        let alarmsObj = Alarms.fromLocal()
-        alarmsObj.list = Alarms.fromLocal().list.filter { $0 != alarm }
-        alarmsObj.localSave()
+        let alarms = Alarms.fromLocal()
+        alarms.list = alarms.list.filter { $0 != alarmCell?.alarm }
+        alarms.localSave()
         
         return alarm
     }
